@@ -1,0 +1,3 @@
+#!/bin/bash
+unison /home/tom/Desktop ssh://tom@tmoron.fr:1880//home/tom/Desktop_sync/Desktop $@
+

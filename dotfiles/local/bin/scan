@@ -1,0 +1,4 @@
+#!/bin/bash
+until sudo iwctl station wlan0 show | grep iPhone > /dev/null;do
+	sudo iwctl station wlan0 scan 2>&1 > /dev/null
+done

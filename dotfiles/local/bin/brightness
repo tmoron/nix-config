@@ -1,0 +1,21 @@
+#!/bin/bash
+FILE=/sys/class/backlight/amdgpu_bl1/brightness
+if ! ( test -w "$FILE" ); then
+	xterm +cm -cr RED -bg BLACK -selbg WHITE -selfg BLACK -fg WHITE -fa Monospace -fs 14 -e "sudo chmod 777 $FILE"
+fi
+new=$(cat $FILE)
+
+
+if [ "$1" = "up" ]; then
+	new=$((new + 13))
+elif [ "$1" = "down" ];then
+	new=$((new - 13))
+fi
+
+if [ $new -gt 255 ]; then
+	new=255
+elif [ $new -lt 0 ]; then
+	new=0
+fi
+
+echo $new > $FILE

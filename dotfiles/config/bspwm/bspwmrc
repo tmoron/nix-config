@@ -1,0 +1,40 @@
+#! /bin/sh
+
+INTEGRATED="eDP-1"
+HDMI="HDMI-1"
+pgrep -x sxhkd > /dev/null || sxhkd &
+killall polybar
+if xrandr | grep "$HDMI connected" && cat /proc/acpi/button/lid/LID/state | grep "closed"; then
+	bash ~/.screenlayout/b.sh
+	bspc monitor $HDMI -d 1 2 3 4 5
+	bspc monitor $INTEGRATED -r
+elif xrandr | grep "$HDMI connected";then
+	bash ~/.screenlayout/a.sh
+	bspc monitor $INTEGRATED -d 1 2 3 4 
+	bspc monitor $HDMI -d A B
+else
+	bspc monitor -d 1 2 3 4 5
+	xrandr -r 60
+fi
+bspc desktop 1 -f
+(polybar -q main -c "$HOME/.config/polybar/config.ini")&
+#(pulseaudio -D; polybar -q main -c "$HOME/.config/polybar/config.ini")&
+
+bspc config border_width         2
+bspc config window_gap          10
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config focus_follows_pointer true
+bspc config gapless_monocle      true
+
+pgrep -x alacritty > /dev/null || alacritty &
+
+#autostart appps
+picom &
+nitrogen --restore &
+dunst &
+numlockx on &
+setxkbmap fr us&
+killall activate-linux
+(sleep 1;activate-linux -c 1-1-1-0.7 -V 50 -H 70 -d)&

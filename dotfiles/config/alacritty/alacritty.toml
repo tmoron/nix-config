@@ -1,0 +1,8 @@
+[window]
+opacity = 0.90
+
+[env]
+XTERM = "xterm-256color"
+
+[font]
+size = 12

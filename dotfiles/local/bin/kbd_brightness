@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ "$1" = "up" ]; then
+	asusctl -n
+elif [ "$1" = "down" ];then
+	asusctl -p
+fi
