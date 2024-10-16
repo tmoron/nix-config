@@ -7,9 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+	nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs:
 	let
 	  pkgs = nixpkgs.legacyPackages."x86_64-linux";
       username="tom";
@@ -38,6 +39,7 @@
 	  	  ./hardware-configuration.nix
 	  	  ./configuration.nix
 	  	  ./hosts/laptop/configuration.nix
+		  nixos-hardware.nixosModules.asus-zephyrus-ga401
           ];
         };
       };

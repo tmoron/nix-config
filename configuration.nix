@@ -7,6 +7,7 @@
   # imports = [];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  nixpkgs.config.allowUnfree = true;
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -44,6 +45,7 @@
 	home-manager
 	killall
    	vim
+	pciutils
   ];
 
   #Open ports in the firewall.
