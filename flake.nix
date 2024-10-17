@@ -19,14 +19,14 @@
 #NIXOS CONFIG
       nixosConfigurations = {
         default = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;};
+          specialArgs = {inherit inputs; flakeName="default";};
           modules = [
 	  	  ./hardware-configuration.nix
 	  	  ./configuration.nix
           ];
         };
 	    vbox = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;};
+          specialArgs = {inherit inputs;flakeName="vbox";};
           modules = [
 	  	  ./hardware-configuration.nix
 	  	  ./configuration.nix
@@ -34,7 +34,7 @@
           ];
         };
 	    laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;};
+          specialArgs = {inherit inputs;flakeName="laptop";};
           modules = [
 	  	  ./hardware-configuration.nix
 	  	  ./configuration.nix
@@ -74,6 +74,17 @@
           modules = [
             ./home.nix
             ./homes/ft/ft.nix
+          ];
+        };
+        laptop = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+	      extraSpecialArgs = {
+            username = "${username}";
+            homeDir = "${homeDir}";
+          };
+          modules = [
+            ./home.nix
+            ./homes/laptop/laptop.nix
           ];
         };
 	  };

@@ -11,9 +11,9 @@
 	tlp
   ];
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-	driSupport32Bit = true;
+	enable32Bit = true;
   };
 
   services.xserver.videoDrivers = ["nvidia"];
@@ -22,4 +22,6 @@
     enable = true;
 	enableOffloadCmd = true;
   };
+  programs.steam.enable=true; 
+  programs.steam.protontricks.enable=true;
 }

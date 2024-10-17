@@ -8,8 +8,8 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs;[	
-    polybar
+  home.packages = with pkgs;[
+    polybarFull
     sxhkd
     alacritty
     nitrogen
@@ -28,13 +28,19 @@
     ".config/sxhkd".source = lib.mkDefault dotfiles/config/sxhkd;
     ".config/polybar".source = dotfiles/config/polybar;
     ".config/nitrogen".source = lib.mkDefault dotfiles/config/nitrogen;
-    ".config/alacritty".source = dotfiles/config/alacritty;
+    ".config/alacritty".source = lib.mkDefault dotfiles/config/alacritty;
     ".config/nvim/init.vim".source = dotfiles/config/nvim/init.vim;
     ".config/nvim/plugin/stdheader.vim".source = dotfiles/config/nvim/plugin/stdheader.vim;
     ".local/share/nvim/site/autoload/plug.vim".source = dotfiles/local/share/nvim/site/autoload/plug.vim;
     ".xinitrc".source = dotfiles/xinitrc;
     ".vimrc".source = dotfiles/vimrc;
     ".bashrc".source = dotfiles/bashrc;
+
+	".local/share/rofi/themes".source = "${builtins.fetchGit {
+		url = "https://github.com/newmanls/rofi-themes-collection";
+		rev = "c8239a45edced3502894e1716a8b661fdea8f1c9";
+		ref = "master";
+    }}/themes";
 
 
     # ".gradle/gradle.properties".text = ''
