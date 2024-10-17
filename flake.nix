@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/17 19:03:37 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/17 21:53:46 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@
           ];
         };
 	    desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;flakeName="laptop";};
+          specialArgs = {inherit inputs;flakeName="desktop";};
           modules = [
 	  	  ./configuration.nix
 	  	  ./hosts/desktop.nix
