@@ -3,6 +3,8 @@ THREADS ?= $(shell nproc)
 FLAKE ?= /home/tom/home
 MODE = switch
 
+FLAGS = --impure --cores $(THREADS) -j $(THREADS) 
+
 all: os home
 
 update:
@@ -10,6 +12,6 @@ update:
 	$(MAKE) all
 
 os:
-	sudo nixos-rebuild $(MODE) --cores $(THREADS) -j $(THREADS) --flake $(FLAKE)#$(HOST)
+	sudo nixos-rebuild $(MODE) $(FLAGS) --flake $(FLAKE)#$(HOST)
 home :
-	home-manager $(MODE) --cores $(THREADS) -j $(THREADS) --flake $(FLAKE)#$(HOST)
+	home-manager $(MODE) $(FLAGS) --flake $(FLAKE)#$(HOST)
