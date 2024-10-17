@@ -2,7 +2,6 @@
 
 {
 	imports = [ ../modules/game.nix ];
-	home.file = {
-    	".config/alacritty".source = dotfiles/config/alacritty;
-	};
+
+    programs.alacritty.settings.font.size = 8;
 }
