@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    flake.nix                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
+#    Updated: 2024/10/17 18:15:26 by tomoron          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 {
   description = "Nixos and home-manager config flake";
 
@@ -21,25 +33,29 @@
         default = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs; flakeName="default";};
           modules = [
-	  	  ./hardware-configuration.nix
 	  	  ./configuration.nix
           ];
         };
 	    vbox = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs;flakeName="vbox";};
           modules = [
-	  	  ./hardware-configuration.nix
 	  	  ./configuration.nix
-	  	  ./hosts/vbox/configuration.nix
+	  	  ./hosts/vbox.nix
           ];
         };
 	    laptop = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs;flakeName="laptop";};
           modules = [
-	  	  ./hardware-configuration.nix
 	  	  ./configuration.nix
-	  	  ./hosts/laptop/configuration.nix
+	  	  ./hosts/laptop.nix
 		  nixos-hardware.nixosModules.asus-zephyrus-ga401
+          ];
+        };
+	    desktop = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs;flakeName="laptop";};
+          modules = [
+	  	  ./configuration.nix
+	  	  ./hosts/desktop.nix
           ];
         };
       };

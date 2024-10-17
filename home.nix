@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    home.nix                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
+#    Updated: 2024/10/17 18:15:39 by tomoron          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 { config, lib, pkgs, username,homeDir, ... }:
 
 {
@@ -61,6 +73,7 @@
 
   services.picom = {
     enable = true;
+	package = pkgs.picom-pijulius;
     backend = lib.mkDefault "glx";
     vSync = true;
     settings = {

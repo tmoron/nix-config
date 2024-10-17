@@ -1,8 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  	home.packages = with pkgs;[ heroic ];
-	services.picom.package = pkgs.picom-pijulius;
+	imports = [ ../modules/game.nix ];
 	home.file = {
     	".config/alacritty".source = dotfiles/config/alacritty;
 	};

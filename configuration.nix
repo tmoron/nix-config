@@ -4,7 +4,7 @@
 { config, lib, inputs, pkgs, flakeName, ... }:
 
 { 
-  # imports = [];
+  imports = [./hardware-configuration.nix];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;

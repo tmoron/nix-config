@@ -1,7 +1,10 @@
-
 { config, lib, inputs, pkgs, ... }:
 
 {
+  imports = [
+    modules/game.nix
+	modules/nvidia.nix
+  ];
   networking.hostName = "patate-douce";
   networking.wireless.enable = true;
   networking.networkmanager.enable = false;
@@ -11,17 +14,12 @@
 	tlp
   ];
 
-  hardware.graphics = {
-    enable = true;
-	enable32Bit = true;
-  };
-
-  services.xserver.videoDrivers = ["nvidia"];
-
   hardware.nvidia.prime.offload = {
     enable = true;
 	enableOffloadCmd = true;
   };
-  programs.steam.enable=true; 
-  programs.steam.protontricks.enable=true;
+
+  services.libinput.enable = true;
+  services.libinput.touchpad.clickMethod = "clickfinger";
+  services.libinput.touchpad.tapping = false;
 }
