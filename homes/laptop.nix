@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-	imports = [ ../modules/game.nix ];
+	imports = [ modules/game.nix ];
 
     programs.alacritty.settings.font.size = 8;
 }

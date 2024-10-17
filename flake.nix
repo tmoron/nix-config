@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/17 18:15:26 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/17 18:45:14 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@
           };
           modules = [
             ./home.nix
-            ./homes/laptop/laptop.nix
+            ./homes/laptop.nix
           ];
         };
 	  };
