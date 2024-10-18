@@ -17,14 +17,11 @@
 
   networking.networkmanager.enable = lib.mkDefault true;
 
-  # Set your time zone.
   time.timeZone = "Europe/Paris";
 
   services.xserver.enable = true;
   services.xserver.displayManager.startx.enable = true;
 
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -32,7 +29,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager). services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tom = {
      isNormalUser = true;
      extraGroups = [ "wheel" ];
@@ -40,7 +36,6 @@
 #     packages = with pkgs; [];
    };
 
-  # List packages installed in system profile. To search,: $ nix search wget
   environment.systemPackages = with pkgs; [
 	home-manager
 	killall

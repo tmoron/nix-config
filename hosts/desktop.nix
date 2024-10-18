@@ -5,6 +5,7 @@
   imports = [
     modules/game.nix
 	modules/nvidia.nix
+	modules/vboxHost.nix
   ];
 
   networking.hostName = "nixos-fixe";

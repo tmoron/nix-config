@@ -4,6 +4,7 @@
   imports = [
     modules/game.nix
 	modules/nvidia.nix
+	modules/vboxHost.nix
   ];
   networking.hostName = "patate-douce";
   networking.wireless.enable = true;
