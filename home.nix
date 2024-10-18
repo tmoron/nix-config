@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/17 18:41:29 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/18 01:47:08 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,13 +35,14 @@
 	activate-linux
 	bspwm
 	dunst
+	numlockx
   ];
   
   home.file = {
     ".config/bspwm/bspwmrc".source = lib.mkDefault dotfiles/config/bspwm/bspwmrc;
     ".config/sxhkd".source = lib.mkDefault dotfiles/config/sxhkd;
     ".config/polybar".source = dotfiles/config/polybar;
-    ".config/nitrogen".source = lib.mkDefault dotfiles/config/nitrogen;
+    ".config/nitrogen/wallpaper.png".source = lib.mkDefault dotfiles/config/nitrogen/wallpaper.png;
     ".config/nvim/init.vim".source = dotfiles/config/nvim/init.vim;
     ".config/nvim/plugin/stdheader.vim".source = dotfiles/config/nvim/plugin/stdheader.vim;
     ".local/share/nvim/site/autoload/plug.vim".source = dotfiles/local/share/nvim/site/autoload/plug.vim;

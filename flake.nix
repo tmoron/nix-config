@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/17 21:53:46 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/18 00:42:34 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@
           };
           modules = [
             ./home.nix
-            ./homes/laptop.nix
+            ./homes/laptop/home.nix
           ];
         };
         desktop = home-manager.lib.homeManagerConfiguration {
@@ -111,7 +111,7 @@
           };
           modules = [
             ./home.nix
-#			./homes/desktop.nix
+			./homes/desktop/home.nix
           ];
         };
 	  };

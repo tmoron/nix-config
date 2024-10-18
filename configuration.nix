@@ -27,13 +27,10 @@
     pulse.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager). services.libinput.enable = true;
-
   users.users.tom = {
      isNormalUser = true;
      extraGroups = [ "wheel" ];
      initialPassword = "password";
-#     packages = with pkgs; [];
    };
 
   environment.systemPackages = with pkgs; [
@@ -44,6 +41,8 @@
 	pigz
 	htop
 	gnumake
+	git
+	neofetch
   ];
 
   #Open ports in the firewall.

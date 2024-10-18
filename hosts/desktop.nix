@@ -14,13 +14,22 @@
 
   hardware.cpu.intel.updateMicrocode = true;
 
-  services.xserver.videoDrivers = [ "modesetting" "intel"];
+#  services.xserver.videoDrivers = [ "intel"];
 
-  hardware.graphics.extraPackages = [ pkgs.mesa.drivers ];
+  boot.kernelModules = [ "kvm-intel" "nvidia" ];
+  hardware.graphics.extraPackages = with pkgs; [libGL linuxPackages.nvidia_x11.out];
+
+
   hardware.nvidia = {
 	open = true;
 
 	prime.nvidiaBusId = "PCI:1:0:0";
 	prime.intelBusId = "PCI:0:2:0";
+	prime.sync.enable = true;
+
+	modesetting.enable = true;
   };
+
+  services.openssh.enable = true;
+
 }
