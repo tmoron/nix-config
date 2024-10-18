@@ -1,7 +1,7 @@
 #! /bin/sh
 
-if [ -f $HOME/.config/bspwm/host.sh ];then /bin/sh $HOME/.config/bspwm/host.sh;fi
 if [ -f $HOME/.config/bspwm/screenlayout.sh ];then /bin/sh $HOME/.config/bspwm/screenlayout.sh ;fi
+if [ -f $HOME/.config/bspwm/host.sh ];then /bin/sh $HOME/.config/bspwm/host.sh;fi
 
 pgrep sxhkd > /dev/null || sxhkd &
 pgrep polybar >/dev/null || polybar -q main -c "$HOME/.config/polybar/config.ini"&

@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/18 01:47:08 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/18 19:42:47 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@
 	modules/git.nix
 	modules/picom.nix
 	modules/alacritty.nix
+	modules/vim.nix
   ];
   
   home.username = "${username}";
@@ -43,11 +44,7 @@
     ".config/sxhkd".source = lib.mkDefault dotfiles/config/sxhkd;
     ".config/polybar".source = dotfiles/config/polybar;
     ".config/nitrogen/wallpaper.png".source = lib.mkDefault dotfiles/config/nitrogen/wallpaper.png;
-    ".config/nvim/init.vim".source = dotfiles/config/nvim/init.vim;
-    ".config/nvim/plugin/stdheader.vim".source = dotfiles/config/nvim/plugin/stdheader.vim;
-    ".local/share/nvim/site/autoload/plug.vim".source = dotfiles/local/share/nvim/site/autoload/plug.vim;
     ".xinitrc".source = dotfiles/xinitrc;
-    ".vimrc".source = dotfiles/vimrc;
     ".bashrc".source = dotfiles/bashrc;
 
 	".local/share/rofi/themes".source = "${builtins.fetchGit {
