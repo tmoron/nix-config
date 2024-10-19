@@ -3,6 +3,7 @@
 {
 	imports = [
 	  ../modules/game.nix
+	  ../modules/nitrogen.nix
 	];
 
     programs.alacritty.settings.font.size = 8;
