@@ -1,6 +1,6 @@
 HOST ?= $(file < /etc/nixosFlakeName)
 THREADS ?= $(shell nproc)
-FLAKE ?= /home/tom/home
+FLAKE ?= . 
 MODE = switch
 
 FLAGS = --impure --cores $(THREADS) -j $(THREADS) 
