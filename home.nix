@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/19 18:42:49 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/19 19:01:47 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@
 	numlockx
 	unison
 	discord	
+	google-chrome
   ];
   
   home.file = {
