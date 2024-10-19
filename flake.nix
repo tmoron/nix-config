@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/18 00:42:34 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/19 15:11:51 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 	nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+	firefox-addons = {
+	  url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+	  inputs.nixpkgs.follows = "nixpkgs";
+	};
   };
 
   outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs:
@@ -62,19 +67,12 @@
 
 #HOME CONFIG
       homeConfigurations = {
-	    ${username} = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-	      extraSpecialArgs = {
-            username = "${username}";
-            homeDir = "${homeDir}";
-          };
-          modules = [ ./home.nix ];
-        };
         vbox = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 	      extraSpecialArgs = {
             username = "${username}";
             homeDir = "${homeDir}";
+			inherit inputs;
           };
           modules = [
             ./home.nix
@@ -86,6 +84,7 @@
           extraSpecialArgs = {
             username = "tomoron";
             homeDir = "/nfs/homes/tomoron";
+			inherit inputs;
           };
           modules = [
             ./home.nix
@@ -97,6 +96,7 @@
 	      extraSpecialArgs = {
             username = "${username}";
             homeDir = "${homeDir}";
+			inherit inputs;
           };
           modules = [
             ./home.nix
@@ -108,6 +108,7 @@
 	      extraSpecialArgs = {
             username = "${username}";
             homeDir = "${homeDir}";
+			inherit inputs;
           };
           modules = [
             ./home.nix

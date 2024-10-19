@@ -14,8 +14,6 @@
 
   hardware.cpu.intel.updateMicrocode = true;
 
-#  services.xserver.videoDrivers = [ "intel"];
-
   boot.kernelModules = [ "kvm-intel" "nvidia" ];
   hardware.graphics.extraPackages = with pkgs; [libGL linuxPackages.nvidia_x11.out];
 

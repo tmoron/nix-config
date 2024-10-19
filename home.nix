@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/19 14:16:59 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/19 14:49:27 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@
 	modules/picom.nix
 	modules/alacritty.nix
 	modules/vim.nix
+	modules/firefox.nix
   ];
   
   home.username = "${username}";
@@ -31,7 +32,6 @@
     nitrogen
     nerdfonts
     rofi
-    firefox
 	neovim
 	activate-linux
 	bspwm

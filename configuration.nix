@@ -43,6 +43,7 @@
 	gnumake
 	git
 	neofetch
+	ntfs3g
   ];
 
   #Open ports in the firewall.
