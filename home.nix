@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/19 14:12:59 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/19 14:16:59 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@
 	bspwm
 	dunst
 	numlockx
+	unison
   ];
   
   home.file = {
