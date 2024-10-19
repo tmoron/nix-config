@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/19 15:11:51 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/19 18:54:48 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@
 
   outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs:
 	let
-	  pkgs = nixpkgs.legacyPackages."x86_64-linux";
+	  pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
       username="tom";
 	  homeDir="/home/tom";
 	in {

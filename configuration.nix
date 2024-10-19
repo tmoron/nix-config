@@ -29,9 +29,11 @@
 
   users.users.tom = {
      isNormalUser = true;
-     extraGroups = [ "wheel" ];
+     extraGroups = [ "wheel" "docker"];
      initialPassword = "password";
    };
+
+   virtualisation.docker.enable = true;
 
   environment.systemPackages = with pkgs; [
 	home-manager
