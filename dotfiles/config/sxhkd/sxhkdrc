@@ -135,16 +135,16 @@ XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 XF86MonBrightnessUp
-		brightness up
+		~/.local/bin/brightness up
 
 XF86MonBrightnessDown
-		brightness down
+		~/.local/bin/brightness down
 
 XF86KbdBrightnessUp
-		kbd_brightness up
+		~/.local/bin/kbd_brightness up
 
 XF86KbdBrightnessDown
-		kbd_brightness down
+		~/.local/bin/kbd_brightness down
 
 
 #music control
