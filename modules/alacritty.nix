@@ -6,7 +6,7 @@
 	settings = {
       window.opacity = 0.9;
 	  env.XTERM = "xterm-256color";
-	  font.size = lib.mkDefault 12;
+	  font.size = lib.mkDefault 10;
 	};
   };
 }

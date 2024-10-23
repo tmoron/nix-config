@@ -6,7 +6,7 @@
 	  ../modules/nitrogen.nix
 	];
 
-    programs.alacritty.settings.font.size = 8;
+#    programs.alacritty.settings.font.size = 8;
 
 	home.file = {
       ".config/bspwm/host.sh".source = ./bspwm/host.sh;
