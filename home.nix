@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/19 19:05:10 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/24 01:22:24 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,10 +40,17 @@
 	unison
 	discord	
 	google-chrome
+	wofi
+	waybar
+	brightnessctl	
+	swaybg
   ];
   
   home.file = {
-    ".config/bspwm/bspwmrc".source = lib.mkDefault dotfiles/config/bspwm/bspwmrc;
+    ".config/bspwm/bspwmrc".source = dotfiles/config/bspwm/bspwmrc;
+	".config/hypr/hyprland.conf".source = dotfiles/config/hypr/hyprland.conf;
+	".config/waybar/config".source = dotfiles/config/waybar/config;
+	".config/waybar/style.css".source = dotfiles/config/waybar/style.css;
     ".config/sxhkd".source = lib.mkDefault dotfiles/config/sxhkd;
     ".config/polybar".source = dotfiles/config/polybar;
     ".config/nitrogen/wallpaper.png".source = lib.mkDefault dotfiles/config/nitrogen/wallpaper.png;
@@ -55,11 +62,8 @@
 		rev = "c8239a45edced3502894e1716a8b661fdea8f1c9";
 		ref = "master";
     }}/themes";
-
 	".local/bin/desk_sync".source = dotfiles/local/bin/desk_sync;
-
-	".local/bin/brightness".source = dotfiles/local/bin/brightness;
+	".local/share/icons/bibata-modern-classic".source = dotfiles/local/share/icons/bibata-modern-classic;
   };
-
   programs.home-manager.enable = true;
 }
