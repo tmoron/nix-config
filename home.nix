@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/24 01:22:24 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/24 02:09:16 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@
 	wofi
 	waybar
 	brightnessctl	
+	playerctl
 	swaybg
   ];
   

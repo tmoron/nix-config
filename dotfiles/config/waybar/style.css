@@ -74,3 +74,7 @@ window#waybar {
     color: #f53c3c;
 	font-weight:bold;
 }
+
+#temperature.critical {
+	color: #ff2222; 
+}

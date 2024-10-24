@@ -6,37 +6,29 @@
     // Choose the order of the modules
 	"margin-left":5,
 	"margin-right":5,
-	"output":"eDP-1",
     "modules-left": ["hyprland/workspaces", "custom/music"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery", "clock"],
+    "modules-right": ["custom/fans", "custom/dgpu", "disk", "pulseaudio", "network", "cpu", "temperature", "custom/pipe", "memory", "battery", "clock"],
 
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
-        "format": "{icon}",
-        "format-icons": {
-            "1:1": "1",
-            "2:2": "2",
-            "3:3": "3",
-            "4:4": "4",
-            "5:5": "5",
-            "6:6": "6",
-        }
+        "format": "{id}"
     },
 
-    "clock": {
-		"interval" : 1,
-        "format-alt": "{:%Y-%m-%d}",
-		"format" : "{:%H:%M:%S}"
+    "clock": { "interval" : 1,
+        "format-alt": " {:%Y-%m-%d}",
+		"format" : " {:%H:%M:%S}"
     },
 
     "cpu": {
-        "format": "{usage}%  |"
+        "format": "   {usage}% |",
+		"interval":5
     },
 
     "memory": {
-        "format": "{}%  |"
+        "format": "   {}% |",
+		"interval":5
     },
 
     "battery": {
@@ -47,7 +39,7 @@
             "critical": 15
         },
 		"format-time": " {H}:{m}",
-        "format": "{icon}{capacity}%{time}|",
+        "format": " {icon} {capacity}%{time} |",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": [" ", " ", " ", " ", " "],
@@ -55,14 +47,15 @@
     },
     "network": {
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%)  |",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr}  |",
-        "format-disconnected": "Disconnected ⚠|"
+        "format-wifi": " {icon} {essid} |",
+        "format-ethernet": "   {ifname}: {ipaddr}/{cidr} |",
+        "format-disconnected": " ⚠ Disconnected |",
+		"format-icons":["󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "]
     },
     "pulseaudio": {
         //"scroll-step": 1,
-        "format": "{volume}% {icon}|",
-        "format-bluetooth": "{volume}% {icon}|",
+        "format": " {icon}{volume}% |",
+        "format-bluetooth": "  {icon} {volume}% |",
         "format-muted": "",
         "format-icons": {
             "headphones": " ",
@@ -71,8 +64,40 @@
             "phone": " ",
             "portable": " ",
             "car": " ",
-            "default": [" ", " "]
+            "default": [" ", " ", "  "]
         },
         "on-click": "pavucontrol"
     },
+	"temperature":{
+		"thermal-zone":0,
+		"critical-threshold":80,
+		"interval":5,
+		"format":" {icon} {temperatureC}°C ",
+		"format-icons": ["", "", "", "", ""]
+	},
+	"disk":{
+		"format":" 󰋊 {percentage_used}% |"
+	},
+	"custom/pipe":{
+		"format":"|"
+	},
+
+	"custom/music":{
+		"exec-if" : "playerctl metadata 2>&1 >/dev/null",
+		"exec" : "playerctl metadata --format '  {{ artist }} - {{title}}'",
+		"interval" : 1,
+		"interval-if" : 5
+	},
+	"custom/dgpu":{
+		"exec-if" : "test \"$(supergfxctl -g)\" = \"Hybrid\"",
+		"exec" : "echo \"   on |\"",
+		"interval-if" : 10,
+		"interval":100
+	},
+	"custom/fans":{
+		"exec-if" : "test \"$(cat /sys/class/hwmon/hwmon6/fan1_input)\" -gt 0 -o \"$(cat /sys/class/hwmon/hwmon6/fan2_input)\" -gt 0",
+		"exec" : "echo \" \" \"$(cat /sys/class/hwmon/hwmon6/fan1_input).$(cat /sys/class/hwmon/hwmon6/fan2_input) |\"",
+		"interval" : 1,
+		"interval-if" : 1
+	}
 }
