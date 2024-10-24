@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/24 02:09:16 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/24 15:53:56 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,11 +45,13 @@
 	brightnessctl	
 	playerctl
 	swaybg
+	hyprlock
   ];
   
   home.file = {
     ".config/bspwm/bspwmrc".source = dotfiles/config/bspwm/bspwmrc;
 	".config/hypr/hyprland.conf".source = dotfiles/config/hypr/hyprland.conf;
+	".config/hypr/hyprlock.conf".source = dotfiles/config/hypr/hyprlock.conf;
 	".config/waybar/config".source = dotfiles/config/waybar/config;
 	".config/waybar/style.css".source = dotfiles/config/waybar/style.css;
     ".config/sxhkd".source = lib.mkDefault dotfiles/config/sxhkd;
