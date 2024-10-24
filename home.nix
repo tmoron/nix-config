@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/24 15:53:56 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/24 16:41:05 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@
 	modules/alacritty.nix
 	modules/vim.nix
 	modules/firefox.nix
+	modules/hyprland.nix
+	modules/waybar.nix
   ];
   
   home.username = "${username}";
@@ -41,7 +43,6 @@
 	discord	
 	google-chrome
 	wofi
-	waybar
 	brightnessctl	
 	playerctl
 	swaybg
@@ -52,8 +53,8 @@
     ".config/bspwm/bspwmrc".source = dotfiles/config/bspwm/bspwmrc;
 	".config/hypr/hyprland.conf".source = dotfiles/config/hypr/hyprland.conf;
 	".config/hypr/hyprlock.conf".source = dotfiles/config/hypr/hyprlock.conf;
-	".config/waybar/config".source = dotfiles/config/waybar/config;
-	".config/waybar/style.css".source = dotfiles/config/waybar/style.css;
+#	".config/waybar/config".source = dotfiles/config/waybar/config;
+#	".config/waybar/style.css".source = dotfiles/config/waybar/style.css;
     ".config/sxhkd".source = lib.mkDefault dotfiles/config/sxhkd;
     ".config/polybar".source = dotfiles/config/polybar;
     ".config/nitrogen/wallpaper.png".source = lib.mkDefault dotfiles/config/nitrogen/wallpaper.png;
