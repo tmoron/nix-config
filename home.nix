@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/24 16:41:05 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/24 19:18:42 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@
   
   home.file = {
     ".config/bspwm/bspwmrc".source = dotfiles/config/bspwm/bspwmrc;
-	".config/hypr/hyprland.conf".source = dotfiles/config/hypr/hyprland.conf;
+#	".config/hypr/hyprland.conf".source = dotfiles/config/hypr/hyprland.conf;
 	".config/hypr/hyprlock.conf".source = dotfiles/config/hypr/hyprlock.conf;
 #	".config/waybar/config".source = dotfiles/config/waybar/config;
 #	".config/waybar/style.css".source = dotfiles/config/waybar/style.css;

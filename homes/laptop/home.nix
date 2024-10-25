@@ -7,6 +7,9 @@
 	];
 
 #    programs.alacritty.settings.font.size = 8;
+	home.packages = with pkgs; [
+		stremio
+	];
 
 	home.file = {
       ".config/bspwm/host.sh".source = ./bspwm/host.sh;

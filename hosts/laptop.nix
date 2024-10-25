@@ -25,5 +25,5 @@
   services.libinput.touchpad.tapping = false;
 
   hardware.bluetooth.enable = true;
-  programs.hyprland.enable = true;
+
 }
