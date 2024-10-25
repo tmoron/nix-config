@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/24 19:18:42 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/25 21:48:22 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@
     nerdfonts
     rofi
 	neovim
+	ripgrep
 	activate-linux
 	bspwm
 	dunst
