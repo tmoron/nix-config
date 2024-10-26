@@ -10,6 +10,9 @@
   networking.wireless.enable = true;
   networking.networkmanager.enable = false;
 
+  networking.firewall.allowedTCPPorts = [ 11470 12470 80 ];
+  networking.firewall.allowedUDPPorts = [ 11470 12470 80 ];
+
   environment.systemPackages = with pkgs; [
     acpi
 	tlp
@@ -25,5 +28,4 @@
   services.libinput.touchpad.tapping = false;
 
   hardware.bluetooth.enable = true;
-
 }

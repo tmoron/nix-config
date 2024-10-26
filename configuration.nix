@@ -59,4 +59,5 @@
 
   environment.etc.nixosFlakeName.text = "${flakeName}";
 
+  programs.hyprland.enable = true;
 }
