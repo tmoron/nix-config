@@ -8,9 +8,11 @@
 	modules/vboxHost.nix
   ];
 
+  environment.systemPackages = with pkgs; [
+  	lm_sensors
+  ];
+
   networking.hostName = "nixos-fixe";
-  networking.firewall.allowedTCPPorts = [ 5900 ];
-  networking.firewall.allowedUDPPorts = [ 5900 ];
 
   hardware.cpu.intel.updateMicrocode = true;
 
