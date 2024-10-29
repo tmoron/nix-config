@@ -47,6 +47,10 @@
 	git
 	neofetch
 	ntfs3g
+	clang
+	ninja
+	gdb
+	valgrind
   ];
 
   #Open ports in the firewall.
