@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/19 18:54:48 by tomoron          ###   ########.fr        #
+#    Updated: 2024/10/31 20:22:15 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,13 @@
           specialArgs = {inherit inputs; flakeName="default";};
           modules = [
 	  	  ./configuration.nix
+          ];
+        };
+        server = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs; flakeName="server";};
+          modules = [
+		  	  ./configuration.nix
+			  ./hosts/server.nix
           ];
         };
 	    vbox = nixpkgs.lib.nixosSystem {
@@ -113,6 +120,18 @@
           modules = [
             ./home.nix
 			./homes/desktop/home.nix
+          ];
+        };
+        server = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+	      extraSpecialArgs = {
+            username = "${username}";
+            homeDir = "${homeDir}";
+			inherit inputs;
+          };
+          modules = [
+            ./home.nix
+			./homes/server/home.nix
           ];
         };
 	  };
