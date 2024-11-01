@@ -20,4 +20,5 @@
 	defaultGateway = "192.168.1.254";
 	nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1"];
   };
+  virtualisation.docker.liveRestore = false;
 }
