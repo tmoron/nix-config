@@ -3,14 +3,16 @@
 
 {
   imports = [
+  	modules/game.nix
 	modules/vboxHost.nix
+	modules/nvidia.nix
   ];
 
   networking.hostName = "server";
   services.openssh.enable = true;
 
-  networking.firewall.allowedTCPPorts = [80 443 5000];
-  networking.firewall.allowedUDPPorts = [80 443 5000];
+  networking.firewall.allowedTCPPorts = [80 443 5000 8083];
+  networking.firewall.allowedUDPPorts = [80 443 5000 8083];
 
   networking = {
     interfaces.eth0.ipv4.addresses = [ {
@@ -21,4 +23,19 @@
 	nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1"];
   };
   virtualisation.docker.liveRestore = false;
+
+  services.fail2ban.enable = true;
+  services.fail2ban.bantime = "2h";
+
+  hardware.nvidia-container-toolkit.enable = true;
+
+  hardware.nvidia = {
+	open = false;
+
+#	prime.nvidiaBusId = "PCI:1:0:0";
+#	prime.amdgpuBusId = "PCI:13:0:0";
+#	prime.sync.enable = true;
+
+#	modesetting.enable = true;
+  };
 }

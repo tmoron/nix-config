@@ -9,6 +9,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+  	cudatoolkit
   	lm_sensors
   ];
 
@@ -31,5 +32,4 @@
   };
 
   services.openssh.enable = true;
-
 }
