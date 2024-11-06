@@ -4,6 +4,7 @@
 	imports = [
 	  ../modules/game.nix
 	  ../modules/nitrogen.nix
+	  ./hyprland.nix
 	];
 
 #    programs.alacritty.settings.font.size = 8;

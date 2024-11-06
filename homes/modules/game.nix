@@ -2,5 +2,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  	home.packages = with pkgs;[ heroic mangohud];	
+  	home.packages = with pkgs;[lutris mangohud];	
 }

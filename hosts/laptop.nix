@@ -10,8 +10,8 @@
   networking.wireless.enable = true;
   networking.networkmanager.enable = false;
 
-  networking.firewall.allowedTCPPorts = [ 11470 12470 80 ];
-  networking.firewall.allowedUDPPorts = [ 11470 12470 80 ];
+  networking.firewall.allowedTCPPorts = [ 11470 12470 80 443 5000 ];
+  networking.firewall.allowedUDPPorts = [ 11470 12470 80 443 5000 ];
 
   environment.systemPackages = with pkgs; [
     acpi
