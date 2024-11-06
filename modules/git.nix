@@ -6,6 +6,7 @@
     userEmail = "tomoron@student.42angouleme.fr";
     userName = "tomoron";
 	extraConfig.init.defaultBranch="master";
+	extraConfig.pull.rebase = true;
     aliases = {
 	  fuck = "!f() { git reset --hard \"@{upstream}\" && git restore . && git clean -f .; };f";
 	  back = "reset HEAD~";
