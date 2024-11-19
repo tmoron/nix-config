@@ -6,6 +6,7 @@
   wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER";
     bind = [
+	  " , Print, exec, grim -t jpeg -g \"$(slurp)\" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg"
       "$mainMod, Return, exec, alacritty"
       "CTRL_ALT, Q, killactive,"
       "SUPER_ALT, Q, exit,"
