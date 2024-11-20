@@ -1,6 +1,8 @@
 { config, lib, pkgs, username,homeDir, ... }:
 
 {
+  imports = [ ../modules/nitrogen.nix ];
+
   home.packages = with pkgs;[	
 	neovim
 	dmenu
@@ -8,7 +10,6 @@
 
   home.file = {
     ".config/sxhkd".source = dotfiles/config/sxhkd;
-    ".config/nitrogen".source = dotfiles/config/nitrogen;
-    ".config/bspwm/bspwmrc".source = dotfiles/config/bspwm/bspwmrc;
+	".config/bspwm/host.sh".source = ./bspwm/host.sh;
   };
 }
