@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/11/08 15:34:54 by tomoron          ###   ########.fr        #
+#    Updated: 2024/11/20 14:09:49 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,9 @@
 	hyprlock
 	python3
 	vlc
+
+	grim
+	slurp
   ];
   
   home.file = {

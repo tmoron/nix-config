@@ -6,6 +6,7 @@
   wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER";
     bind = [
+	  " , Print, exec, grim -t jpeg -g \"$(slurp)\" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg"
       "$mainMod, Return, exec, alacritty"
       "CTRL_ALT, Q, killactive,"
       "SUPER_ALT, Q, exit,"
@@ -122,10 +123,12 @@
     decoration = {
       rounding = 10;
     
-      drop_shadow = true;
-      shadow_range = 4;
-      shadow_render_power = 3;
-      "col.shadow" = "rgba(1a1a1aee)";
+      shadow = {
+	    enabled = true;
+		range = 4;
+		render_power = 3;
+		color = "rgba(1a1a1aee)";
+	  };
     
       blur = {
         enabled = true;

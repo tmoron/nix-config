@@ -30,7 +30,7 @@
 
   users.users.tom = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "docker"];
+     extraGroups = [ "wheel" "docker" "libvirtd"];
      initialPassword = "password";
    };
 
@@ -51,6 +51,9 @@
 	ninja
 	gdb
 	valgrind
+	wget
+	cmake
+	usbutils
   ];
 
   #Open ports in the firewall.

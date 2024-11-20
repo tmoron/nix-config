@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2024/10/31 20:22:15 by tomoron          ###   ########.fr        #
+#    Updated: 2024/11/18 15:13:57 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,13 @@
 	  url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
 	  inputs.nixpkgs.follows = "nixpkgs";
 	};
+
+	plymouth-theme-ycontre-glow = {
+      url = "git+file:///home/tom/Desktop/bordel/ycontre-glow";
+	};
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, plymouth-theme-ycontre-glow, ... }@inputs:
 	let
 	  pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
       username="tom";

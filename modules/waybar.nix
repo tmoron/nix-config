@@ -60,7 +60,7 @@
     margin-right = 5;
     modules-left = ["hyprland/workspaces" "custom/music"];
     modules-center = ["hyprland/window"];
-    modules-right = ["custom/fans" "custom/dgpu" "disk" "pulseaudio" "network" "cpu" "temperature" "custom/pipe" "memory" "battery" "clock"];
+    modules-right = ["custom/fans" "custom/dgpu" "disk" "pulseaudio" "network" "custom/pipe" "cpu" "temperature" "custom/pipe" "memory" "battery" "clock"];
   
     "hyprland/workspaces" = {
       disable-scroll = true;
@@ -98,9 +98,9 @@
     };
 
     network = {
-      format-wifi = " {icon} {essid} |";
-      format-ethernet = "   {ifname}: {ipaddr}/{cidr} |";
-      format-disconnected = " ⚠ Disconnected |";
+      format-wifi = " {icon} {essid} ";
+      format-ethernet = "   {ifname}: {ipaddr}/{cidr} ";
+      format-disconnected = " ⚠ Disconnected ";
       format-icons =["󰤟 " "󰤢 " "󰤥 " "󰤨 "];
     };
 
@@ -131,6 +131,7 @@
     disk = {
       format =" 󰋊 {percentage_used}% |";
     };
+
     "custom/pipe" = {
       format = "|";
     };
