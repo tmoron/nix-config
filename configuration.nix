@@ -54,6 +54,8 @@
 	wget
 	cmake
 	usbutils
+	man-pages
+	stress
   ];
 
   #Open ports in the firewall.
