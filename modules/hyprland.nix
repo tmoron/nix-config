@@ -70,6 +70,8 @@
       " ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
       " ,XF86MonBrightnessUp, exec, brightnessctl s 10%+"
       " ,XF86MonBrightnessDown, exec, brightnessctl s 10%-"
+      " ,XF86KbdBrightnessUp, exec, asusctl -n"
+      " ,XF86KbdBrightnessDown, exec, asusctl -p"
     ];
 
     bindl = [
