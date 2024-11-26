@@ -144,7 +144,7 @@
     };
 
     "custom/dgpu" = {
-      exec-if  = "test \"$(supergfxctl -g)\" = \"Hybrid\"";
+      exec-if  = "test \"$(supergfxctl -g)\" = \"Hybrid\" || test \"$(supergfxctl -g)\" = \"Vfio\"";
       exec  = "echo \"   on |\"";
       interval-if  = 10;
       interval =100;
