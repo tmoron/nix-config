@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-    modules-right = ["custom/fans", "custom/dgpu"];
+  programs.waybar.settings.mainBar = {
+    modules-right = lib.mkBefore ["custom/fans" "custom/dgpu"];
     "custom/dgpu" = {
       exec-if  = "test \"$(supergfxctl -g)\" = \"Hybrid\" || test \"$(supergfxctl -g)\" = \"Vfio\"";
       exec  = "echo \"   on |\"";
@@ -15,4 +16,5 @@
       interval  = 1;
       interval-if  = 1;
     };
+  };
 }
