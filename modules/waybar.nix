@@ -60,7 +60,7 @@
     margin-right = 5;
     modules-left = ["hyprland/workspaces" "custom/music"];
     modules-center = ["hyprland/window"];
-    modules-right = ["custom/fans" "custom/dgpu" "disk" "pulseaudio" "network" "custom/pipe" "cpu" "temperature" "custom/pipe" "memory" "battery" "clock"];
+    modules-right = ["disk" "pulseaudio" "network" "custom/pipe" "cpu" "temperature" "custom/pipe" "memory" "battery" "clock"];
   
     "hyprland/workspaces" = {
       disable-scroll = true;
@@ -143,18 +143,5 @@
       interval-if  = 5;
     };
 
-    "custom/dgpu" = {
-      exec-if  = "test \"$(supergfxctl -g)\" = \"Hybrid\" || test \"$(supergfxctl -g)\" = \"Vfio\"";
-      exec  = "echo \"   on |\"";
-      interval-if  = 10;
-      interval =100;
-    };
-
-    "custom/fans" = {
-      exec-if  = "test \"$(cat /sys/class/hwmon/hwmon6/fan1_input)\" -gt 0 -o \"$(cat /sys/class/hwmon/hwmon6/fan2_input)\" -gt 0";
-      exec  = "echo \" \" \"$(cat /sys/class/hwmon/hwmon6/fan1_input).$(cat /sys/class/hwmon/hwmon6/fan2_input) |\"";
-      interval  = 1;
-      interval-if  = 1;
-    };
   };
 }

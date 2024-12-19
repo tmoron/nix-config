@@ -5,6 +5,7 @@
 	  ../modules/game.nix
 	  ../modules/nitrogen.nix
 	  ./hyprland.nix
+	  ./waybar.nix
 	];
 
 #    programs.alacritty.settings.font.size = 8;
