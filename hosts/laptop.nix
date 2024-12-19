@@ -39,11 +39,11 @@
 
   hardware.bluetooth.enable = true;
 
-  boot.plymouth = {
-    enable = true;
-	theme = "ycontre-glow";
-	themePackages = [
-		inputs.plymouth-theme-ycontre-glow.defaultPackage.x86_64-linux
-	];
-  };
+#  boot.plymouth = {
+#    enable = true;
+#	theme = "ycontre-glow";
+#	themePackages = [
+#		inputs.plymouth-theme-ycontre-glow.defaultPackage.x86_64-linux
+#	];
+#  };
 }
