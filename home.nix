@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/11/20 14:09:49 by tomoron          ###   ########.fr        #
+#    Updated: 2024/12/19 16:51:31 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@
     polybarFull
     sxhkd
     nitrogen
-    nerdfonts
     rofi
 	neovim
 	ripgrep
@@ -50,11 +49,12 @@
 	hyprlock
 	python3
 	vlc
+    nerd-fonts.iosevka
 
 	grim
 	slurp
   ];
-  
+
   home.file = {
     ".config/bspwm/bspwmrc".source = lib.mkDefault dotfiles/config/bspwm/bspwmrc;
 #	".config/hypr/hyprland.conf".source = dotfiles/config/hypr/hyprland.conf;
