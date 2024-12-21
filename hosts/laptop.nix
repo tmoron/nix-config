@@ -7,7 +7,7 @@
 	modules/vboxHost.nix
   ];
 
-  boot.kernelParams = [ "amd_iommu=on" "iommu=pt" "kvm_amd.npt=1" "kvm_amd.avic=1"];
+  boot.kernelParams = [ "amd_iommu=off" "idle=nomwait" "amdgpu.gpu_recovery=1"];
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
 #  boot.extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
   boot.kernelModules = [ "vfio" "vfio-pci"];
@@ -38,6 +38,25 @@
   services.libinput.touchpad.tapping = false;
 
   hardware.bluetooth.enable = true;
+
+  #power management
+  powerManagement.enable = true;
+  powerManagement.powertop.enable = true;
+  powerManagement.cpuFreqGovernor = "powersave";
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      governor = "powersave";
+      turbo = "auto";
+    };
+  };
+  services.upower.enable = true;
+  
+
 
 #  boot.plymouth = {
 #    enable = true;

@@ -92,6 +92,7 @@
       kb_layout = "fr";
       kb_variant = "us";
       follow_mouse = 2;
+      kb_options = "caps:none";
       touchpad.natural_scroll = false;
     };
 
