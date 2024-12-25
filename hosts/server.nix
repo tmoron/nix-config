@@ -23,6 +23,7 @@
 	nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1"];
   };
   virtualisation.docker.liveRestore = false;
+  virtualisation.docker.enableOnBoot = true;
 
   services.fail2ban.enable = true;
   services.fail2ban.bantime = "2h";

@@ -4,7 +4,10 @@
 { config, lib, inputs, pkgs, flakeName, ... }:
 
 { 
-  imports = [./hardware-configuration.nix];
+  imports = [
+  	./hardware-configuration.nix
+	./modules/yubikey.nix
+  ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
@@ -34,7 +37,8 @@
      initialPassword = "password";
    };
 
-   virtualisation.docker.enable = true;
+  virtualisation.docker.enable = true;
+  virtualisation.docker.enableOnBoot = lib.mkDefault false;
 
   environment.systemPackages = with pkgs; [
 	home-manager

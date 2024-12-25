@@ -21,6 +21,8 @@
 	tlp
 	looking-glass-client
 	fprintd
+	yubikey-manager
+	yubico-pam
   ];
 
   hardware.nvidia.prime.offload = {
@@ -50,6 +52,8 @@
     };
   };
   services.upower.enable = true;
+
+  services.udev.packages = [ pkgs.yubikey-personalization ];
   
 
 
