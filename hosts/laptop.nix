@@ -21,8 +21,6 @@
 	tlp
 	looking-glass-client
 	fprintd
-	yubikey-manager
-	yubico-pam
   ];
 
   hardware.nvidia.prime.offload = {

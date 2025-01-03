@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/01/03 12:10:41 by tomoron          ###   ########.fr        #
+#    Updated: 2025/01/03 12:14:50 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,8 @@
 	grim
 	slurp
 	nix-index
+	yubikey-manager
+	yubico-pam
   ];
 
   home.file = {
