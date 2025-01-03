@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2024/12/23 12:30:58 by tomoron          ###   ########.fr        #
+#    Updated: 2025/01/03 12:10:41 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@
 
 	grim
 	slurp
+	nix-index
   ];
 
   home.file = {
