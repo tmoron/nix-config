@@ -11,6 +11,11 @@
   networking.hostName = "server";
   services.openssh.enable = true;
 
+  environment.systemPackages = with pkgs; [
+  	zfs
+  ];
+  boot.supportedFilesystems = [ "zfs" ];
+
   networking.firewall.allowedTCPPorts = [80 443 5000 8083];
   networking.firewall.allowedUDPPorts = [80 443 5000 8083];
 
@@ -21,6 +26,7 @@
     } ];
 	defaultGateway = "192.168.1.254";
 	nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1"];
+  	hostId = "68290da7";
   };
   virtualisation.docker.liveRestore = false;
   virtualisation.docker.enableOnBoot = true;
