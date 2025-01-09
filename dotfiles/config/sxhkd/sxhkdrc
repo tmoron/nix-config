@@ -146,6 +146,11 @@ XF86KbdBrightnessUp
 XF86KbdBrightnessDown
 		~/.local/bin/kbd_brightness down
 
+alt + F7
+	brightnessctl 10-
+
+alt + F8
+	brightnessctl 10+
 
 #music control
 
