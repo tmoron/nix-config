@@ -75,9 +75,6 @@
       # Scroll through existing workspaces with mainMod + scroll
       "$mainMod, mouse_down, workspace, e+1"
       "$mainMod, mouse_up, workspace, e-1"
-
-      #lock
-      ", XF86Launch1, exec, hyprlock"
     ];
 
     bindm = [
