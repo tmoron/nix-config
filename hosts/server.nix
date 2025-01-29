@@ -7,6 +7,7 @@
 	modules/vboxHost.nix
 	modules/nvidia.nix
   ];
+  boot.kernelPackages = pkgs.linuxPackages;
   boot.extraModulePackages = with config.boot.kernelPackages; [gasket];
 
   networking.hostName = "server";
