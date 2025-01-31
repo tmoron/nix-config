@@ -6,11 +6,11 @@
 	modules/nvidia.nix
 	modules/vboxHost.nix
   ];
-
-  systemd.tmpfiles.rules = [
-    "f /dev/shm/looking-glass 0660 tom libvirtd -"
-  ];
-  virtualisation.libvirtd.qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
+#  systemd.tmpfiles.rules = [
+#    "f /dev/shm/looking-glass 0660 tom libvirtd -"
+#  ];
+#  virtualisation.libvirtd.qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
 
   networking.hostName = "patate-douce";
   networking.wireless.enable = true;
@@ -45,7 +45,7 @@
       turbo = "never";
     };
     charger = {
-      governor = "powersave";
+      governor = "performance";
       turbo = "auto";
     };
   };

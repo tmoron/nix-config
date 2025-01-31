@@ -61,6 +61,7 @@
 	usbutils
 	man-pages
 	stress
+	ffmpeg
   ];
 
   #Open ports in the firewall.

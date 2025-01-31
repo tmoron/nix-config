@@ -7,6 +7,7 @@
 	neovim
 	dmenu
 	brightnessctl
+    rofi
   ];
 
   home.file = {

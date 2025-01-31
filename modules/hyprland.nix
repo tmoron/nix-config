@@ -2,6 +2,9 @@
 
 {
 #  services.hypridle.enable = true;
+  home.packages = with pkgs; [
+    rofi-wayland
+  ];
   services.hypridle = {
     enable = true;
 	settings = {

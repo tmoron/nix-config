@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/01/03 12:14:50 by tomoron          ###   ########.fr        #
+#    Updated: 2025/01/30 14:05:36 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,6 @@
     polybarFull
     sxhkd
     nitrogen
-    rofi
 	neovim
 	ripgrep
 	activate-linux
@@ -68,7 +67,6 @@
 	unison
 	discord	
 	google-chrome
-	wofi
 	brightnessctl	
 	playerctl
 	swaybg
