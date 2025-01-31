@@ -13,8 +13,12 @@
   networking.hostName = "server";
   services.openssh.enable = true;
 
+  services.xserver.videoDrivers = [ "nvidia" ];
+
   environment.systemPackages = with pkgs; [
   	zfs
+	nvidia-docker
+	libnvidia-container
   ];
   boot.supportedFilesystems = [ "zfs" ];
 
@@ -30,8 +34,15 @@
 	nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1"];
   	hostId = "68290da7";
   };
-  virtualisation.docker.liveRestore = false;
-  virtualisation.docker.enableOnBoot = true;
+  virtualisation.docker = {
+    liveRestore = false;
+    enableOnBoot = true;
+#    daemon.settings = {
+#      runtimes.nvidia.path = "${pkgs.nvidia-docker}/bin/nvidia-container-runtime";
+#      exec-opts = ["native.cgroupdriver=cgroupfs"];
+#    };
+
+  };
 
   services.fail2ban.enable = true;
   services.fail2ban.bantime = "2h";
@@ -39,12 +50,12 @@
   hardware.nvidia-container-toolkit.enable = true;
 
   hardware.nvidia = {
-	open = false;
+	open = true;
 
-#	prime.nvidiaBusId = "PCI:1:0:0";
-#	prime.amdgpuBusId = "PCI:13:0:0";
-#	prime.sync.enable = true;
+	prime.nvidiaBusId = "PCI:1:0:0";
+	prime.amdgpuBusId = "PCI:13:0:0";
+	prime.sync.enable = true;
 
-#	modesetting.enable = true;
+	modesetting.enable = true;
   };
 }
