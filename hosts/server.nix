@@ -22,8 +22,23 @@
   ];
   boot.supportedFilesystems = [ "zfs" ];
 
-  networking.firewall.allowedTCPPorts = [80 443 5000 8083 137 138 139 445 548 3702 5357];
-  networking.firewall.allowedUDPPorts = [80 443 5000 8083 137 138 139 445 548 3702 5357];
+  networking.firewall.allowedTCPPorts = [
+  	80 443 #http server
+	5000 #frigate
+	8083 137 138 139 445 548 3702 5357 #prob some samba shit
+  ];
+  networking.firewall.allowedUDPPorts = [
+  	80 443 #http server
+	5000 #frigate
+	8083 137 138 139 445 548 3702 5357 #prob some samba shit
+  ];
+
+  networking.firewall.allowedUDPPortRanges = [
+	{from = 47950; to = 49000;}
+  ];
+  networking.firewall.allowedTCPPortRanges = [
+	{from = 47950; to = 49000;}
+  ];
 
   networking = {
     interfaces.eth0.ipv4.addresses = [ {
