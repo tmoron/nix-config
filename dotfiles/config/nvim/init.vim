@@ -21,17 +21,6 @@ colorscheme catppuccin-mocha
 lua require'lspconfig'.clangd.setup{}
 set signcolumn=no
 
-nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>ac  <Plug>(coc-codeaction-cursor)
-nmap <leader>as  <Plug>(coc-codeaction-source)
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-
 let g:user42	= 'tomoron'
 let g:mail42	= 'tomoron@student.42angouleme.fr'
 
