@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2025/01/31 22:34:00 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/04 16:03:35 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@
           modules = [
             ./home.nix
             ./homes/vbox.nix
+			./modules/hyprland.nix
           ];
         };
         ft = home-manager.lib.homeManagerConfiguration {
@@ -112,6 +113,7 @@
           modules = [
             ./home.nix
             ./homes/laptop/home.nix
+			./modules/hyprland.nix
           ];
         };
         desktop = home-manager.lib.homeManagerConfiguration {
@@ -124,6 +126,7 @@
           modules = [
             ./home.nix
 			./homes/desktop/home.nix
+			./modules/hyprland.nix
           ];
         };
         server = home-manager.lib.homeManagerConfiguration {
@@ -136,6 +139,7 @@
           modules = [
             ./home.nix
 			./homes/server/home.nix
+			./modules/hyprland.nix
           ];
         };
 	  };

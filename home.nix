@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/04 15:57:16 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/04 16:02:21 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@
 	modules/alacritty.nix
 	modules/vim.nix
 	modules/firefox.nix
-	modules/hyprland.nix
 	modules/waybar.nix
   ];
   
