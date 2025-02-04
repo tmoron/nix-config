@@ -1,6 +1,11 @@
 {config, lib, pkgs, ...}:
 
 {
+  home.packages = with pkgs;[
+  	clang-tools
+	nodejs_23
+  ];
+
   home.file = {
     ".config/nvim/init.vim".source = ../dotfiles/config/nvim/init.vim;
     ".vimrc".source = ../dotfiles/vimrc;

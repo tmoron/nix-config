@@ -1,7 +1,6 @@
 source ~/.vimrc
 
 let mapleader=";"
-colorscheme vim 
 
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync
@@ -12,7 +11,26 @@ Plug 'bling/vim-bufferline'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'andweeb/presence.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'bluz71/vim-nightfly-colors'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 call plug#end()
+
+colorscheme catppuccin-mocha
+
+lua require'lspconfig'.clangd.setup{}
+set signcolumn=no
+
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+nmap <leader>as  <Plug>(coc-codeaction-source)
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 
 let g:user42	= 'tomoron'
 let g:mail42	= 'tomoron@student.42angouleme.fr'

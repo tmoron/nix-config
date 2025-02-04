@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/01/30 14:05:36 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/04 15:57:16 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@
 	python3
 	vlc
     nerd-fonts.iosevka
+	moonlight-qt
 
 	grim
 	slurp
