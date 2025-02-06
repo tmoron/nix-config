@@ -15,10 +15,15 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  boot.extraModprobeConfig = ''
+    options amdgpu virtual_display=1
+  '';
+
   environment.systemPackages = with pkgs; [
   	zfs
 	nvidia-docker
 	libnvidia-container
+	screen
   ];
   boot.supportedFilesystems = [ "zfs" ];
 
