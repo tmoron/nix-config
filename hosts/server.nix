@@ -72,10 +72,10 @@
   hardware.nvidia = {
 	open = true;
 
-	prime.nvidiaBusId = "PCI:1:0:0";
-	prime.amdgpuBusId = "PCI:13:0:0";
-	prime.sync.enable = true;
+#	prime.nvidiaBusId = "PCI:1:0:0";
+#	prime.amdgpuBusId = "PCI:13:0:0";
+#	prime.sync.enable = true;
 
-	modesetting.enable = true;
+#	modesetting.enable = true;
   };
 }
