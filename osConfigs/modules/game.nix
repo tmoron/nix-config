@@ -1,10 +1,14 @@
-{ config, lib, inputs, pkgs, ... }:
+{config, lib, ... }:
 
 {
-  programs.steam.enable=true; 
-  programs.steam.protontricks.enable=true;
+  options.mods.gayming.enable = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+    description = "enable games on the host";
+  };
 
-#  environment.systemPackages = with pkgs; [ qemu quickemu];
-#  programs.virt-manager.enable = true;
-#  virtualisation.libvirtd.enable = true;
+  config = lib.mkIf config.mods.gayming.enable {
+    programs.steam.enable = true; 
+    programs.steam.protontricks.enable = true;
+  };
 }

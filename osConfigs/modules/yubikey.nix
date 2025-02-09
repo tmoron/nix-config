@@ -1,14 +1,29 @@
 { config, lib, inputs, pkgs, ... }:
 
 {
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  options.mods.yubikey = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+	  default = true;
+	  description = "enable yubikey";
+	};
+
+	id = lib.mkOption {
+		type = lib.str;
+		description = "yubikey id";
+	};
   };
 
-  security.pam.yubico = {
-    enable = true;
-    id = "30536547";
-    mode = "challenge-response";
+   config = lib.mkIf config.mods.yubikey.enable {
+    programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+
+    security.pam.yubico = {
+      enable = true;
+      id =  config.mods.yubikey.id;
+      mode = "challenge-response";
+    };
   };
 }
