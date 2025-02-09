@@ -6,11 +6,11 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/04 16:02:21 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/09 02:42:49 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{ config, lib, pkgs, username,homeDir, ... }:
+{lib, pkgs, username,homeDir, ... }:
 
 {
   imports = [
@@ -80,6 +80,7 @@
 	nix-index
 	yubikey-manager
 	yubico-pam
+	wl-clipboard
   ];
 
   home.file = {

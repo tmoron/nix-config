@@ -2,9 +2,9 @@
 
 {
   imports = [
-    modules/game.nix
-	modules/nvidia.nix
-	modules/vboxHost.nix
+    ../modules/game.nix
+	../modules/nvidia.nix
+	../modules/vboxHost.nix
   ];
   boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 #  systemd.tmpfiles.rules = [

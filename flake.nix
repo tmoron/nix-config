@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/04 16:03:35 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/09 02:55:40 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,117 +31,39 @@
 	};
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, plymouth-theme-ycontre-glow, ... }@inputs:
+  outputs = { nixpkgs, home-manager, nixos-hardware, ... }@inputs:
 	let
 	  pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
-      username="tom";
-	  homeDir="/home/tom";
-	in {
-#NIXOS CONFIG
-      nixosConfigurations = {
-        default = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs; flakeName="default";};
-          modules = [
-	  	  ./configuration.nix
-          ];
-        };
-        server = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs; flakeName="server";};
-          modules = [
-		  	  ./configuration.nix
-			  ./hosts/server.nix
-          ];
-        };
-	    vbox = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;flakeName="vbox";};
-          modules = [
-	  	  ./configuration.nix
-	  	  ./hosts/vbox.nix
-          ];
-        };
-	    laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;flakeName="laptop";};
-          modules = [
-	  	  ./configuration.nix
-	  	  ./hosts/laptop.nix
-		  nixos-hardware.nixosModules.asus-zephyrus-ga401
-          ];
-        };
-	    desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;flakeName="desktop";};
-          modules = [
-	  	  ./configuration.nix
-	  	  ./hosts/desktop.nix
-          ];
-        };
+
+
+      osConfig = {flakeName, extraModules ? []}: nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; flakeName = flakeName; };
+        modules = nixpkgs.lib.concatLists [ [./osConfigs/global.nix ./osConfigs/hosts/${flakeName}.nix ] extraModules];
       };
 
-#HOME CONFIG
-      homeConfigurations = {
-        vbox = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-	      extraSpecialArgs = {
-            username = "${username}";
-            homeDir = "${homeDir}";
-			inherit inputs;
-          };
-          modules = [
-            ./home.nix
-            ./homes/vbox.nix
-			./modules/hyprland.nix
-          ];
-        };
-        ft = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = {
-            username = "tomoron";
-            homeDir = "/nfs/homes/tomoron";
-			inherit inputs;
-          };
-          modules = [
-            ./home.nix
-            ./homes/ft/ft.nix
-          ];
-        };
-        laptop = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-	      extraSpecialArgs = {
-            username = "${username}";
-            homeDir = "${homeDir}";
-			inherit inputs;
-          };
-          modules = [
-            ./home.nix
-            ./homes/laptop/home.nix
-			./modules/hyprland.nix
-          ];
-        };
-        desktop = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-	      extraSpecialArgs = {
-            username = "${username}";
-            homeDir = "${homeDir}";
-			inherit inputs;
-          };
-          modules = [
-            ./home.nix
-			./homes/desktop/home.nix
-			./modules/hyprland.nix
-          ];
-        };
-        server = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-	      extraSpecialArgs = {
-            username = "${username}";
-            homeDir = "${homeDir}";
-			inherit inputs;
-          };
-          modules = [
-            ./home.nix
-			./homes/server/home.nix
-			./modules/hyprland.nix
-          ];
-        };
+
+	  homeConfig = {flakeName, extraModules ? [], username ? "tom", homeDir ? "/home/tom"}: home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+	    extraSpecialArgs = { inherit inputs; username = username; homeDir = homeDir; };
+        modules = nixpkgs.lib.concatLists [ [ ./home.nix ./homes/${flakeName}/home.nix] extraModules ];
 	  };
-	};
+
+	in {
+
+      nixosConfigurations = {
+	    server = osConfig {flakeName = "server";};
+	    vbox = osConfig {flakeName = "vbox";};
+		laptop = osConfig {flakeName = "laptop"; extraModules = [ nixos-hardware.nixosModules.asus-zephyrus-ga401 ];};
+		desktop = osConfig {flakeName = "desktop";};
+      };
+
+
+      homeConfigurations = {
+	    vbox = homeConfig { flakeName = "vbox"; };
+	    ft = homeConfig { flakeName = "ft"; username = "tomoron"; homeDir = "/nfs/homes/tomoron";};
+	    laptop = homeConfig { flakeName = "laptop"; };
+	    desktop = homeConfig { flakeName = "desktop"; };
+	    server = homeConfig { flakeName = "server"; };
+	  };
+    };
 }

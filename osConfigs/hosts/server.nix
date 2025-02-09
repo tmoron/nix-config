@@ -3,12 +3,12 @@
 
 {
   imports = [
-  	modules/game.nix
-	modules/vboxHost.nix
-	modules/nvidia.nix
+  	../modules/game.nix
+	../modules/vboxHost.nix
+	../modules/nvidia.nix
   ];
   boot.kernelPackages = pkgs.linuxPackages;
-  boot.extraModulePackages = with config.boot.kernelPackages; [gasket];
+  boot.extraModulePackages = [ config.boot.kernelPackages.gasket ];
 
   networking.hostName = "server";
   services.openssh.enable = true;

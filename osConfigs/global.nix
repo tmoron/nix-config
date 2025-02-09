@@ -1,5 +1,14 @@
-# Edit this configuration file to define what should be installed on your system. Help is available in the configuration.nix(5) man page, on 
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    configuration.nix                                  :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/02/09 01:43:46 by tomoron           #+#    #+#              #
+#    Updated: 2025/02/09 01:50:15 by tomoron          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 { config, lib, inputs, pkgs, flakeName, ... }:
 
@@ -64,13 +73,7 @@
 	ffmpeg
   ];
 
-  #Open ports in the firewall.
-  #  networking.firewall.allowedTCPPorts = [ ... ];
-  #  networking.firewall.allowedUDPPorts = [ ... ];
-  #Or disable the firewall altogether.
-  #  networking.firewall.enable = false;
-
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.05";
 
   environment.etc.nixosFlakeName.text = "${flakeName}";
 

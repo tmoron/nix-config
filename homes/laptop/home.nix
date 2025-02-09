@@ -4,6 +4,7 @@
 	imports = [
 	  ../modules/game.nix
 	  ../modules/nitrogen.nix
+	  ../../modules/hyprland.nix
 	  ./hyprland.nix
 	  ./waybar.nix
 	];

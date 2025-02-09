@@ -3,9 +3,9 @@
 
 {
   imports = [
-    modules/game.nix
-	modules/nvidia.nix
-	modules/vboxHost.nix
+    ../modules/game.nix
+	../modules/nvidia.nix
+	../modules/vboxHost.nix
   ];
 
   environment.systemPackages = with pkgs; [

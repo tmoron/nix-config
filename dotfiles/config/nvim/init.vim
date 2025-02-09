@@ -19,6 +19,7 @@ call plug#end()
 colorscheme catppuccin-mocha
 
 lua require'lspconfig'.clangd.setup{}
+lua require'lspconfig'.nixd.setup{}
 set signcolumn=no
 
 let g:user42	= 'tomoron'
