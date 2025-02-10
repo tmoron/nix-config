@@ -15,3 +15,6 @@ os:
 	sudo nixos-rebuild $(MODE) $(FLAGS) --flake $(FLAKE)#$(HOST)
 home :
 	home-manager $(MODE) $(FLAGS) --flake $(FLAKE)#$(HOST)
+
+cleanup :
+	sudo nix-collect-garbage -d

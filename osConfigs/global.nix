@@ -6,20 +6,23 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 01:43:46 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/09 03:04:10 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/09 18:28:27 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 { lib, pkgs, flakeName, ... }:
 
 { 
-  imports = [
-  	./hardware-configuration.nix
-	./modules/yubikey.nix
+  imports = lib.concatLists [[
+  	  ./hardware-configuration.nix
+	  ./packages.nix
+    ]
+    (lib.fileset.toList ./modules)
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
+
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
 
   boot.loader = {
@@ -33,7 +36,7 @@
 
   time.timeZone = "Europe/Paris";
 
-  services.xserver.enable = true;
+  services.xserver.enable = lib.mkDefault true;
   services.xserver.displayManager.startx.enable = true;
 
   services.pipewire = {
@@ -50,32 +53,8 @@
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = lib.mkDefault false;
 
-  environment.systemPackages = with pkgs; [
-	home-manager
-	killall
-   	vim
-	pciutils
-	pigz
-	htop
-	gnumake
-	git
-	neofetch
-	ntfs3g
-	clang
-	ninja
-	gdb
-	valgrind
-	wget
-	cmake
-	usbutils
-	man-pages
-	stress
-	ffmpeg
-  ];
+  programs.hyprland.enable = lib.mkDefault true;
 
   system.stateVersion = "24.05";
-
   environment.etc.nixosFlakeName.text = "${flakeName}";
-
-  programs.hyprland.enable = true;
 }

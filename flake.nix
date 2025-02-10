@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/09 02:55:40 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/09 23:12:04 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,23 +35,26 @@
 	let
 	  pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
 
-
       osConfig = {flakeName, extraModules ? []}: nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; flakeName = flakeName; };
-        modules = nixpkgs.lib.concatLists [ [./osConfigs/global.nix ./osConfigs/hosts/${flakeName}.nix ] extraModules];
+        modules = nixpkgs.lib.concatLists [
+		  [./osConfigs/global.nix ./osConfigs/hosts/${flakeName}.nix ]
+		  extraModules
+		];
       };
-
 
 	  homeConfig = {flakeName, extraModules ? [], username ? "tom", homeDir ? "/home/tom"}: home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 	    extraSpecialArgs = { inherit inputs; username = username; homeDir = homeDir; };
-        modules = nixpkgs.lib.concatLists [ [ ./home.nix ./homes/${flakeName}/home.nix] extraModules ];
+        modules = nixpkgs.lib.concatLists [
+		  [ ./homeConfigs/home.nix ./homeConfigs/hosts/${flakeName}/home.nix]
+		  extraModules
+		];
 	  };
 
 	in {
 
-      nixosConfigurations = {
-	    server = osConfig {flakeName = "server";};
+      nixosConfigurations = { server = osConfig {flakeName = "server";};
 	    vbox = osConfig {flakeName = "vbox";};
 		laptop = osConfig {flakeName = "laptop"; extraModules = [ nixos-hardware.nixosModules.asus-zephyrus-ga401 ];};
 		desktop = osConfig {flakeName = "desktop";};
