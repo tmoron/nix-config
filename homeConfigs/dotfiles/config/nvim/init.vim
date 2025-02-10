@@ -14,12 +14,16 @@ Plug 'andweeb/presence.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'bluz71/vim-nightfly-colors'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'tikhomirov/vim-glsl'
 call plug#end()
 
 colorscheme catppuccin-mocha
 
+"lsp
 lua require'lspconfig'.clangd.setup{}
 lua require'lspconfig'.nixd.setup{}
+lua require'lspconfig'.glsl_analyzer.setup{}
+
 set signcolumn=no
 
 let g:user42	= 'tomoron'
