@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/10 05:08:00 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/10 17:21:20 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@
 	python3
 	vlc
     nerd-fonts.iosevka
-	moonlight-qt
 
 	nix-index
 	yubikey-manager

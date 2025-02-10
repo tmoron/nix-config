@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/10 00:21:11 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/10 00:30:13 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/10 17:34:53 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 {lib, config, ... }:
@@ -17,7 +17,6 @@
 	xsession.windowManager.bspwm.extraConfig = ''
 	  #/bin/sh
       pgrep sxhkd > /dev/null || sxhkd &
-      pgrep polybar >/dev/null || polybar -q main -c "$HOME/.config/polybar/config.ini"&
       
       bspc config border_width         2
       bspc config window_gap          10

@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/10 02:51:32 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/10 03:19:27 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/10 17:28:27 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 {
   config = lib.mkIf config.mods.x11.enable {
     services.polybar.enable = true;
+    services.polybar.script = "pgrep polybar >/dev/null || polybar -q main -c \"$HOME/.config/polybar/config.ini\"&";
 	services.polybar.config = {
       "global/wm" = {
         margin-bottom = 0;
@@ -102,7 +103,7 @@
       "module/network" = {
         type = "internal/network";
         interface = "wlp2s0";
-        interval = 1.0;
+        interval = 1;
         accumulate-stats = true;
         unknown-as-up = true;
         format-connected = "<ramp-signal><label-connected>";
@@ -122,7 +123,7 @@
   
       "module/date" = {
         type = "internal/date";
-        interval = 1.0;
+        interval = 1;
         time = " %H:%M:%S";
         time-alt = " %a, %d %b %Y";
         format = "<label>";
@@ -163,10 +164,10 @@
         label-empty = "%icon%";
         label-empty-background = "#0000FFFF";
         label-empty-foreground = "#FFFFFF";
-        label-active-padding = 1.85;
-        label-urgent-padding = 1.85;
-        label-occupied-padding = 1.85;
-        label-empty-padding = 1.85;
+        label-active-padding = "1.85";
+        label-urgent-padding = "1.85";
+        label-occupied-padding = "1.85";
+        label-empty-padding = "1.85";
   	  };
   
       "module/mpris" = {
@@ -190,8 +191,8 @@
         offset-y = 0;
         background = "\${color.alpha}";
         foreground = "\${color.foreground}";
-        radius-top = 0.0;
-        radius-bottom = 0.0;
+        radius-top = "0.0";
+        radius-bottom = "0.0";
         underline-size = 2;
         underline-color = "\${color.foreground}";
         border-size = 0;
@@ -206,7 +207,7 @@
         modules-center = "";
         modules-right = "memory sep filesystem sep cpu sep temperature sep network sep date";
         separator = "";
-        dim-value = 1.0;
+        dim-value = "1.0";
         tray-position = "none";
         tray-detached = false;
         tray-maxsize = 16;
@@ -214,7 +215,7 @@
         tray-offset-x = 0;
         tray-offset-y = 0;
         tray-padding = 0;
-        tray-scale = 1.0;
+        tray-scale = "1.0";
         enable-ipc = true;
   	  };
   

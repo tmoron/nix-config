@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/09 23:12:04 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/10 17:35:45 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@
         inherit pkgs;
 	    extraSpecialArgs = { inherit inputs; username = username; homeDir = homeDir; };
         modules = nixpkgs.lib.concatLists [
-		  [ ./homeConfigs/home.nix ./homeConfigs/hosts/${flakeName}/home.nix]
+		  [ ./homeConfigs/home.nix ./homeConfigs/hosts/${flakeName}.nix]
 		  extraModules
 		];
 	  };
