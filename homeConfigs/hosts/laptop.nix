@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   programs.waybar.settings.mainBar = {
@@ -7,7 +7,7 @@
       exec-if  = "test \"$(supergfxctl -g)\" = \"Hybrid\" || test \"$(supergfxctl -g)\" = \"Vfio\"";
       exec  = "echo \"   on |\"";
       interval-if  = 10;
-      interval =100;
+      interval = 100;
     };
 
     "custom/fans" = {
@@ -17,4 +17,21 @@
       interval-if  = 1;
     };
   };
+
+  wayland.windowManager.hyprland.settings = {
+    bind = [
+      ", XF86Launch1, exec, hyprlock"
+      ", XF86Launch4, exec, pkill activate-linux"
+	];
+    monitor= [
+      "eDP-1, 1920x1080@120, 0x0, 1"
+      "HDMI-A-1, 1920x1080@60, auto, auto"
+    ];
+	env = [ "AQ_DRM_DEVICES,/dev/dri/card1"];
+  };
+
+  home.packages = with pkgs; [
+    stremio
+    blender
+  ];
 }

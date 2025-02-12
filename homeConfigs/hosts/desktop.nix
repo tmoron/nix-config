@@ -1,11 +1,6 @@
 { ... }:
 
 {
-  imports = [ 
-    ../modules/nitrogen.nix
-	./hyprland.nix
-  ];
-
   wayland.windowManager.hyprland.settings = {
     monitor = [
 	  "HDMI-A-1, 1920x1080@60, 0x0, auto"
@@ -19,10 +14,5 @@
 	  "3, monitor:DP-1"
 	  "4, monitor:DP-3"
 	];
-  };
-
-  home.file = {
-    ".config/bspwm/screenlayout.sh".source = ./bspwm/screenlayout.sh;
-    ".config/bspwm/host.sh".source = ./bspwm/host.sh;
   };
 }
