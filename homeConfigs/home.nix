@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/12 04:13:26 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/12 16:41:58 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,8 +72,7 @@
   home.sessionPath = [ "~/.local/bin" ];
 
   home.file = { #should be able to make most of these in nix configs 
-    ".config/nitrogen/wallpaper.png".source = lib.mkDefault dotfiles/config/nitrogen/wallpaper.png;
-    ".xinitrc".text = "exec bspwm";
+    ".config/wallpaper.png".source = lib.mkDefault utils/wallpaper.png;
 
 	".local/share/rofi/themes".source = "${builtins.fetchGit {
 		url = "https://github.com/newmanls/rofi-themes-collection";

@@ -8,6 +8,7 @@
   };
 
   config = lib.mkIf config.mods.x11.enable {
+    home.file.".xinitrc".text = "exec bspwm";
     home.packages = with pkgs; [
       nitrogen
 	  numlockx
