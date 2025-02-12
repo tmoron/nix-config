@@ -8,17 +8,72 @@
   };
 
   config = lib.mkIf config.mods.vim.enable {
+    programs.neovim = {
+      enable = true;
+	  defaultEditor = true;
+      viAlias = true;
+	  vimAlias = true;
+	};
+
     home.packages = with pkgs; [
       clang-tools
-      neovim
       nixd
       nodejs_23
+	  glsl_analyzer
     ];
 
-    home.file = {
-      ".config/nvim/init.vim".source = ../dotfiles/config/nvim/init.vim;
-      ".vimrc".source = ../dotfiles/vimrc;
+	programs.neovim.extraConfig = ''
+      set number
+      set ai
+      autocmd BufWinLeave *.* mkview
+      autocmd BufWinEnter *.* silent! loadview
+      set tabstop=4
+      set scrolloff=10
+      set preserveindent
+      map <silent> <C-N> :bnext<CR>
+      map <silent> <C-P> :bprevious<CR>
+      nmap <silent> <c-k> :wincmd k<CR>
+      nmap <silent> <c-j> :wincmd j<CR>
+      nmap <silent> <c-h> :wincmd h<CR>
+      nmap <silent> <c-l> :wincmd l<CR>
+      set hidden
+      set path +=**
+      set wildmenu
+      set wildignore+=**/node_modules/**
 
+      let mapleader=";"
+      
+      autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+        \| PlugInstall --sync
+      \| endif
+      
+      call plug#begin('~/.config/nvim/plugged')
+      Plug 'bling/vim-bufferline'
+      Plug 'nvim-lua/plenary.nvim'
+      Plug 'nvim-telescope/telescope.nvim'
+      Plug 'andweeb/presence.nvim'
+      Plug 'neovim/nvim-lspconfig'
+      Plug 'bluz71/vim-nightfly-colors'
+      Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+      Plug 'tikhomirov/vim-glsl'
+      call plug#end()
+      
+      colorscheme catppuccin-mocha
+      
+      lua require'lspconfig'.clangd.setup{}
+      lua require'lspconfig'.nixd.setup{}
+      lua require'lspconfig'.glsl_analyzer.setup{}
+      set signcolumn=no
+      
+      nnoremap <leader>ff <cmd>Telescope find_files<cr>
+      nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+      nnoremap <leader>fb <cmd>Telescope buffers<cr>
+      nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+      let g:user42	= 'tomoron'
+      let g:mail42	= 'tomoron@student.42angouleme.fr'
+	'';
+
+    home.file = {
       #install plug.vim
       ".local/share/nvim/site/autoload/plug.vim".source = "${builtins.fetchGit {
         url = "https://github.com/junegunn/vim-plug";

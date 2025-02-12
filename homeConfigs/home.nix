@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/10 05:27:03 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/12 04:13:26 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,8 @@
       fi
 	'';
   };
+
+  home.sessionPath = [ "~/.local/bin" ];
 
   home.file = { #should be able to make most of these in nix configs 
     ".config/nitrogen/wallpaper.png".source = lib.mkDefault dotfiles/config/nitrogen/wallpaper.png;

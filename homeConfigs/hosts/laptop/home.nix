@@ -8,7 +8,8 @@
 
 #    programs.alacritty.settings.font.size = 8;
 	home.packages = with pkgs; [
-		stremio
+	  stremio
+	  blender
 	];
 
 	home.file = {
