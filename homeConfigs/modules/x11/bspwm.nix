@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/10 00:21:11 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/10 17:34:53 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/12 09:33:58 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 {lib, config, ... }:
@@ -18,6 +18,7 @@
 	  #/bin/sh
       pgrep sxhkd > /dev/null || sxhkd &
       
+      bspc monitor -d 1 2 3 4 5
       bspc config border_width         2
       bspc config window_gap          10
       
