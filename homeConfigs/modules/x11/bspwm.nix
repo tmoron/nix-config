@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/10 00:21:11 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/12 09:33:58 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/12 09:36:07 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 {lib, config, ... }:
@@ -30,6 +30,7 @@
       pgrep picom > /dev/null || picom &
       pgrep dunst >/dev/null || dunst &
       numlockx on &
+	  polybar &
       setxkbmap fr us&
       nitrogen --restore &
       pgrep activate-linux >/dev/null  || (sleep 2;activate-linux -d)&
