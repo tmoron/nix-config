@@ -11,7 +11,7 @@
       
       background  = {
       	monitor = "";
-      	path = "~/.config/nitrogen/wallpaper.png";
+      	path = "~/.config/wallpaper.png";
       	blur_passes = 1;
       };
       

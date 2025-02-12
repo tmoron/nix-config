@@ -165,7 +165,7 @@
       ];
   
   	  exec-once = [
-          "swaybg -i ~/.config/nitrogen/wallpaper.png&"
+          "swaybg -i ~/.config/wallpaper.png&"
           "(sleep 2;activate-linux)&"
           "waybar&"
           "alacritty&"
