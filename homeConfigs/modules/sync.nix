@@ -1,6 +1,7 @@
 { lib, config, pkgs, ... }:
 
 {
+/*
   options.mods.sync.enable = lib.mkOption {
     type = lib.types.bool;
 	default = true;
@@ -12,4 +13,5 @@
   config = lib.mkIf config.mods.sync.enable {
 	'';
   };
+  */
 }

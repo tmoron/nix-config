@@ -56,6 +56,11 @@
       Plug 'bluz71/vim-nightfly-colors'
       Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
       Plug 'tikhomirov/vim-glsl'
+	  Plug 'lambdalisue/nerdfont.vim'
+	  Plug 'lambdalisue/glyph-palette.vim'
+	  Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+	  Plug 'lambdalisue/fern-git-status.vim'
+	  Plug 'lambdalisue/fern.vim'
       call plug#end()
       
       colorscheme catppuccin-mocha
@@ -69,8 +74,12 @@
       nnoremap <leader>fg <cmd>Telescope live_grep<cr>
       nnoremap <leader>fb <cmd>Telescope buffers<cr>
       nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+	  nnoremap <leader>fi <cmd>Fern %:h<cr>
+
+
       let g:user42	= 'tomoron'
       let g:mail42	= 'tomoron@student.42angouleme.fr'
+	  let g:fern#renderer = "nerdfont"
 	'';
 
     home.file = {
