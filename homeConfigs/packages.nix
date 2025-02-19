@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/12 12:53:12 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/14 17:01:28 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,5 +31,6 @@
 	yubico-pam
 	dunst
 	bibata-cursors
+	libcaca
   ];
 }

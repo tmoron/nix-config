@@ -19,6 +19,10 @@
   };
 
   wayland.windowManager.hyprland.settings = {
+	workspace = [
+      "1, monitor:eDP-1"
+	  "2, monitor:HDMI-A-1, default:true"
+    ];
     bind = [
       ", XF86Launch1, exec, hyprlock"
       ", XF86Launch4, exec, pkill activate-linux"

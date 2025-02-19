@@ -11,8 +11,8 @@
       
       background  = {
       	monitor = "";
-      	path = "~/.config/wallpaper.png";
-      	blur_passes = 1;
+      	path = "~/.config/pc.jpg";
+#      	blur_passes = 1;
       };
       
       input-field = {

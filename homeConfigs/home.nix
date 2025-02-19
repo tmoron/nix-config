@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/12 16:49:55 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/14 16:44:45 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@
 
   home.file = { #should be able to make most of these in nix configs 
     ".config/wallpaper.png".source = lib.mkDefault utils/wallpaper.png;
+    ".config/pc.jpg".source = lib.mkDefault utils/pc.jpg;
 
 	".local/share/rofi/themes".source = "${builtins.fetchGit {
 		url = "https://github.com/newmanls/rofi-themes-collection";
