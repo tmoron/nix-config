@@ -28,6 +28,7 @@
       autocmd BufWinLeave *.* mkview
       autocmd BufWinEnter *.* silent! loadview
       set tabstop=4
+	  set shiftwidth=4
       set scrolloff=10
       set preserveindent
       map <silent> <C-N> :bnext<CR>
