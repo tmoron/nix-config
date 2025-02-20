@@ -18,7 +18,6 @@
   hardware.cpu.intel.updateMicrocode = true;
 
   boot.kernelModules = [ "kvm-intel" "nvidia" ];
-  hardware.graphics.extraPackages = with pkgs; [libGL linuxPackages.nvidia_x11.out];
 
 
   hardware.nvidia = {
