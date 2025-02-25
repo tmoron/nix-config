@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/14 16:44:45 by tomoron          ###   ########.fr        #
+#    Updated: 2025/02/25 12:03:56 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,20 +53,6 @@
     historyControl = ["ignoreboth"];
 	historyIgnore = [ "ls" "cd" "exit" ];
 	shellOptions = [ "cdspell" "autocd"];
-	bashrcExtra = ''
-      cd() {
-      	builtin cd "$@"
-      	echo -n "$PWD" > ~/.last_directory
-      }
-      [ -z "\$${PS1:-}" ] && return
-      
-      if [ -f ~/.last_directory ];then
-      	echo -n going to
-      	cat ~/.last_directory
-      	echo
-      	builtin cd "$(cat ~/.last_directory)"
-      fi
-	'';
   };
 
   home.sessionPath = [ "~/.local/bin" ];

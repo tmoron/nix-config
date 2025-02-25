@@ -1,8 +1,6 @@
 { config, lib, pkgs, username,homeDir, ... }:
 
 {
-  imports = [];
-
   home.packages = with pkgs;[	
 	neovim
 	dmenu
