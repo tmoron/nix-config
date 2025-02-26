@@ -15,18 +15,18 @@
           general.before_sleep_cmd = "loginctl lock-session";
           listener  = [
           {
-            timeout = 150;
+            timeout = 300;
             on-timeout = "brightnessctl -s set 0";
             on-resume = "brightnessctl -r";
           }
           {
-            timeout = 150;
+            timeout = 300;
             on-timeout = "loginctl lock-session";
           }
-        ] ++ lib.lists.optional config.mods.hyprland.autoSuspend [{
+        ] ++ lib.lists.optional config.mods.hyprland.autoSuspend {
             timeout = 600;
             on-timeout = "systemctl suspend";
-          }];
+          };
       };
     };
   };
