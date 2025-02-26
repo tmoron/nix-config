@@ -12,6 +12,7 @@
 	  lutris
 	  mangohud
 	  moonlight-qt
+	  prismlauncher
 	];
   };
 }
