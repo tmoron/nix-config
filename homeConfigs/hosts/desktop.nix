@@ -22,4 +22,6 @@
 	];
     cursor.no_hardware_cursors = 1;
   };
+
+  mods.hyprland.autoSuspend = false;
 }

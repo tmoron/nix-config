@@ -1,6 +1,12 @@
 { lib, config, ... }:
 
 {
+  options.mods.hyprland.autoSuspend = lib.mkOption {
+    type = lib.types.bool;
+	default = true;
+	description = "enable hypridle suspend after 10min";
+  };
+  
   config = lib.mkIf config.mods.hyprland.enable {
     services.hypridle = {
       enable = true;
@@ -17,11 +23,10 @@
             timeout = 150;
             on-timeout = "loginctl lock-session";
           }
-          {
+        ] ++ lib.lists.optional config.mods.hyprland.autoSuspend [{
             timeout = 600;
             on-timeout = "systemctl suspend";
-          }
-        ];
+          }];
       };
     };
   };
