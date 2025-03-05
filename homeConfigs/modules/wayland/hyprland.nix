@@ -81,9 +81,12 @@
   
       bindl = [
         " , XF86AudioNext, exec, playerctl next"
+        " , XF86AudioPrev, exec, playerctl previous"
         " , XF86AudioPause, exec, playerctl play-pause"
         " , XF86AudioPlay, exec, playerctl play-pause"
-        " , XF86AudioPrev, exec, playerctl previous"
+        "$mainMod, n, exec, playerctl next"
+        "$mainMod, p, exec, playerctl previous"
+		"$mainMod, o, exec, playerctl play-pause"
       ];
   
       windowrulev2 = [
