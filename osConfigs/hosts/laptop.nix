@@ -3,6 +3,8 @@
 {
   boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 
+  boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/fd3eb360-0bf9-4622-acf1-e461304b59fe";
+
   networking.hostName = "patate-douce";
   networking.wireless.enable = true;
   networking.networkmanager.enable = false;
