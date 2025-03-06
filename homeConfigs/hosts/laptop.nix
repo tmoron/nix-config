@@ -38,4 +38,6 @@
     stremio
     blender
   ];
+
+  mods.sync.syncedAdditions = ["VirtualBox VMs"];
 }

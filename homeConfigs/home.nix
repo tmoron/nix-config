@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/28 19:04:49 by tomoron          ###   ########.fr        #
+#    Updated: 2025/03/05 23:44:33 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@
 		ref = "master";
     }}/themes";
 
-	".local/bin/desk_sync".source = dotfiles/local/bin/desk_sync;
+#	".local/bin/desk_sync".source = dotfiles/local/bin/desk_sync;
   };
   programs.home-manager.enable = true;
 }

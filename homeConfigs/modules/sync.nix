@@ -1,11 +1,14 @@
 { lib, config, ... }:
 
+let
+  defPathLst = ["Desktop"  "Downloads"  ".mozilla"];
+in
 {
   options.mods.sync = {
 	enable = lib.mkOption {
       type = lib.types.bool;
 	  default = true;
-	  description = "enable usr_sync command";
+	  description = "setup unison";
 	};
 
 	homeFolder = lib.mkOption {
@@ -19,13 +22,28 @@
 		default = "/raid/pc_sync";
 		description = "where on the server";
 	};
+
+	defaultSynced = lib.mkOption {
+		type = lib.types.bool;
+		default = true;
+		description = "should it add the default paths";
+	};
+
+	syncedAdditions = lib.mkOption {
+		type = lib.types.listOf lib.types.str;
+		default = [];
+		description = "list of path that will be synced";
+	};
   };
 
-  config.home.file.".local/bin/usr_sync" =  lib.mkIf config.mods.sync.enable {
-  	text = ''
-	#!/bin/env
-	unison "${config.mods.sync.homeFolder}" "ssh://tom@tmoron.fr:1880/${config.mods.sync.destFolder}" $@
-  	'';
+  config.home.file.".unison/test.prf" =  lib.mkIf config.mods.sync.enable {
+    text = (lib.strings.concatStrings [''
+		auto=true
+		root=${config.mods.sync.homeFolder}
+		root=ssh://tom@tmoron.fr:1880/${config.mods.sync.destFolder}
+	  ''
+	  (lib.strings.concatMapStrings (x: "\npath=" + x) (( if config.mods.sync.defaultSynced then defPathLst else [] ) ++ config.mods.sync.syncedAdditions ))
+	]);
 	executable = true;
   };
 }
