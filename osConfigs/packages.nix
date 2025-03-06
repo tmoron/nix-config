@@ -22,5 +22,6 @@
 	man-pages
 	stress
 	ffmpeg
+	cryptsetup
   ];
 }
