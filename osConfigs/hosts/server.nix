@@ -12,6 +12,7 @@
 
   networking.hostName = "server";
   services.openssh.enable = true;
+  services.openssh.ports = [ 1880 ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -28,11 +29,13 @@
   boot.supportedFilesystems = [ "zfs" ];
 
   networking.firewall.allowedTCPPorts = [
+    22 #git ssh
   	80 443 #http server
 	5000 #frigate
 	8083 137 138 139 445 548 3702 5357 #prob some samba shit
   ];
   networking.firewall.allowedUDPPorts = [
+    22 #git ssh
   	80 443 #http server
 	5000 #frigate
 	8083 137 138 139 445 548 3702 5357 #prob some samba shit
