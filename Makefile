@@ -16,5 +16,10 @@ os:
 home :
 	home-manager $(MODE) $(FLAGS) --flake $(FLAKE)#$(HOST)
 
+iso :
+	nix build ".#nixosConfigurations.iso.config.system.build.isoImage"
+	cp result/iso/*.iso .
+	rm -rf result
+
 cleanup :
 	sudo nix-collect-garbage -d

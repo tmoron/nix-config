@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/10 17:35:45 by tomoron          ###   ########.fr        #
+#    Updated: 2025/03/10 00:53:03 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,14 @@
 	    vbox = osConfig {flakeName = "vbox";};
 		laptop = osConfig {flakeName = "laptop"; extraModules = [ nixos-hardware.nixosModules.asus-zephyrus-ga401 ];};
 		desktop = osConfig {flakeName = "desktop";};
+
+		iso = nixpkgs.lib.nixosSystem {
+		  inherit pkgs;
+          modules = [
+            (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
+            ./osConfigs/hosts/iso.nix
+          ];
+		};
       };
 
 

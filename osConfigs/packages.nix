@@ -11,6 +11,7 @@
 	gnumake
 	git
 	neofetch
+	neovim
 	ntfs3g
 	clang
 	ninja
@@ -23,5 +24,6 @@
 	stress
 	ffmpeg
 	cryptsetup
+	acpi
   ];
 }
