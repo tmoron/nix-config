@@ -36,7 +36,7 @@ in
 	};
   };
 
-  config.home.file.".unison/test.prf" =  lib.mkIf config.mods.sync.enable {
+  config.home.file.".unison/default.prf" =  lib.mkIf config.mods.sync.enable {
     text = (lib.strings.concatStrings [''
 		auto=true
 		root=${config.mods.sync.homeFolder}
