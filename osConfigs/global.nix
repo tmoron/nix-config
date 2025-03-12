@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 01:43:46 by tomoron           #+#    #+#              #
-#    Updated: 2025/03/12 16:20:09 by tomoron          ###   ########.fr        #
+#    Updated: 2025/03/12 16:49:41 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,6 @@
   };
 
   networking.networkmanager.enable = lib.mkDefault true;
-  networking.dhcpcd.enable = false;
-  systemd.network.enable = true;
-  networking.useNetworkd = true;
 
   time.timeZone = "Europe/Paris";
 

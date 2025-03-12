@@ -9,6 +9,10 @@
   networking.wireless.enable = true;
   networking.networkmanager.enable = false;
 
+  networking.dhcpcd.enable = false;
+  systemd.network.enable = true;
+  networking.useNetworkd = true;
+
   environment.systemPackages = with pkgs; [
     acpi
 	tlp

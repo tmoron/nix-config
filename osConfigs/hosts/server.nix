@@ -53,7 +53,8 @@
       address = "192.168.1.24";
 	  prefixLength = 24;
     } ];
-	defaultGateway = "192.168.1.254";
+	defaultGateway.address = "192.168.1.254";
+	defaultGateway.interface = "eth0";
 	nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1"];
   	hostId = "68290da7";
   };
