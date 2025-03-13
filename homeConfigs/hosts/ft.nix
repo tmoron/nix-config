@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs;[	
-	neovim
 	dmenu
 	brightnessctl
     rofi
@@ -12,6 +11,8 @@
   mods.hyprland.enable = false;
   mods.x11.enable = true;
   programs.firefox.enable = false;
+
+  mods.sync.homeFolder = "/sgoinfre/goinfre/Perso/tomoron";
 
   programs.bash.profileExtra = 
   ''
