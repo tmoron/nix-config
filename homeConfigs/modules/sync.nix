@@ -1,7 +1,7 @@
 { lib, config, ... }:
 
 let
-  defPathLst = ["Desktop"  "Downloads"];
+  defPathLst = ["desktop" "42_desktop" "downloads"];
 in
 {
   options.mods.sync = {
@@ -34,6 +34,12 @@ in
 		default = [];
 		description = "list of path that will be synced";
 	};
+
+	customHostName = lib.mkOption {
+		type = lib.types.nullOr lib.types.str;
+		default = null;
+		description = "hostname used by unison";
+	};
   };
 
   config.home.file.".unison/default.prf" =  lib.mkIf config.mods.sync.enable {
@@ -43,7 +49,7 @@ in
 		root=ssh://tom@tmoron.fr:1880/${config.mods.sync.destFolder}
 	  ''
 	  (lib.strings.concatMapStrings (x: "\npath=" + x) (( if config.mods.sync.defaultSynced then defPathLst else [] ) ++ config.mods.sync.syncedAdditions ))
-	]);
-	executable = true;
+      (if !(isNull config.mods.sync.customHostName) then "\nclientHostName=${config.mods.sync.customHostName}" else "")
+	  ]);
   };
 }

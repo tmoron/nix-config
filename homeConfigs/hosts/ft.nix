@@ -13,6 +13,9 @@
   programs.firefox.enable = false;
 
   mods.sync.homeFolder = "/sgoinfre/goinfre/Perso/tomoron";
+  mods.sync.defaultSynced = false;
+  mods.sync.syncedAdditions = [ "42_desktop" "downloads" ];
+  mods.sync.customHostName = "pc42";
 
   programs.bash.profileExtra = 
   ''
