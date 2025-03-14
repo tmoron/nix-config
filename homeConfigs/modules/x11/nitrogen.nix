@@ -1,7 +1,7 @@
 { config, lib, pkgs, homeDir, ... }:
 
 let
-  background = "${homeDir}/.config/nitrogen/wallpaper.png";
+  background = "${homeDir}/.config/wallpaper.png";
 in
 {
   config = lib.mkIf config.mods.x11.enable {
