@@ -28,7 +28,8 @@
       ", XF86Launch4, exec, pkill activate-linux"
 	];
     monitor= [
-      "eDP-1, 1920x1080@120, 0x0, 1"
+#      "eDP-1, modeline 173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync, 0x0, 1"
+	  "eDP-1, 1920x1080@120, 0x0, 1"
       "HDMI-A-1, 1920x1080@60, auto, auto"
     ];
 	env = [ "AQ_DRM_DEVICES,/dev/dri/card1"];

@@ -107,6 +107,7 @@
       misc = {
         force_default_wallpaper = 1;
         disable_hyprland_logo = true;
+	    mouse_move_focuses_monitor = false;
       };
   
       dwindle = {

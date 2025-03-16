@@ -1,9 +1,11 @@
-{ inputs,  pkgs, ... }:
+{ pkgs, ... }:
 
 {
   boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 
   boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/a4593b01-069d-4a5d-a550-74a762b89b3f";
+
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   networking.hostName = "patate-douce";
   networking.wireless.enable = true;
