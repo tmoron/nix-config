@@ -40,5 +40,5 @@
     blender
   ];
 
-  mods.sync.syncedAdditions = ["VirtualBox VMs"];
+#mods.sync.syncedAdditions = ["VirtualBox VMs"];
 }
