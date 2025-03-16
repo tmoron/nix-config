@@ -5,7 +5,8 @@
 
   boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/a4593b01-069d-4a5d-a550-74a762b89b3f";
 
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services.displayManager.enable = true;
+  services.displayManager.ly.enable = true;
 
   networking.hostName = "patate-douce";
   networking.wireless.enable = true;
