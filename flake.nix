@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2025/03/10 00:53:03 by tomoron          ###   ########.fr        #
+#    Updated: 2025/03/19 15:48:10 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@
 	};
 
 	plymouth-theme-ycontre-glow = {
-      url = "git+file:///home/tom/Desktop/bordel/ycontre-glow";
+      url = "git+file:///home/tom/desktop/bordel/ycontre-glow";
+      inputs.nixpkgs.follows = "nixpkgs";
 	};
   };
 
@@ -45,7 +46,7 @@
 
 	  homeConfig = {flakeName, extraModules ? [], username ? "tom", homeDir ? "/home/tom"}: home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-	    extraSpecialArgs = { inherit inputs; username = username; homeDir = homeDir; };
+	    extraSpecialArgs = { inherit inputs; username = username; homeDir = homeDir; isOs = false; };
         modules = nixpkgs.lib.concatLists [
 		  [ ./homeConfigs/home.nix ./homeConfigs/hosts/${flakeName}.nix]
 		  extraModules
@@ -61,9 +62,12 @@
 
 		iso = nixpkgs.lib.nixosSystem {
 		  inherit pkgs;
+		  specialArgs = { inherit inputs; };
           modules = [
             (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
             ./osConfigs/hosts/iso.nix
+			inputs.home-manager.nixosModules.default
+
           ];
 		};
       };

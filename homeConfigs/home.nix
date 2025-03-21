@@ -6,22 +6,28 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/03/05 23:44:33 by tomoron          ###   ########.fr        #
+#    Updated: 2025/03/19 15:45:13 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{lib, pkgs, username,homeDir, ... }:
+{lib, pkgs, username ? "tom" ,homeDir ? "/home/tom", isOs ? false, ... }:
 
 {
   imports = lib.concatLists [
     [ ./packages.nix ]
     (lib.fileset.toList ./modules)
   ];
-  
-  home.username = "${username}";
-  home.homeDirectory = "${homeDir}";
+
+  home.username = lib.mkIf (!isOs) "${username}";
+  home.homeDirectory = lib.mkIf (!isOs) "${homeDir}";
 
   home.stateVersion = "24.05";
+
+#  programs.ghostty.enable = true;
+#  programs.ghostty.settings = {
+#    theme = "catppuccin-mocha";
+#	font-size = 9;
+#  };
 
   home.pointerCursor = {
     gtk.enable = true;

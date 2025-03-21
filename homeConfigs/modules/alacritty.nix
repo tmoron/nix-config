@@ -13,7 +13,7 @@
       settings = {
         window.opacity = 0.9;
         env.XTERM = "xterm-256color";
-        font.size = 10;
+        font.size = 9;
       };
     };
   };

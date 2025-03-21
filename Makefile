@@ -17,7 +17,7 @@ home :
 	home-manager $(MODE) $(FLAGS) --flake $(FLAKE)#$(HOST)
 
 iso :
-	nix build ".#nixosConfigurations.iso.config.system.build.isoImage"
+	nix build ".#nixosConfigurations.iso.config.system.build.isoImage" $(FLAGS)
 	cp result/iso/*.iso .
 	rm -rf result
 

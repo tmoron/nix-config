@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
 	home-manager
-	killall
    	vim
 	pciutils
 	pigz
@@ -25,5 +24,6 @@
 	ffmpeg
 	cryptsetup
 	acpi
+	dconf
   ];
 }
