@@ -32,7 +32,7 @@
   services.cron.systemCronJobs = [
     # m h dom m dow
 	# https://crontab.guru <3
-    "0 0/1 * * * cd /root/nix-config && git pull origin && git push github"
+    "15 * * * * cd /root/nix-config && git pull origin && git push github"
   ];
 
   networking.firewall.allowedTCPPorts = [
