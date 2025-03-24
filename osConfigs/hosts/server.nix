@@ -28,17 +28,28 @@
   ];
   boot.supportedFilesystems = [ "zfs" ];
 
+  services.cron.enable = true;
+  services.cron.systemCronJobs = [
+    # m h dom m dow
+	# https://crontab.guru <3
+    "0 0/1 * * * cd /root/nix-config && git pull origin && git push github"
+  ];
+
   networking.firewall.allowedTCPPorts = [
     22 #git ssh
   	80 443 #http server
 	5000 #frigate
 	8083 137 138 139 445 548 3702 5357 #prob some samba shit
+	24454 #minecraft voice chat
+	25565 # minecraft server
   ];
   networking.firewall.allowedUDPPorts = [
     22 #git ssh
   	80 443 #http server
 	5000 #frigate
 	8083 137 138 139 445 548 3702 5357 #prob some samba shit
+	24454 #minecraft voice chat
+	25565 # minecraft server
   ];
 
   networking.firewall.allowedUDPPortRanges = [
