@@ -28,12 +28,11 @@
   ];
   boot.supportedFilesystems = [ "zfs" ];
 
-  services.cron.enable = true;
-  services.cron.systemCronJobs = [
-    # m h dom m dow
-	# https://crontab.guru <3
-    "15 * * * * cd /root/nix-config && git pull origin && git push github"
-  ];
+#  services.cron.enable = false;
+#  services.cron.systemCronJobs = [
+#    # m h dom m dow
+#	# https://crontab.guru <3
+#  ];
 
   networking.firewall.allowedTCPPorts = [
     22 #git ssh
