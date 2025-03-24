@@ -1,0 +1,13 @@
+name: Build iso when a new version is pushed
+run-name: iso building
+#on: [push]
+
+jobs:
+  runs-on: nixos/nix
+  steps:
+    -   name: Build iso when a new version is pushed
+      run-name: iso building
+      on: [push]
+
+      jobs:
+        - run: echo coucou

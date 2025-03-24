@@ -13,6 +13,7 @@
   
   services.getty.autologinUser = lib.mkForce "tom";
   services.getty.helpLine = lib.mkForce "";
+  programs.hyprland.enable = true;
 
   home-manager.extraSpecialArgs = { inherit inputs; inherit pkgs; isOs = true;};
   home-manager.users.tom = {
