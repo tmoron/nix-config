@@ -18,7 +18,7 @@ home :
 
 iso :
 	nix build ".#nixosConfigurations.iso.config.system.build.isoImage" $(FLAGS)
-	cp result/iso/*.iso .
+	cp result/iso/*.iso nixos.iso
 	rm -rf result
 
 cleanup :

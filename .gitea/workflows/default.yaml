@@ -1,8 +1,20 @@
 name: Build iso when a new version is pushed
 run-name: iso building
-#on: [push]
+on: [push]
 
 jobs:
-  runs-on: nixos/nix
-  steps:
-      - run: echo coucou
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get repo
+        uses: actions/checkout@v4.2.2
+      #      - uses: https://github.com/cachix/install-nix-action@v31
+      #      - name: create iso image
+      #        run: make iso
+      
+      - name: create release
+        uses: https://gitea.com/actions/release-action@main
+        with:
+          files: |-
+            nixos.iso
+          api_key: '${{secrets.RELEASE_TOKEN}}'
