@@ -1,7 +1,7 @@
 HOST ?= $(file < /etc/nixosFlakeName)
 THREADS ?= $(shell nproc)
 FLAKE ?= .
-MODE = switch
+MODE = boot
 
 FLAGS = --impure --cores $(THREADS) -j $(THREADS) 
 
@@ -14,7 +14,7 @@ update:
 os:
 	sudo nixos-rebuild $(MODE) $(FLAGS) --flake $(FLAKE)#$(HOST)
 home :
-	home-manager $(MODE) $(FLAGS) --flake $(FLAKE)#$(HOST)
+	home-manager switch $(FLAGS) --flake $(FLAKE)#$(HOST)
 
 iso :
 	nix build ".#nixosConfigurations.iso.config.system.build.isoImage" $(FLAGS)

@@ -77,7 +77,6 @@
       nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 	  nnoremap <leader>fi <cmd>Fern %:h<cr>
 
-
       let g:user42	= 'tomoron'
       let g:mail42	= 'tomoron@student.42angouleme.fr'
 	  let g:fern#renderer = "nerdfont"
@@ -97,6 +96,7 @@
         rev = "71e6a4df6d72ae87a080282bf45bb993da6146b2";
         ref = "master";
       }}/plugin/stdheader.vim";
+
     };
   };
 }
