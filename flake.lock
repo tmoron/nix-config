@@ -74,6 +74,22 @@
         "type": "github"
       }
     },
+    "pkgs-docker-2750": {
+      "locked": {
+        "lastModified": 1737525964,
+        "narHash": "sha256-3wFonKmNRWKq1himW9N3TllbeGIHFACI5vmLpk6moF8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5757bbb8bd7c0630a0cc4bb19c47e588db30b97c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5757bbb8bd7c0630a0cc4bb19c47e588db30b97c",
+        "type": "github"
+      }
+    },
     "plymouth-theme-ycontre-glow": {
       "inputs": {
         "nixpkgs": [
@@ -100,6 +116,7 @@
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "pkgs-docker-2750": "pkgs-docker-2750",
         "plymouth-theme-ycontre-glow": "plymouth-theme-ycontre-glow"
       }
     }

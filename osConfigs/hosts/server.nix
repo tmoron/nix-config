@@ -25,7 +25,9 @@
 	nvidia-docker
 	libnvidia-container
 	screen
-  ];
+  ] ++ inputs.pkgs-docker-2750.pkgs.docker;
+
+
   boot.supportedFilesystems = [ "zfs" ];
 
 #  services.cron.enable = false;

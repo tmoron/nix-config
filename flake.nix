@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2025/03/19 15:48:10 by tomoron          ###   ########.fr        #
+#    Updated: 2025/04/13 13:35:56 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@
       url = "git+file:///home/tom/desktop/bordel/ycontre-glow";
       inputs.nixpkgs.follows = "nixpkgs";
 	};
+	pkgs-docker-2750.url = "github:NixOS/nixpkgs?rev=5757bbb8bd7c0630a0cc4bb19c47e588db30b97c";
   };
 
   outputs = { nixpkgs, home-manager, nixos-hardware, ... }@inputs:
