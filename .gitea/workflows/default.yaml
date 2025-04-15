@@ -20,7 +20,7 @@ jobs:
       #- name: build iso
       #  run: make iso
 
-     - name: get commit tag
+      - name: get commit tag
         id: vars
         run: echo "TAG=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
