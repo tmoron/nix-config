@@ -32,9 +32,11 @@ jobs:
           git push origin ${{steps.vars.outputs.TAG}}
       
       - name: create release
-        uses: https://gitea.com/actions/release-action@main
+        uses: https://gitea.com/actions/gitea-release-action@main
         with:
           tag_name: ${{steps.vars.outputs.TAG}}
+          server_url: https://git.tmoron.fr
+
           files: |-
             flake.nix
           api_key: ${{secrets.RELEASE_TOKEN}}
