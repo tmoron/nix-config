@@ -17,8 +17,8 @@ jobs:
         with:
           go-version: '>=1.20.1'
 
-      #- name: build iso
-      #  run: make iso
+      - name: build iso
+        run: make iso
 
       - name: get commit tag
         id: vars
@@ -38,5 +38,5 @@ jobs:
           server_url: https://git.tmoron.fr
           name: ${{steps.vars.outputs.TAG}}
           files: |-
-            flake.nix
+            nixos.iso
           api_key: ${{secrets.RELEASE_TOKEN}}
