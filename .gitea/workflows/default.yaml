@@ -8,7 +8,8 @@ jobs:
     steps:
       - name: get repo
         uses: actions/checkout@v4.2.2
-      -  name: create iso image
+
+      - name: create iso image
         uses: https://github.com/cachix/install-nix-action@v31
         run: make iso
       
