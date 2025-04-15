@@ -26,9 +26,8 @@ jobs:
 
       - name: create tag
         run: |
-          TAG=$(git rev-parse --short HEAD)
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          git config user.name "gitea-actions"
+          git config user.email "actions@gitea.com"
           git tag ${{steps.vars.outputs.TAG}}
           git push origin ${{steps.vars.outputs.TAG}}
       
@@ -38,4 +37,4 @@ jobs:
           tag_name: ${{steps.vars.outputs.TAG}}
           files: |-
             flake.nix
-          api_key: '${{secrets.RELEASE_TOKEN}}'
+          api_key: ${{secrets.RELEASE_TOKEN}}
