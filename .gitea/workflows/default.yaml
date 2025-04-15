@@ -36,7 +36,7 @@ jobs:
         with:
           tag_name: ${{steps.vars.outputs.TAG}}
           server_url: https://git.tmoron.fr
-
+          name: ${{steps.vars.outputs.TAG}}
           files: |-
             flake.nix
           api_key: ${{secrets.RELEASE_TOKEN}}
