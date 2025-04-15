@@ -51,6 +51,13 @@
       #temperature.critical {
         color: #ff2222; 
       }
+
+      #battery.critical {
+        color: #ff2222; 
+      }
+      #cpu.high {
+        color: #ff2222; 
+      }
     '';
 
     programs.waybar.settings.mainBar = {
@@ -61,7 +68,7 @@
       margin-right = 5;
       modules-left = ["hyprland/workspaces" "custom/music"];
       modules-center = ["hyprland/window"];
-      modules-right = ["disk" "pulseaudio" "network" "custom/pipe" "cpu" "temperature" "custom/pipe" "memory" "battery" "clock"];
+      modules-right = ["disk" "pulseaudio" "network" "custom/pipe" "cpu" "custom/pipe" "temperature" "custom/pipe" "memory" "battery" "clock"];
     
       "hyprland/workspaces" = {
         disable-scroll = true;
@@ -76,8 +83,9 @@
       };
     
       cpu = {
-        format = "   {usage}% |";
-      interval = 5;
+        format = "   {usage}% ";
+		states.high = 80;
+    	interval = 5;
       };
     
       memory = {
@@ -87,13 +95,15 @@
     
       battery = {
         bat = "BAT0";
+		full-at = 79;
         states = {
-          good = 79;
-          warning = 30;
+          good = 20;
           critical = 15;
         };
         format-time = " {H}:{m}";
-        format = " {icon} {capacity}%{time} |";
+        format-discharging = " {icon} {capacity}%{time} |";
+		format-charging = "  {capacity}%{time} |";
+		format-plugged = "";
         format-icons = [" " " " " " " " " "];
         interval = 10;
       };
