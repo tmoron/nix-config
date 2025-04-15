@@ -20,17 +20,22 @@ jobs:
       #- name: build iso
       #  run: make iso
 
-      - name: Create tag
+     - name: get commit tag
+        id: vars
+        run: echo "TAG=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: create tag
         run: |
           TAG=$(git rev-parse --short HEAD)
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git tag $TAG
-          git push origin $TAG
+          git tag ${{steps.vars.outputs.TAG}}
+          git push origin ${{steps.vars.outputs.TAG}}
       
       - name: create release
         uses: https://gitea.com/actions/release-action@main
         with:
+          tag_name: ${{steps.vars.outputs.TAG}}
           files: |-
             flake.nix
           api_key: '${{secrets.RELEASE_TOKEN}}'
