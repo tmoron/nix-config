@@ -9,7 +9,7 @@ jobs:
       - name: get repo
         uses: actions/checkout@v4.2.2
 
-      - name: create iso image
+      - name: install nix
         uses: https://github.com/cachix/install-nix-action@v31
 
       - name: build iso

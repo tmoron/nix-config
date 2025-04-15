@@ -17,6 +17,9 @@
 
   home-manager.extraSpecialArgs = { inherit inputs; inherit pkgs; isOs = true;};
   home-manager.users.tom = {
-    imports = [ ../../homeConfigs/home.nix ];
+    imports = [
+	  ../../homeConfigs/home.nix 
+	  ../../homeConfigs/hosts/iso.nix
+	];
   };
 }
