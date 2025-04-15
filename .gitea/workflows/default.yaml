@@ -12,12 +12,15 @@ jobs:
       - name: install nix
         uses: https://github.com/cachix/install-nix-action@v31
 
-      - name: build iso
-        run: make iso
+      - name: install go
+        uses: https://github.com/actions/setup-go@v4
+
+      #- name: build iso
+      #  run: make iso
       
       - name: create release
         uses: https://gitea.com/actions/release-action@main
         with:
           files: |-
-            nixos.iso
+            flake.nix
           api_key: '${{secrets.RELEASE_TOKEN}}'
