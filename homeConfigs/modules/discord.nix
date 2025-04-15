@@ -10,6 +10,7 @@
   config = lib.mkIf config.mods.discord.enable { 
     home.packages = with pkgs;[
 		discord 
+		google-chrome
 	];
   };
 }

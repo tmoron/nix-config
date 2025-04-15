@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
-#    Updated: 2025/04/15 15:34:14 by tomoron          ###   ########.fr        #
+#    Updated: 2025/04/15 15:58:07 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@
 
 	activate-linux
 	unison
-	google-chrome
 	brightnessctl	
 	playerctl
 	python3
