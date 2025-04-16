@@ -17,8 +17,8 @@ jobs:
         with:
           go-version: '>=1.20.1'
 
-      #- name: build iso
-      #  run: make iso
+      - name: build iso
+        run: make iso
 
       - name: get commit tag
         id: vars
@@ -49,9 +49,9 @@ jobs:
           fi
           
           file_send_res=$(curl \
-          	"https://git.tmoron.fr/api/v1/repos/$owner/$repo/releases/$release_id/assets?name=flake.nix"\
+          	"https://git.tmoron.fr/api/v1/repos/$owner/$repo/releases/$release_id/assets?name=nixos.iso"\
           	-H "Authorization: token $AUTH_TOKEN"\
           	-H "accept: application/json"\
           	-H "Content-Type: multipart/form-data"\
-          	-F "attachment=@flake.nix" 2>/dev/null)
+          	-F "attachment=@nixos.iso" 2>/dev/null)
           echo $file_send_res
