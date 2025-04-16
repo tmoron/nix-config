@@ -1,5 +1,5 @@
 { lib, pkgs, ... }:
 
 {
-	mods.discord.enable = false;
+	mods.nonChromium.enable = false;
 }
