@@ -1,6 +1,9 @@
 name: Build iso when a new version is pushed
 run-name: iso building
-on: [push]
+on:
+  push:
+    branches:
+      - 'master'
 
 jobs:
   test:
