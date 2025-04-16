@@ -38,7 +38,7 @@ jobs:
           owner=tom
           repo=nix-config
           set -e
-          release_create_res=$(curl -X POST -H "Authorization: token $AUTH_TOKEN" -H "content-type: application/json" -d '{"tag_name":"$TAG_NAME","name":"$TAG_NAME"}' "https://git.tmoron.fr/api/v1/repos/$owner/$repo/releases" 2>/dev/null)
+          release_create_res=$(curl -X POST -H "Authorization: token $AUTH_TOKEN" -H "content-type: application/json" -d "{\"tag_name\":\"$TAG_NAME\",\"name\":\"$TAG_NAME\"}" "https://git.tmoron.fr/api/v1/repos/$owner/$repo/releases" 2>/dev/null)
           
           release_id=$(echo $release_create_res | jq -r .id)
           echo $release_id
