@@ -1,6 +1,7 @@
 { lib, pkgs, ... }:
 
 {
+  home.file.".config/wallpaper.png".source = ../utils/wallpaper_test.png;
   programs.waybar.settings.mainBar = {
     modules-right = lib.mkBefore ["custom/fans" "custom/dgpu"];
     "custom/dgpu" = {

@@ -58,6 +58,9 @@
       #cpu.high {
         color: #ff2222; 
       }
+      #disk.high {
+        color: #ff2222; 
+      }
     '';
 
     programs.waybar.settings.mainBar = {
@@ -141,6 +144,7 @@
 
       disk = {
         format =" 󰋊 {percentage_used}% |";
+		states.high = "5";
       };
 
       "custom/pipe" = {

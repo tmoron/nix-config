@@ -7,6 +7,7 @@
 
   services.displayManager.enable = true;
   services.displayManager.ly.enable = true;
+  networking.firewall.enable = false;
 
   networking.hostName = "patate-douce";
   networking.wireless.enable = true;
