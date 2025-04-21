@@ -10,6 +10,7 @@
   config = lib.mkIf config.mods.git.enable {
     programs.git = {
       enable = true;
+	  lfs.enable = true;
       userEmail = "tomoron@student.42angouleme.fr";
       userName = "tomoron";
       extraConfig = {
