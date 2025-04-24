@@ -1,7 +1,7 @@
 HOST ?= $(file < /etc/nixosFlakeName)
 THREADS ?= $(shell nproc)
 FLAKE ?= .
-MODE = boot
+MODE = switch 
 
 FLAGS = --impure --cores $(THREADS) -j $(THREADS) 
 

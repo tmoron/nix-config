@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/03/19 15:45:13 by tomoron          ###   ########.fr        #
+#    Updated: 2025/04/25 00:08:54 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,9 +64,11 @@
 
   home.sessionPath = [ "~/.local/bin" ];
 
+
   home.file = { #should be able to make most of these in nix configs 
     ".config/wallpaper.png".source = lib.mkDefault utils/wallpaper.png;
     ".config/pc.jpg".source = lib.mkDefault utils/pc.jpg;
+  	".config/rofi/config.rasi".text = "@theme \"rounded-nord-dark.rasi\"";
 
 	".local/share/rofi/themes".source = "${builtins.fetchGit {
 		url = "https://github.com/newmanls/rofi-themes-collection";

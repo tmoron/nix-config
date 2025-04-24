@@ -39,6 +39,7 @@
   home.packages = with pkgs; [
     stremio
     blender
+	wireshark
   ];
 
 #mods.sync.syncedAdditions = ["VirtualBox VMs"];

@@ -53,6 +53,9 @@
 
   services.udev.packages = [ pkgs.yubikey-personalization ];
 
+  programs.wireshark.enable = true;
+  programs.wireshark.usbmon.enable = true;
+
 #  boot.plymouth = {
 #    enable = true;
 #	theme = "ycontre-glow";

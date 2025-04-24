@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 01:43:46 by tomoron           #+#    #+#              #
-#    Updated: 2025/04/03 13:24:06 by tomoron          ###   ########.fr        #
+#    Updated: 2025/04/23 20:31:46 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@
 
   users.users.tom = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "docker" "libvirtd" "dialout"];
+     extraGroups = [ "wheel" "docker" "libvirtd" "dialout" "wireshark"];
      initialPassword = "password";
    };
 
