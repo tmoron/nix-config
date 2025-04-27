@@ -21,9 +21,11 @@
 	usbutils
 	man-pages
 	stress
-	ffmpeg
 	cryptsetup
 	acpi
 	dconf
+	
+	ffmpeg-full
+	nv-codec-headers
   ];
 }
