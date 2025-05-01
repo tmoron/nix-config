@@ -18,6 +18,7 @@
       	pull.rebase = true;
       	push.autoSetupRemote = true;
 		rerere.enabled = true;
+		help.autocorrect = 1;
       };
       aliases = {
         fuck = "!f() { git reset --hard \"@{upstream}\" && git restore . && git clean -f .; };f";
