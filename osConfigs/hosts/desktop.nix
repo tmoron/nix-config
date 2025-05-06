@@ -2,12 +2,6 @@
 { config, lib, inputs, pkgs, ... }:
 
 {
-  imports = [
-    ../modules/game.nix
-	../modules/nvidia.nix
-	../modules/vboxHost.nix
-  ];
-
   environment.systemPackages = with pkgs; [
   	cudatoolkit
   	lm_sensors
@@ -18,6 +12,7 @@
   hardware.cpu.intel.updateMicrocode = true;
 
   boot.kernelModules = [ "kvm-intel" "nvidia" ];
+  mods.displayManager.enable = true;
 
 
   hardware.nvidia = {

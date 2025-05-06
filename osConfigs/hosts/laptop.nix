@@ -6,8 +6,7 @@
   boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/a4593b01-069d-4a5d-a550-74a762b89b3f";
   boot.initrd.luks.devices.cryptroot.allowDiscards = true;
 
-  services.displayManager.enable = true;
-  services.displayManager.ly.enable = true;
+  mods.displayManager.enable = true;
   networking.firewall.enable = false;
 
   networking.hostName = "patate-douce";
