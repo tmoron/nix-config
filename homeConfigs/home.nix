@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/04/25 00:08:54 by tomoron          ###   ########.fr        #
+#    Updated: 2025/05/12 12:35:00 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@
 
 
   home.file = { #should be able to make most of these in nix configs 
-    ".config/wallpaper.png".source = lib.mkDefault utils/wallpaper.png;
+    ".config/wallpaper.png".source = lib.mkDefault utils/wallpaper_test.png;
     ".config/pc.jpg".source = lib.mkDefault utils/pc.jpg;
   	".config/rofi/config.rasi".text = "@theme \"rounded-nord-dark.rasi\"";
 
