@@ -18,7 +18,7 @@
     home.packages = with pkgs; [
       clang-tools
       nixd
-      nodejs_23
+      nodejs_24
 	  glsl_analyzer
     ];
 
