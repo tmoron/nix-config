@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    lrzip
 	home-manager
    	vim
 	pciutils

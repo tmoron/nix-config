@@ -1,17 +1,19 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
-
   boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/a4593b01-069d-4a5d-a550-74a762b89b3f";
   boot.initrd.luks.devices.cryptroot.allowDiscards = true;
 
   mods.displayManager.enable = true;
+  mods.virtualbox.enable = false;
   networking.firewall.enable = false;
 
   networking.hostName = "patate-douce";
   networking.wireless.enable = true;
   networking.networkmanager.enable = false;
+
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   networking.dhcpcd.enable = false;
   systemd.network.enable = true;
@@ -20,7 +22,6 @@
   environment.systemPackages = with pkgs; [
     acpi
 	tlp
-	looking-glass-client
 	fprintd
   ];
 
