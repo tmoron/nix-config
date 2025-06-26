@@ -25,7 +25,7 @@
 	cryptsetup
 	acpi
 	dconf
-	
+
 	ffmpeg-full
 	nv-codec-headers
   ];

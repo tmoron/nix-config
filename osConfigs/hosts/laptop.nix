@@ -14,6 +14,8 @@
 
   programs.virt-manager.enable = true;
   virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.qemu.runAsRoot = true;
+  virtualisation.libvirtd.qemu.vhostUserPackages = [ pkgs.virtiofsd ];
 
   networking.dhcpcd.enable = false;
   systemd.network.enable = true;

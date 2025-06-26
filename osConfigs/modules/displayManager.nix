@@ -10,6 +10,12 @@
   config = lib.mkIf config.mods.displayManager.enable {
   	services.displayManager.enable = true;
   	services.displayManager.ly.enable = true;
+	services.displayManager.ly.settings = 
+	{
+	  sleep_cmd = "systemctl sleep";
+	  asterisk = "A";
+	  auth_fails= 3;
+	};
   };
 }
 
