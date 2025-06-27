@@ -12,6 +12,7 @@
 
   networking.hostName = "server";
   services.openssh.enable = true;
+  services.openssh.settings.PasswordAuthentication = false;
   services.openssh.ports = [ 1880 ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -87,6 +88,7 @@
   hardware.nvidia-container-toolkit.enable = true;
 
   hardware.nvidia = {
+  	package = config.boot.kernelPackages.nvidiaPackages.beta;
 	open = true;
 
 #	prime.nvidiaBusId = "PCI:1:0:0";
