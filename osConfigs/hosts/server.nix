@@ -74,7 +74,7 @@
   virtualisation.docker = {
     liveRestore = false;
     enableOnBoot = true;
-	package = inputs.pkgs-docker-2750.legacyPackages."x86_64-linux".docker;
+#	package = inputs.pkgs-docker-2750.legacyPackages."x86_64-linux".docker;
 #    daemon.settings = {
 #      runtimes.nvidia.path = "${pkgs.nvidia-docker}/bin/nvidia-container-runtime";
 #      exec-opts = ["native.cgroupdriver=cgroupfs"];

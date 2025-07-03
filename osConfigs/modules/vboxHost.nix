@@ -1,14 +1,16 @@
 { config, lib, inputs, pkgs, ... }:
 
 {
-  options.mods.virtualbox.enable = lib.mkOption {
+  options.mods.virtualManager.enable = lib.mkOption {
     type = lib.types.bool;
 	default = true;
-	description = "enable virtualbox as host";
+	description = "enable virtual manager as host";
   };
 
-  config = lib.mkIf config.mods.virtualbox.enable {
-    virtualisation.virtualbox.host.enable = true;
-    users.users.tom.extraGroups = [ "vboxusers" ];
+  config = lib.mkIf config.mods.virtualManager.enable {
+  	programs.virt-manager.enable = true;
+  	virtualisation.libvirtd.enable = true;
+  	virtualisation.libvirtd.qemu.runAsRoot = true;
+  	virtualisation.libvirtd.qemu.vhostUserPackages = [ pkgs.virtiofsd ];
   };
 }

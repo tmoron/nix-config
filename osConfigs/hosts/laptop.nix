@@ -5,17 +5,12 @@
   boot.initrd.luks.devices.cryptroot.allowDiscards = true;
 
   mods.displayManager.enable = true;
-  mods.virtualbox.enable = false;
+  mods.virtualmanager.enable = false;
   networking.firewall.enable = false;
 
   networking.hostName = "patate-douce";
   networking.wireless.enable = true;
   networking.networkmanager.enable = false;
-
-  programs.virt-manager.enable = true;
-  virtualisation.libvirtd.enable = true;
-  virtualisation.libvirtd.qemu.runAsRoot = true;
-  virtualisation.libvirtd.qemu.vhostUserPackages = [ pkgs.virtiofsd ];
 
   networking.dhcpcd.enable = false;
   systemd.network.enable = true;

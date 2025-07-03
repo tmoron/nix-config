@@ -2,6 +2,7 @@
 { config, lib, inputs, pkgs, ... }:
 
 {
+  boot.kernelParams = [ "nvidia-drm-modset=1" ];
   environment.systemPackages = with pkgs; [
   	cudatoolkit
   	lm_sensors
@@ -13,7 +14,6 @@
 
   boot.kernelModules = [ "kvm-intel" "nvidia" ];
   mods.displayManager.enable = true;
-
 
   hardware.nvidia = {
 	open = true;
