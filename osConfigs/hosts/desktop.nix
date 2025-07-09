@@ -16,6 +16,7 @@
   mods.displayManager.enable = true;
 
   hardware.nvidia = {
+  	package = config.boot.kernelPackages.nvidiaPackages.beta;
 	open = true;
 
 	prime.nvidiaBusId = "PCI:1:0:0";

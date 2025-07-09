@@ -21,6 +21,7 @@
 		"__GLX_VENDOR_LIBRARY_NAME,nvidia"
 	];
     cursor.no_hardware_cursors = true;
+	misc.vrr = 1;
   };
 
   mods.hyprland.autoSuspend = false;
