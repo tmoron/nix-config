@@ -12,12 +12,13 @@
   networking.wireless.enable = true;
   networking.networkmanager.enable = false;
 
-  specialisation.hugepage_ram.configuration = {
+  specialisation.vfio_ready.configuration = {
     boot.kernel.sysctl."vm.nr_hugepages" = 5120;
 	boot.extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
 	boot.kernelModules = [ "kvmfr" ];
 	boot.extraModprobeConfig = ''
 		options kvmfr static_size_mb=32
+		blacklist xpad
 	'';
 	virtualisation.libvirtd.qemu.verbatimConfig = ''
 		cgroup_device_acl = [
