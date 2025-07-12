@@ -12,6 +12,34 @@
   networking.wireless.enable = true;
   networking.networkmanager.enable = false;
 
+  specialisation.hugepage_ram.configuration = {
+    boot.kernel.sysctl."vm.nr_hugepages" = 5120;
+	boot.extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
+	boot.kernelModules = [ "kvmfr" ];
+	boot.extraModprobeConfig = ''
+		options kvmfr static_size_mb=32
+	'';
+	virtualisation.libvirtd.qemu.verbatimConfig = ''
+		cgroup_device_acl = [
+		    "/dev/kvmfr0", "/dev/null", "/dev/full", "/dev/zero",
+		    "/dev/random", "/dev/urandom",
+		    "/dev/ptmx", "/dev/kvm",
+		    "/dev/rtc","/dev/hpet",
+		    "/dev/input/by-id/[some_mouse_device]-event-mouse",
+		    "/dev/input/by-id/[some_keyboard_device]-event-kbd"
+		]
+	'';
+	services.udev.extraRules = ''
+		SUBSYSTEM=="kvmfr", OWNER="tom", GROUP="kvm", MODE="0660"
+	'';
+	environment.systemPackages = with pkgs; [ looking-glass-client ];
+  };
+
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.qemu.runAsRoot = true;
+  virtualisation.libvirtd.qemu.vhostUserPackages = [ pkgs.virtiofsd ];
+
   networking.dhcpcd.enable = false;
   systemd.network.enable = true;
   networking.useNetworkd = true;

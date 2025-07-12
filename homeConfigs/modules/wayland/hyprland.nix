@@ -18,6 +18,7 @@
         "CTRL_ALT, Q, killactive,"
         "SUPER_ALT, Q, exit,"
         "$mainMod, S, togglefloating,"
+        "$mainMod, I, pin,"
         "$mainMod, D, exec, rofi -show drun -show-icons"
         "$mainMod, M, fullscreen, 1"
         "$mainMod, F, fullscreen, 0"
