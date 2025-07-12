@@ -12,5 +12,8 @@
   	virtualisation.libvirtd.enable = true;
   	virtualisation.libvirtd.qemu.runAsRoot = true;
   	virtualisation.libvirtd.qemu.vhostUserPackages = [ pkgs.virtiofsd ];
+	virtualisation.spiceUSBRedirection.enable = true;
+
+	environment.systemPackages = with pkgs; [ spice-gtk ];
   };
 }
