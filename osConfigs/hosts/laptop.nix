@@ -5,7 +5,7 @@
   boot.initrd.luks.devices.cryptroot.allowDiscards = true;
 
   mods.displayManager.enable = true;
-  mods.virtualmanager.enable = false;
+  mods.virtualManager.enable = false;
   networking.firewall.enable = false;
 
   networking.hostName = "patate-douce";
