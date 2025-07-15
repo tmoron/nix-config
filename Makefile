@@ -22,4 +22,5 @@ iso :
 	rm -rf result
 
 cleanup :
-	sudo nix-collect-garbage -d
+	sudo nix-collect-garbage -d --delete-older-than 1d
+	nix-store --optimize -vv

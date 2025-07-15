@@ -17,7 +17,7 @@
 	boot.extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
 	boot.kernelModules = [ "kvmfr" ];
 	boot.extraModprobeConfig = ''
-		options kvmfr static_size_mb=32
+		options kvmfr static_size_mb=128
 		blacklist xpad
 	'';
 	virtualisation.libvirtd.qemu.verbatimConfig = ''
