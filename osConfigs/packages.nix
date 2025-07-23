@@ -9,7 +9,6 @@
     ntfs3g
     cryptsetup
     acpi
-    nerd-fonts.iosevka
     yubico-pam
   ];
 }
