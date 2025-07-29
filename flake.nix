@@ -76,7 +76,7 @@
 
       homeConfigurations = {
 	    vbox = homeConfig { flakeName = "vbox"; };
-	    ft = homeConfig { flakeName = "ft"; username = "tomoron"; homeDir = "/nfs/homes/tomoron";};
+	    ft = homeConfig { flakeName = "ft"; username = "tomoron"; homeDir = "/home/tomoron";};
 	    laptop = homeConfig { flakeName = "laptop"; };
 	    desktop = homeConfig { flakeName = "desktop"; };
 	    server = homeConfig { flakeName = "server"; };

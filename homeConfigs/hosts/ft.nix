@@ -12,7 +12,7 @@
   mods.x11.enable = true;
   programs.firefox.enable = false;
 
-  mods.sync.homeFolder = "/sgoinfre/goinfre/Perso/tomoron";
+  mods.sync.homeFolder = "/home/tomoron/sync";
   mods.sync.defaultSynced = false;
   mods.sync.syncedAdditions = [ "42_desktop" "Downloads" ];
   mods.sync.customHostName = "pc42";
