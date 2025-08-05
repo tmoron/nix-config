@@ -65,6 +65,22 @@
   #power management
   powerManagement.enable = true;
   powerManagement.cpuFreqGovernor = "powersave";
+
+  services.asusd = {
+    enable = true;
+	enableUserService = true;
+  };
+  services.supergfxd.enable = true;
+  services.supergfxd.settings = {
+    mode = "Integrated";
+    vfio_enable = true;
+    vfio_save = true;
+    always_reboot = false;
+    no_logind = true;
+    logout_timeout_s = 180;
+    hotplug_type = "None";
+  };
+
   services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {
     battery = {
