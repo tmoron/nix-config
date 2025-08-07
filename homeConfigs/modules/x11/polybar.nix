@@ -6,14 +6,14 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/10 02:51:32 by tomoron           #+#    #+#              #
-#    Updated: 2025/08/07 15:25:50 by tomoron          ###   ########.fr        #
+#    Updated: 2025/08/07 15:30:07 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 { lib, config, ... }:
 
 {
-  option.mods.polybar.fspath = lib.mkOption {
+  options.mods.polybar.fspath = lib.mkOption {
 	type = lib.types.str;
 	default = "/";
 	description = "set the filesystem path for the remaining disk space";
