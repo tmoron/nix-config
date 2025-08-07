@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
-#    Updated: 2025/07/23 18:00:40 by tomoron          ###   ########.fr        #
+#    Updated: 2025/08/04 15:38:21 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,5 +43,6 @@
     libcaca
     nasm
     nerd-fonts.iosevka
+	compiledb
   ];
 }

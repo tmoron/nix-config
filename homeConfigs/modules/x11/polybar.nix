@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/10 02:51:32 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/10 17:28:27 by tomoron          ###   ########.fr        #
+#    Updated: 2025/08/05 14:50:41 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,8 @@
 
       "module/filesystem" = {
         type = "internal/fs";
-        mount-0 = "/";
-        interval = 30;
+        mount-0 = "/home/tomoron";
+        interval = 10;
         fixed-values = true;
         format-mounted = "<label-mounted>";
         format-mounted-prefix = "󰋊";
