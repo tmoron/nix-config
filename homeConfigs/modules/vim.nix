@@ -93,7 +93,7 @@
       #install stdheader 42
       ".config/nvim/plugin/stdheader.vim".source = "${builtins.fetchGit {
         url = "https://github.com/42Paris/42header";
-        rev = "71e6a4df6d72ae87a080282bf45bb993da6146b2";
+        rev = "e6e6b191871545e0d43f1aad817070bc806b8fa7";
         ref = "master";
       }}/plugin/stdheader.vim";
 
