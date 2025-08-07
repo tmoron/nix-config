@@ -6,13 +6,19 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/10 02:51:32 by tomoron           #+#    #+#              #
-#    Updated: 2025/08/05 14:50:41 by tomoron          ###   ########.fr        #
+#    Updated: 2025/08/07 15:25:50 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 { lib, config, ... }:
 
 {
+  option.mods.polybar.fspath = lib.mkOption {
+	type = lib.types.str;
+	default = "/";
+	description = "set the filesystem path for the remaining disk space";
+  };
+
   config = lib.mkIf config.mods.x11.enable {
     services.polybar.enable = true;
     services.polybar.script = "pgrep polybar >/dev/null || polybar -q main -c \"$HOME/.config/polybar/config.ini\"&";
@@ -44,7 +50,7 @@
 
       "module/filesystem" = {
         type = "internal/fs";
-        mount-0 = "/home/tomoron";
+        mount-0 = config.mods.polybar.fspath;
         interval = 10;
         fixed-values = true;
         format-mounted = "<label-mounted>";
