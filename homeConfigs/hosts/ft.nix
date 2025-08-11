@@ -12,7 +12,7 @@
   mods.x11.enable = true;
   programs.firefox.enable = false;
 
-  config.mods.polybar.fspath = "/home/tomoron";
+  mods.polybar.fspath = "/home/tomoron";
 
   mods.sync.homeFolder = "/home/tomoron/sync";
   mods.sync.defaultSynced = false;
