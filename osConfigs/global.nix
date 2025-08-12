@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 01:43:46 by tomoron           #+#    #+#              #
-#    Updated: 2025/04/23 20:31:46 by tomoron          ###   ########.fr        #
+#    Updated: 2025/08/07 17:46:37 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,13 @@
 
   users.users.tom = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "docker" "libvirtd" "dialout" "wireshark"];
+     extraGroups = [
+	 "wheel" # can sudo
+	 "docker" # can use docker
+	 "libvirtd" # can use libvirtd
+	 "dialout" # can use serial devices
+	 "wireshark" # can use wireshask
+	 ];
      initialPassword = "password";
    };
 

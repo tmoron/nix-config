@@ -81,23 +81,15 @@
     hotplug_type = "None";
   };
 
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-    };
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-  };
   services.upower.enable = true;
 
   services.udev.packages = [ pkgs.yubikey-personalization ];
 
   programs.wireshark.enable = true;
   programs.wireshark.usbmon.enable = true;
+
+  programs.alvr.enable = true;
+  programs.alvr.openFirewall = true;
 
 #  boot.plymouth = {
 #    enable = true;
