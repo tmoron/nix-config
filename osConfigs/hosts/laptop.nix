@@ -90,6 +90,8 @@
 
   programs.alvr.enable = true;
   programs.alvr.openFirewall = true;
+  
+  services.usbmuxd.enable = true;
 
 #  boot.plymouth = {
 #    enable = true;
