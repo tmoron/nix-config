@@ -39,6 +39,7 @@
     stremio
     blender
 	wireshark
+	localsend
   ];
 
 #mods.sync.syncedAdditions = ["VirtualBox VMs"];
