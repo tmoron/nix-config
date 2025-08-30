@@ -36,7 +36,6 @@
   };
 
   home.packages = with pkgs; [
-    stremio
     blender
 	wireshark
 	localsend
