@@ -8,11 +8,13 @@
   };
 
   config = lib.mkIf config.mods.firefox.enable {
+  	catppuccin.firefox.enable = true;
     programs.firefox = {
       enable = lib.mkDefault true;
       profiles.default = {
         extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; 
 	    [vimium ublock-origin];
+		extensions.force = true;
 	  };
     };
   };

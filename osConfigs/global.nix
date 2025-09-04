@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 01:43:46 by tomoron           #+#    #+#              #
-#    Updated: 2025/08/07 17:46:37 by tomoron          ###   ########.fr        #
+#    Updated: 2025/09/02 17:30:10 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,11 @@
 
   system.stateVersion = "24.05";
   environment.etc.nixosFlakeName.text = "${flakeName}";
+
+  services.journald.extraConfig = ''
+	SystemMaxUse=100M
+	SystemMaxFileSize=50M
+  '';
 
   hardware.logitech.wireless.enable = true;
   hardware.logitech.wireless.enableGraphical = true;

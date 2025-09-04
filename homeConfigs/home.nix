@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/05/12 12:35:00 by tomoron          ###   ########.fr        #
+#    Updated: 2025/08/30 20:34:23 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@
   gtk = {
     enable = true;
     theme = { package = pkgs.flat-remix-gtk; name = "Flat-Remix-GTK-Grey-Darkest"; };
-    iconTheme = { package = pkgs.adwaita-icon-theme; name = "Adwaita"; };
+#    iconTheme = { package = pkgs.adwaita-icon-theme; name = "Adwaita"; };
     font = { name = "Sans"; size = 11; };
   };
 
@@ -78,5 +78,18 @@
 
 #	".local/bin/desk_sync".source = dotfiles/local/bin/desk_sync;
   };
+  services.dunst.enable = true;
+
   programs.home-manager.enable = true;
+
+  qt.style.name = "kvantum";
+  catppuccin.kvantum.apply = true;
+
+  catppuccin = {
+  	enable = true;
+	flavor = "mocha";
+
+	dunst.enable = true;
+	dunst.flavor="frappe";
+  };
 }

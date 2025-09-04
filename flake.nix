@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2025/04/13 13:35:56 by tomoron          ###   ########.fr        #
+#    Updated: 2025/08/30 19:38:12 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+	catppuccin.url = "github:catppuccin/nix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,21 +27,20 @@
 	  inputs.nixpkgs.follows = "nixpkgs";
 	};
 
-	plymouth-theme-ycontre-glow = {
-      url = "git+file:///home/tom/desktop/bordel/ycontre-glow";
-      inputs.nixpkgs.follows = "nixpkgs";
-	};
-	pkgs-docker-2750.url = "github:NixOS/nixpkgs?rev=5757bbb8bd7c0630a0cc4bb19c47e588db30b97c";
+	#plymouth-theme-ycontre-glow = {
+    #  url = "git+file:///home/tom/desktop/bordel/ycontre-glow";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+	#};
   };
 
-  outputs = { nixpkgs, home-manager, nixos-hardware, ... }@inputs:
+  outputs = { nixpkgs, catppuccin, home-manager, nixos-hardware, ... }@inputs:
 	let
 	  pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
 
       osConfig = {flakeName, extraModules ? []}: nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; flakeName = flakeName; };
         modules = nixpkgs.lib.concatLists [
-		  [./osConfigs/global.nix ./osConfigs/hosts/${flakeName}.nix ]
+		  [./osConfigs/global.nix ./osConfigs/hosts/${flakeName}.nix catppuccin.nixosModules.catppuccin]
 		  extraModules
 		];
       };
@@ -49,7 +49,7 @@
         inherit pkgs;
 	    extraSpecialArgs = { inherit inputs; username = username; homeDir = homeDir; isOs = false; };
         modules = nixpkgs.lib.concatLists [
-		  [ ./homeConfigs/home.nix ./homeConfigs/hosts/${flakeName}.nix]
+		  [ ./homeConfigs/home.nix ./homeConfigs/hosts/${flakeName}.nix catppuccin.homeModules.catppuccin ]
 		  extraModules
 		];
 	  };

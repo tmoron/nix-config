@@ -22,5 +22,10 @@ iso :
 	rm -rf result
 
 cleanup :
-	sudo nix-collect-garbage -d --delete-older-than 1d
+	sudo nix-env --delete-generations +1 --profile /nix/var/nix/profiles/system
+	nix-env --delete-generations +1 --profile ~/.local/state/nix/profiles/home-manager
+	nix-env --delete-generations +1
+	sudo nix-collect-garbage -d
+
+optimise :
 	nix-store --optimize -vv

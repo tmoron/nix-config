@@ -1,8 +1,24 @@
 { config, pkgs, ... }:
 
 {
-  boot.initrd.luks.devices.cryptroot.device = "/dev/disk/by-uuid/a4593b01-069d-4a5d-a550-74a762b89b3f";
-  boot.initrd.luks.devices.cryptroot.allowDiscards = true;
+  boot.initrd.luks.yubikeySupport = true;
+  boot.initrd.kernelModules = [ "vfat" "nls_cp437" "nls_iso8859-1" "usbhid" ];
+  boot.initrd.luks.devices.cryptroot = {
+  	device = "/dev/disk/by-uuid/a4593b01-069d-4a5d-a550-74a762b89b3f";
+  	allowDiscards = true;
+	#set up initial : https://wiki.nixos.org/wiki/Yubikey_based_Full_Disk_Encryption_(FDE)_on_NixOS
+	yubikey = {
+		twoFactor = false;
+		keyLength = 64;
+		saltLength = 32;
+		storage = {
+			device = "/dev/disk/by-uuid/BA5C-F216";
+			path = "/default";
+		};
+	};
+  };
+
+  boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ];
 
   mods.displayManager.enable = true;
   mods.virtualManager.enable = false;

@@ -16,6 +16,7 @@
   	  " , Print, exec, grim -t png -g \"$(slurp)\" /dev/stdout | tee ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png | wl-copy -t image/png"
         "$mainMod, Return, exec, alacritty"
         "CTRL_ALT, Q, killactive,"
+        "CTRL_ALT_SHIFT, Q, forcekillactive,"
         "SUPER_ALT, Q, exit,"
         "$mainMod, S, togglefloating,"
         "$mainMod, I, pin,"
@@ -64,12 +65,12 @@
         "$mainMod, mouse_up, workspace, e-1"
       ];
   
-      bindm = [
+      bindm = [ #bind mouse
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
       ];
   
-      bindel = [
+      bindel = [ #repeat and locked
         " ,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
         " ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         " ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -80,7 +81,7 @@
         " ,XF86KbdBrightnessDown, exec, asusctl -p"
       ];
   
-      bindl = [
+      bindl = [ #repeat
         " , XF86AudioNext, exec, playerctl next"
         " , XF86AudioPrev, exec, playerctl previous"
         " , XF86AudioPause, exec, playerctl play-pause"
@@ -152,9 +153,9 @@
       };
   
       general = {
-        gaps_in = 3;
-        gaps_out = 7;
-        border_size = 2;
+        gaps_in = 2;
+        gaps_out = 5;
+        border_size = 1;
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
         resize_on_border = false;
