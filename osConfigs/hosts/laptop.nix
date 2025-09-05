@@ -2,6 +2,7 @@
 
 {
   boot.initrd.luks.yubikeySupport = true;
+  services.udev.packages = [ pkgs.yubikey-personalization ];
   boot.initrd.kernelModules = [ "vfat" "nls_cp437" "nls_iso8859-1" "usbhid" ];
   boot.initrd.luks.devices.cryptroot = {
   	device = "/dev/disk/by-uuid/a4593b01-069d-4a5d-a550-74a762b89b3f";
@@ -17,6 +18,8 @@
 		};
 	};
   };
+
+  programs.fuse.enable = true;
 
   boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ];
 
@@ -86,6 +89,7 @@
     enable = true;
 	enableUserService = true;
   };
+
   services.supergfxd.enable = true;
   services.supergfxd.settings = {
     mode = "Integrated";
@@ -98,8 +102,6 @@
   };
 
   services.upower.enable = true;
-
-  services.udev.packages = [ pkgs.yubikey-personalization ];
 
   programs.wireshark.enable = true;
   programs.wireshark.usbmon.enable = true;

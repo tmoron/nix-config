@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2025/08/30 19:38:12 by tomoron          ###   ########.fr        #
+#    Updated: 2025/09/05 18:37:36 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 	catppuccin.url = "github:catppuccin/nix";
+	sops-nix = {
+	  url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+	};
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,7 +53,12 @@
         inherit pkgs;
 	    extraSpecialArgs = { inherit inputs; username = username; homeDir = homeDir; isOs = false; };
         modules = nixpkgs.lib.concatLists [
-		  [ ./homeConfigs/home.nix ./homeConfigs/hosts/${flakeName}.nix catppuccin.homeModules.catppuccin ]
+		  [
+		    ./homeConfigs/home.nix
+			./homeConfigs/hosts/${flakeName}.nix
+			catppuccin.homeModules.catppuccin
+			inputs.sops-nix.homeManagerModules.sops
+		  ]
 		  extraModules
 		];
 	  };
@@ -68,7 +77,6 @@
             (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
             ./osConfigs/hosts/iso.nix
 			inputs.home-manager.nixosModules.default
-
           ];
 		};
       };

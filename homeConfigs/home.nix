@@ -6,11 +6,11 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/08/30 20:34:23 by tomoron          ###   ########.fr        #
+#    Updated: 2025/09/05 19:55:21 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{lib, pkgs, username ? "tom" ,homeDir ? "/home/tom", isOs ? false, ... }:
+{lib, pkgs, config, username ? "tom" ,homeDir ? "/home/tom", isOs ? false, ... }:
 
 {
   imports = lib.concatLists [
@@ -22,6 +22,28 @@
   home.homeDirectory = lib.mkIf (!isOs) "${homeDir}";
 
   home.stateVersion = "24.05";
+
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.age.keyFile = "${homeDir}/.config/sops/age/keys.txt";
+  sops.secrets."nextcloud_fuse/password" = {};
+
+  programs.rclone.enable = true;
+  programs.rclone.remotes.nextcloud = {
+    config = {
+	  type = "webdav";
+	  url = "https://nc.tmoron.fr/remote.php/dav/files/tom";
+	  vendor = "nextcloud";
+	  user = "tom";
+    };
+	secrets.pass = config.sops.secrets."nextcloud_fuse/password".path;
+	mounts = {
+	  "/" = {
+	    enable = true;
+		mountPoint = "${homeDir}/nextcloud";
+		options.vfs-cache-mode = "writes";
+	  };
+	};
+  };
 
 #  programs.ghostty.enable = true;
 #  programs.ghostty.settings = {

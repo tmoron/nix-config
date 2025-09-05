@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/02 23:33:04 by tomoron          ###   ########.fr        #
+#    Updated: 2025/09/05 19:28:45 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,5 +44,6 @@
     nerd-fonts.iosevka
 	compiledb
 	yubikey-personalization
+	sops
   ];
 }
