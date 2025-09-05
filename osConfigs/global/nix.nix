@@ -1,26 +1,18 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    game.nix                                           :+:      :+:    :+:    #
+#    nix.nix                                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/05 23:47:09 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/05 23:54:57 by tomoron          ###   ########.fr        #
+#    Created: 2025/09/05 23:42:17 by tomoron           #+#    #+#              #
+#    Updated: 2025/09/05 23:42:20 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{config, lib, ... }:
+{ ... }:
 
 {
-  options.mods.gayming.enable = lib.mkOption {
-    type = lib.types.bool;
-    default = false;
-    description = "enable steam and other";
-  };
-
-  config = lib.mkIf config.mods.gayming.enable {
-    programs.steam.enable = true; 
-    programs.steam.protontricks.enable = true;
-  };
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nixpkgs.config.allowUnfree = true;
 }

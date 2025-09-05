@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/05 18:37:36 by tomoron          ###   ########.fr        #
+#    Updated: 2025/09/06 00:58:57 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,12 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 	catppuccin.url = "github:catppuccin/nix";
+
 	sops-nix = {
 	  url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
 	};
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,7 +46,7 @@
       osConfig = {flakeName, extraModules ? []}: nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; flakeName = flakeName; };
         modules = nixpkgs.lib.concatLists [
-		  [./osConfigs/global.nix ./osConfigs/hosts/${flakeName}.nix catppuccin.nixosModules.catppuccin]
+		  [./osConfigs/os.nix ./osConfigs/hosts/${flakeName}.nix catppuccin.nixosModules.catppuccin]
 		  extraModules
 		];
       };
@@ -65,7 +67,8 @@
 
 	in {
 
-      nixosConfigurations = { server = osConfig {flakeName = "server";};
+      nixosConfigurations = {
+	    server = osConfig {flakeName = "server";};
 	    vbox = osConfig {flakeName = "vbox";};
 		laptop = osConfig {flakeName = "laptop"; extraModules = [ nixos-hardware.nixosModules.asus-zephyrus-ga401 ];};
 		desktop = osConfig {flakeName = "desktop";};
@@ -76,7 +79,6 @@
           modules = [
             (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
             ./osConfigs/hosts/iso.nix
-			inputs.home-manager.nixosModules.default
           ];
 		};
       };
@@ -89,5 +91,6 @@
 	    desktop = homeConfig { flakeName = "desktop"; };
 	    server = homeConfig { flakeName = "server"; };
 	  };
+
     };
 }

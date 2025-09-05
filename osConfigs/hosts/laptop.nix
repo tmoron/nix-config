@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    laptop.nix                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
+#    Updated: 2025/09/06 01:11:42 by tomoron          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 { config, pkgs, ... }:
 
 {
@@ -5,26 +17,25 @@
   services.udev.packages = [ pkgs.yubikey-personalization ];
   boot.initrd.kernelModules = [ "vfat" "nls_cp437" "nls_iso8859-1" "usbhid" ];
   boot.initrd.luks.devices.cryptroot = {
-  	device = "/dev/disk/by-uuid/a4593b01-069d-4a5d-a550-74a762b89b3f";
-  	allowDiscards = true;
-	#set up initial : https://wiki.nixos.org/wiki/Yubikey_based_Full_Disk_Encryption_(FDE)_on_NixOS
-	yubikey = {
-		twoFactor = false;
-		keyLength = 64;
-		saltLength = 32;
-		storage = {
-			device = "/dev/disk/by-uuid/BA5C-F216";
-			path = "/default";
-		};
-	};
+      device = "/dev/disk/by-uuid/a4593b01-069d-4a5d-a550-74a762b89b3f";
+      allowDiscards = true;
+    #set up initial : https://wiki.nixos.org/wiki/Yubikey_based_Full_Disk_Encryption_(FDE)_on_NixOS
+    yubikey = {
+        twoFactor = false;
+        keyLength = 64;
+        saltLength = 32;
+        storage = {
+            device = "/dev/disk/by-uuid/BA5C-F216";
+            path = "/default";
+        };
+    };
   };
 
-  programs.fuse.enable = true;
-
-  boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ];
+  boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ]; #speeds up startup
 
   mods.displayManager.enable = true;
-  mods.virtualManager.enable = false;
+  mods.virtualHost.enable = false;
+  mods.yubikey.pam.enable = true;
   networking.firewall.enable = false;
 
   networking.hostName = "patate-douce";
@@ -33,61 +44,46 @@
 
   specialisation.vfio_ready.configuration = {
     boot.kernel.sysctl."vm.nr_hugepages" = 5120;
-	boot.extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
-	boot.kernelModules = [ "kvmfr" ];
-	boot.extraModprobeConfig = ''
-		options kvmfr static_size_mb=128
-		blacklist xpad
-	'';
-	virtualisation.libvirtd.qemu.verbatimConfig = ''
-		cgroup_device_acl = [
-		    "/dev/kvmfr0", "/dev/null", "/dev/full", "/dev/zero",
-		    "/dev/random", "/dev/urandom",
-		    "/dev/ptmx", "/dev/kvm",
-		    "/dev/rtc","/dev/hpet",
-		    "/dev/input/by-id/[some_mouse_device]-event-mouse",
-		    "/dev/input/by-id/[some_keyboard_device]-event-kbd"
-		]
-	'';
-	services.udev.extraRules = ''
-		SUBSYSTEM=="kvmfr", OWNER="tom", GROUP="kvm", MODE="0660"
-	'';
-	environment.systemPackages = with pkgs; [ looking-glass-client ];
+    boot.extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
+    boot.kernelModules = [ "kvmfr" ];
+    boot.extraModprobeConfig = ''
+        options kvmfr static_size_mb=128
+        blacklist xpad
+    '';
+    virtualisation.libvirtd.qemu.verbatimConfig = ''
+        cgroup_device_acl = [
+            "/dev/kvmfr0", "/dev/null", "/dev/full", "/dev/zero",
+            "/dev/random", "/dev/urandom",
+            "/dev/ptmx", "/dev/kvm",
+            "/dev/rtc","/dev/hpet",
+            "/dev/input/by-id/[some_mouse_device]-event-mouse",
+            "/dev/input/by-id/[some_keyboard_device]-event-kbd"
+        ]
+    '';
+    services.udev.extraRules = ''
+        SUBSYSTEM=="kvmfr", OWNER="tom", GROUP="kvm", MODE="0660"
+    '';
+    environment.systemPackages = with pkgs; [ looking-glass-client ];
   };
-
-  programs.virt-manager.enable = true;
-  virtualisation.libvirtd.enable = true;
-  virtualisation.libvirtd.qemu.runAsRoot = true;
-  virtualisation.libvirtd.qemu.vhostUserPackages = [ pkgs.virtiofsd ];
 
   networking.dhcpcd.enable = false;
   systemd.network.enable = true;
   networking.useNetworkd = true;
 
-  environment.systemPackages = with pkgs; [
-    acpi
-	tlp
-	fprintd
-  ];
-
-  hardware.nvidia.prime.offload = {
-    enable = true;
-	enableOffloadCmd = true;
-  };
-
-  services.libinput.enable = true;
-  services.libinput.touchpad.clickMethod = "clickfinger";
-  services.libinput.touchpad.tapping = false;
-
   hardware.bluetooth.enable = true;
 
-  #power management
-  powerManagement.enable = true;
-  powerManagement.cpuFreqGovernor = "powersave";
+  environment.systemPackages = with pkgs; [
+    acpi # can be user (global)
+  ];
+
+
+  mods.touchpad.enable = true;
+
+  mods.powerSave.enable = true;
 
   services.asusd = {
     enable = true;
-	enableUserService = true;
+    enableUserService = true;
   };
 
   services.supergfxd.enable = true;
@@ -101,21 +97,21 @@
     hotplug_type = "None";
   };
 
-  services.upower.enable = true;
-
   programs.wireshark.enable = true;
   programs.wireshark.usbmon.enable = true;
 
-  programs.alvr.enable = true;
-  programs.alvr.openFirewall = true;
-  
-  services.usbmuxd.enable = true;
+  mods.docker.enable = true;
+  mods.gayming.enable = true;
+  mods.nvidia.enable = true;
+  mods.nvidia.prime = true;
+
+#  services.usbmuxd.enable = true; #hangs when shutting down
 
 #  boot.plymouth = {
 #    enable = true;
-#	theme = "ycontre-glow";
-#	themePackages = [
-#		inputs.plymouth-theme-ycontre-glow.defaultPackage.x86_64-linux
-#	];
+#    theme = "ycontre-glow";
+#    themePackages = [
+#        inputs.plymouth-theme-ycontre-glow.defaultPackage.x86_64-linux
+#    ];
 #  };
 }

@@ -1,26 +1,25 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    game.nix                                           :+:      :+:    :+:    #
+#    packages.nix                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/05 23:47:09 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/05 23:54:57 by tomoron          ###   ########.fr        #
+#    Created: 2025/09/06 00:57:21 by tomoron           #+#    #+#              #
+#    Updated: 2025/09/06 00:57:26 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{config, lib, ... }:
+{ pkgs, ... }:
 
 {
-  options.mods.gayming.enable = lib.mkOption {
-    type = lib.types.bool;
-    default = false;
-    description = "enable steam and other";
-  };
-
-  config = lib.mkIf config.mods.gayming.enable {
-    programs.steam.enable = true; 
-    programs.steam.protontricks.enable = true;
-  };
+  environment.systemPackages = with pkgs; [
+    home-manager
+    vim
+    pciutils
+    usbutils
+    ntfs3g
+    cryptsetup
+    acpi
+  ];
 }

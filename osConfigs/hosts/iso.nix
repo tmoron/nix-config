@@ -1,8 +1,20 @@
-{lib, inputs, pkgs, ... }:
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    iso.nix                                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/09/06 00:57:02 by tomoron           #+#    #+#              #
+#    Updated: 2025/09/06 00:57:03 by tomoron          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+{lib, ... }:
 
 {
   imports = [
-    ../packages.nix 
+    ../global/packages.nix 
   ];
 
   users.users.tom = {
@@ -13,13 +25,4 @@
   
   services.getty.autologinUser = lib.mkForce "tom";
   services.getty.helpLine = lib.mkForce "";
-#  programs.hyprland.enable = true;
-
-#  home-manager.extraSpecialArgs = { inherit inputs; inherit pkgs; isOs = true;};
-#  home-manager.users.tom = {
-#    imports = [
-#	  ../../homeConfigs/home.nix 
-#	  ../../homeConfigs/hosts/iso.nix
-#	];
-#  };
 }

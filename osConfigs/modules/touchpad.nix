@@ -1,26 +1,29 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    game.nix                                           :+:      :+:    :+:    #
+#    touchpad.nix                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/05 23:47:09 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/05 23:54:57 by tomoron          ###   ########.fr        #
+#    Created: 2025/09/06 00:39:41 by tomoron           #+#    #+#              #
+#    Updated: 2025/09/06 01:02:41 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{config, lib, ... }:
+{ config, lib, ... }:
 
 {
-  options.mods.gayming.enable = lib.mkOption {
-    type = lib.types.bool;
-    default = false;
-    description = "enable steam and other";
+  options.mods.touchpad = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "enable touchpad support";
+    };
   };
-
-  config = lib.mkIf config.mods.gayming.enable {
-    programs.steam.enable = true; 
-    programs.steam.protontricks.enable = true;
+  
+  config = lib.mkIf config.mods.touchpad.enable {
+    services.libinput.enable = true;
+    services.libinput.touchpad.clickMethod = "clickfinger";
+    services.libinput.touchpad.tapping = false;
   };
 }

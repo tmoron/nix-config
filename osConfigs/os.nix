@@ -1,26 +1,24 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    game.nix                                           :+:      :+:    :+:    #
+#    os.nix                                             :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/05 23:47:09 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/05 23:54:57 by tomoron          ###   ########.fr        #
+#    Created: 2025/09/06 00:56:36 by tomoron           #+#    #+#              #
+#    Updated: 2025/09/06 00:56:37 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{config, lib, ... }:
+{ lib, flakeName, ... }:
 
 {
-  options.mods.gayming.enable = lib.mkOption {
-    type = lib.types.bool;
-    default = false;
-    description = "enable steam and other";
-  };
+  imports = lib.concatLists [
+    [ ./hardware-configuration.nix ]
+    (lib.fileset.toList ./global)
+    (lib.fileset.toList ./modules)
+  ];
 
-  config = lib.mkIf config.mods.gayming.enable {
-    programs.steam.enable = true; 
-    programs.steam.protontricks.enable = true;
-  };
+  system.stateVersion = "25.05";
+  environment.etc.nixosFlakeName.text = "${flakeName}";
 }

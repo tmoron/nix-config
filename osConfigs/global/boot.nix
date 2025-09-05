@@ -1,36 +1,29 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    displayManager.nix                                 :+:      :+:    :+:    #
+#    boot.nix                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/05 23:47:16 by tomoron           #+#    #+#              #
+#    Created: 2025/09/05 23:37:58 by tomoron           #+#    #+#              #
 #    Updated: 2025/09/06 00:56:38 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{config, lib, ... }:
+{lib, pkgs, ... } :
 
 {
-  options.mods.displayManager.enable = lib.mkOption {
-    type = lib.types.bool;
-    default = false;
-    description = "enable the ly display manager";
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+
+  boot.loader = {
+    systemd-boot.enable = true;
+    systemd-boot.memtest86.enable = true;
+    efi.canTouchEfiVariables = true;
+    timeout = 1;
   };
 
-  config = lib.mkIf config.mods.displayManager.enable {
-      services.displayManager.enable = true;
-      services.displayManager.ly.enable = true;
-    services.displayManager.ly.settings = 
-    {
-      animation = "doom";
-      min_refresh_delta = 50;
-      bigclock = "en";
-      sleep_cmd = "systemctl sleep";
-      asterisk = "A";
-      auth_fails= 3;
-    };
-  };
+  services.journald.extraConfig = ''
+    SystemMaxUse=100M
+    SystemMaxFileSize=50M
+  '';
 }
-
