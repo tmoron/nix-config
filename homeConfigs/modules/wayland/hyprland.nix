@@ -8,6 +8,7 @@
   };
 
   config = lib.mkIf config.mods.hyprland.enable {
+    wayland.windowManager.hyprland.systemd.variables = [ "--all" ];
 
     wayland.windowManager.hyprland.enable = true;
     wayland.windowManager.hyprland.settings = {
@@ -144,12 +145,12 @@
   	      color = "rgba(1a1a1aee)";
   	    };
       
-        blur = {
-          enabled = true;
-          size = 3;
-          passes = 1;
-          vibrancy = 0.1696;
-        };
+        #blur = {
+        #  enabled = true;
+        #  size = 3;
+        #  passes = 1;
+        #  vibrancy = 0.1696;
+        #};
       };
   
       general = {

@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/05 19:55:21 by tomoron          ###   ########.fr        #
+#    Updated: 2025/09/17 18:18:51 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,8 +72,8 @@
     vi = "nvim";
     hl = "Hyprland";
     clr = "clear";
-    tagueule = "asusctl profile -P Quiet";
-    parle = "asusctl profile -P performance";
+#    tagueule = "asusctl profile -P Quiet";
+#    parle = "asusctl profile -P performance";
 	noidle = "systemctl --user stop hypridle";
   };
   
@@ -98,7 +98,6 @@
 		ref = "master";
     }}/themes";
 
-#	".local/bin/desk_sync".source = dotfiles/local/bin/desk_sync;
   };
   services.dunst.enable = true;
 

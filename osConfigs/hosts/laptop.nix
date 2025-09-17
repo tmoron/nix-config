@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/06 01:11:42 by tomoron          ###   ########.fr        #
+#    Updated: 2025/09/17 18:46:28 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@
   boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ]; #speeds up startup
 
   mods.displayManager.enable = true;
-  mods.virtualHost.enable = false;
+  mods.virtualHost.enable = true;
   mods.yubikey.pam.enable = true;
   networking.firewall.enable = false;
 
@@ -80,6 +80,15 @@
   mods.touchpad.enable = true;
 
   mods.powerSave.enable = true;
+  mods.powerSave.powahCommandAdditions = [
+    "supergfxctl -m Hybrid"
+    "if asusctl profile -p | grep Balanced ; then asusctl profile -P Performance; fi"
+    "if asusctl profile -p | grep Quiet ; then asusctl profile -P Balanced; fi"
+  ];
+  mods.powerSave.tagueuleCommandAdditions = [
+    "echo \"can't safely turn off the GPU\""
+	"asusctl profile -P Quiet"
+  ];
 
   services.asusd = {
     enable = true;
@@ -105,6 +114,7 @@
   mods.nvidia.enable = true;
   mods.nvidia.prime = true;
 
+
 #  services.usbmuxd.enable = true; #hangs when shutting down
 
 #  boot.plymouth = {
@@ -114,4 +124,6 @@
 #        inputs.plymouth-theme-ycontre-glow.defaultPackage.x86_64-linux
 #    ];
 #  };
+
+  services.flatpak.enable = true;
 }
