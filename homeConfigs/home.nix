@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/17 18:18:51 by tomoron          ###   ########.fr        #
+#    Updated: 2025/09/19 19:23:28 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,11 +86,17 @@
 
   home.sessionPath = [ "~/.local/bin" ];
 
+  
+  programs.rofi = {
+    enable = true;
+	theme = "rounded-nord-dark";
+  };
+
 
   home.file = { #should be able to make most of these in nix configs 
     ".config/wallpaper.png".source = lib.mkDefault utils/wallpaper_test.png;
     ".config/pc.jpg".source = lib.mkDefault utils/pc.jpg;
-  	".config/rofi/config.rasi".text = "@theme \"rounded-nord-dark.rasi\"";
+  	#".config/rofi/config.rasi".text = "@theme \"rounded-nord-dark.rasi\"";
 
 	".local/share/rofi/themes".source = "${builtins.fetchGit {
 		url = "https://github.com/newmanls/rofi-themes-collection";
@@ -105,6 +111,7 @@
 
   qt.style.name = "kvantum";
   catppuccin.kvantum.apply = true;
+  catppuccin.rofi.enable = false;
 
   catppuccin = {
   	enable = true;

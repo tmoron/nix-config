@@ -69,7 +69,7 @@
       lua require'lspconfig'.nixd.setup{}
       lua require'lspconfig'.glsl_analyzer.setup{}
       set signcolumn=no
-      
+
       nnoremap <leader>ff <cmd>Telescope find_files<cr>
       nnoremap <leader>fg <cmd>Telescope live_grep<cr>
       nnoremap <leader>fb <cmd>Telescope buffers<cr>

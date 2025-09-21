@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:45:04 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/17 18:47:27 by tomoron          ###   ########.fr        #
+#    Updated: 2025/09/21 00:51:55 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,11 +57,10 @@
 	    name = "powah";
 	    runtimeInputs = with pkgs; [ tlp ];
 	    text = ''
-	    if [[ $EUID -ne 0 ]]; then
-           echo "This script must be run as root" 
-           exit 1
-        fi
-		tlp ac
+	      if [[ $EUID -ne 0 ]]; then
+            exec sudo bash "$0" "$@"
+          fi
+		  tlp ac
         '' + lib.concatStringsSep "\n" config.mods.powerSave.powahCommandAdditions;
         })
 
@@ -69,11 +68,10 @@
 	    name = "tagueule";
 	    runtimeInputs = with pkgs; [ tlp ];
 	    text = ''
-	    if [[ $EUID -ne 0 ]]; then
-           echo "This script must be run as root" 
-           exit 1
-        fi
-		tlp bat
+	      if [[ $EUID -ne 0 ]]; then
+            exec sudo bash "$0" "$@"
+          fi
+		  tlp bat
         '' + lib.concatStringsSep "\n" config.mods.powerSave.tagueuleCommandAdditions;
         })
     ];

@@ -22,6 +22,7 @@
         "$mainMod, S, togglefloating,"
         "$mainMod, I, pin,"
         "$mainMod, D, exec, rofi -show drun -show-icons"
+        "$mainMod SHIFT, D, exec, rofi -show run -show-icons"
         "$mainMod, M, fullscreen, 1"
         "$mainMod, F, fullscreen, 0"
   
