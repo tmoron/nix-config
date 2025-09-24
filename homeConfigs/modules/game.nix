@@ -13,6 +13,8 @@
 	  mangohud
 	  moonlight-qt
 	  prismlauncher
+
+	  r2modman
 	];
   };
 }

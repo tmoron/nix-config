@@ -27,7 +27,7 @@
   };
 
   home.file = {
-    ".config/wallpaper.png".source = lib.mkDefault utils/wallpaper.png;
-    ".config/lock_screen.jpg".source = lib.mkDefault utils/lock_screen.jpg;
+    ".config/wallpaper.png".source = lib.mkDefault ../utils/wallpaper.png;
+    ".config/lock_screen.jpg".source = lib.mkDefault ../utils/lock_screen.jpg;
   };
 }
