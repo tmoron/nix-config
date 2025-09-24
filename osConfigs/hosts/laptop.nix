@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/17 18:46:28 by tomoron          ###   ########.fr        #
+#    Updated: 2025/09/23 04:08:25 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,16 +79,20 @@
 
   mods.touchpad.enable = true;
 
-  mods.powerSave.enable = true;
-  mods.powerSave.powahCommandAdditions = [
-    "supergfxctl -m Hybrid"
-    "if asusctl profile -p | grep Balanced ; then asusctl profile -P Performance; fi"
-    "if asusctl profile -p | grep Quiet ; then asusctl profile -P Balanced; fi"
-  ];
-  mods.powerSave.tagueuleCommandAdditions = [
-    "echo \"can't safely turn off the GPU\""
-	"asusctl profile -P Quiet"
-  ];
+  mods.powerSave = {
+    enable = true;
+    powahCommandAdditions = [
+      "supergfxctl -m Hybrid"
+      "if asusctl profile -p | grep Balanced ; then asusctl profile -P Performance; fi"
+      "if asusctl profile -p | grep Quiet ; then asusctl profile -P Balanced; fi"
+    ];
+    tagueuleCommandAdditions = [
+      "echo \"can't safely turn off the GPU\""
+      "asusctl profile -P Quiet"
+    ];
+	cpuMaxFreq = 4465261;
+
+  };
 
   services.asusd = {
     enable = true;

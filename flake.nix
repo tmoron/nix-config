@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/06 00:58:57 by tomoron          ###   ########.fr        #
+#    Updated: 2025/09/24 02:10:00 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,9 +51,9 @@
 		];
       };
 
-	  homeConfig = {flakeName, extraModules ? [], username ? "tom", homeDir ? "/home/tom"}: home-manager.lib.homeManagerConfiguration {
+	  homeConfig = {flakeName, sops ? true, extraModules ? [], username ? "tom", homeDir ? "/home/tom"}: home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-	    extraSpecialArgs = { inherit inputs; username = username; homeDir = homeDir; isOs = false; };
+	    extraSpecialArgs = { inherit inputs; username = username; homeDir = homeDir; isOs = false; configSops = sops; };
         modules = nixpkgs.lib.concatLists [
 		  [
 		    ./homeConfigs/home.nix
@@ -85,8 +85,8 @@
 
 
       homeConfigurations = {
-	    vbox = homeConfig { flakeName = "vbox"; };
-	    ft = homeConfig { flakeName = "ft"; username = "tomoron"; homeDir = "/home/tomoron";};
+	    vbox = homeConfig { flakeName = "vbox";};
+	    ft = homeConfig { flakeName = "ft"; username = "tomoron"; homeDir = "/home/tomoron"; sops = false;};
 	    laptop = homeConfig { flakeName = "laptop"; };
 	    desktop = homeConfig { flakeName = "desktop"; };
 	    server = homeConfig { flakeName = "server"; };

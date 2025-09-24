@@ -14,7 +14,8 @@
     wayland.windowManager.hyprland.settings = {
       "$mainMod" = "SUPER";
       bind = [
-  	  " , Print, exec, grim -t png -g \"$(slurp)\" /dev/stdout | tee ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png | wl-copy -t image/png"
+  	    " , Print, exec, grim -t png -g \"$(slurp)\" /dev/stdout | tee ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png | wl-copy -t image/png"
+  	    " SHIFT, Print, exec, grim -t png /dev/stdout | tee ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png | wl-copy -t image/png"
         "$mainMod, Return, exec, alacritty"
         "CTRL_ALT, Q, killactive,"
         "CTRL_ALT_SHIFT, Q, forcekillactive,"
