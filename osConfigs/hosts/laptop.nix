@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/23 04:08:25 by tomoron          ###   ########.fr        #
+#    Updated: 2025/10/04 22:23:34 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@
   };
 
   boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ]; #speeds up startup
+  programs.droidcam.enable = true;
 
   mods.displayManager.enable = true;
   mods.virtualHost.enable = true;
@@ -79,6 +80,9 @@
 
   mods.touchpad.enable = true;
 
+  programs.gamescope.enable = true;
+#  programs.gamescope.capSysNice = true;
+
   mods.powerSave = {
     enable = true;
     powahCommandAdditions = [
@@ -119,7 +123,7 @@
   mods.nvidia.prime = true;
 
 
-#  services.usbmuxd.enable = true; #hangs when shutting down
+  services.usbmuxd.enable = true; #hangs when shutting down
 
 #  boot.plymouth = {
 #    enable = true;

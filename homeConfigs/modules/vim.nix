@@ -29,7 +29,8 @@
       autocmd BufWinEnter *.* silent! loadview
       set tabstop=4
       set scrolloff=10
-      set preserveindent
+      set smartindent 
+	  set shiftwidth=4
       map <silent> <C-N> :bnext<CR>
       map <silent> <C-P> :bprevious<CR>
       nmap <silent> <c-k> :wincmd k<CR>
@@ -68,7 +69,7 @@
       lua require'lspconfig'.clangd.setup{}
       lua require'lspconfig'.nixd.setup{}
       lua require'lspconfig'.glsl_analyzer.setup{}
-      set signcolumn=no
+      set signcolumn=auto
 
       nnoremap <leader>ff <cmd>Telescope find_files<cr>
       nnoremap <leader>fg <cmd>Telescope live_grep<cr>
