@@ -6,11 +6,11 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2025/10/04 22:23:34 by tomoron          ###   ########.fr        #
+#    Updated: 2025/10/11 00:23:01 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   boot.initrd.luks.yubikeySupport = true;
@@ -65,6 +65,7 @@
         SUBSYSTEM=="kvmfr", OWNER="tom", GROUP="kvm", MODE="0660"
     '';
     environment.systemPackages = with pkgs; [ looking-glass-client ];
+    services.supergfxd.settings.mode = "Vfio";
   };
 
   networking.dhcpcd.enable = false;
@@ -105,7 +106,7 @@
 
   services.supergfxd.enable = true;
   services.supergfxd.settings = {
-    mode = "Integrated";
+    mode = lib.mkDefault "Integrated";
     vfio_enable = true;
     vfio_save = true;
     always_reboot = false;

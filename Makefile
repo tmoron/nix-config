@@ -27,5 +27,5 @@ cleanup :
 	nix-env --delete-generations +1
 	sudo nix-collect-garbage -d
 
-optimise :
+optimize :
 	nix-store --optimize -vv

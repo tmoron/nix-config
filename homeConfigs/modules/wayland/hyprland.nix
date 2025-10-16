@@ -10,12 +10,14 @@
   config = lib.mkIf config.mods.hyprland.enable {
     wayland.windowManager.hyprland.systemd.variables = [ "--all" ];
 
+	programs.hyprshot.enable = true;
+
     wayland.windowManager.hyprland.enable = true;
     wayland.windowManager.hyprland.settings = {
       "$mainMod" = "SUPER";
       bind = [
-  	    " , Print, exec, grim -t png -g \"$(slurp)\" /dev/stdout | tee ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png | wl-copy -t image/png"
-  	    " SHIFT, Print, exec, grim -t png /dev/stdout | tee ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png | wl-copy -t image/png"
+  	    " , Print, exec, hyprshot -m region -o ~/screenshots -f $(date +%Y-%m-%d_%H-%M-%S).png"
+  	    " SHIFT, Print, exec, hyprshot -m output -m active -o ~/screenshots -f $(date +%Y-%m-%d_%H-%M-%S).png" 
         "$mainMod, Return, exec, alacritty"
         "CTRL_ALT, Q, killactive,"
         "CTRL_ALT_SHIFT, Q, forcekillactive,"
@@ -165,6 +167,8 @@
         allow_tearing = false;
         layout = "dwindle";
       };
+
+	  layerrule = "noanim, selection";
   
   	  cursor.no_warps = true;
   
