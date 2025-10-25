@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:04 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/06 00:57:05 by tomoron          ###   ########.fr        #
+#    Updated: 2025/10/26 00:59:12 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@
   networking.hostName = "nixos-fixe";
 
   hardware.cpu.intel.updateMicrocode = true;
+  mods.yubikey.pam.enable = true;
 
   boot.kernelModules = [ "kvm-intel" "nvidia" ];
   mods.displayManager.enable = true;
