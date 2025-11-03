@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 23:47:19 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/06 01:12:34 by tomoron          ###   ########.fr        #
+#    Updated: 2025/10/26 21:12:18 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@
     open = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description = "use beta version of the drivers";
+      description = "use open version of the drivers (on newer gpu)";
     };
     containerToolkit = lib.mkOption {
       type = lib.types.bool;

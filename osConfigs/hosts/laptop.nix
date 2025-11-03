@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2025/10/11 00:23:01 by tomoron          ###   ########.fr        #
+#    Updated: 2025/10/29 21:15:44 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,6 @@
 
   mods.touchpad.enable = true;
 
-  programs.gamescope.enable = true;
 #  programs.gamescope.capSysNice = true;
 
   mods.powerSave = {
@@ -98,6 +97,7 @@
 	cpuMaxFreq = 4465261;
 
   };
+
 
   services.asusd = {
     enable = true;
