@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2025/10/29 21:15:44 by tomoron          ###   ########.fr        #
+#    Updated: 2025/11/14 11:58:00 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,12 +65,13 @@
         SUBSYSTEM=="kvmfr", OWNER="tom", GROUP="kvm", MODE="0660"
     '';
     environment.systemPackages = with pkgs; [ looking-glass-client ];
-    services.supergfxd.settings.mode = "Vfio";
   };
 
   networking.dhcpcd.enable = false;
   systemd.network.enable = true;
   networking.useNetworkd = true;
+
+  programs.noisetorch.enable = true;
 
   hardware.bluetooth.enable = true;
 
@@ -135,4 +136,15 @@
 #  };
 
   services.flatpak.enable = true;
+
+
+  services.dnsmasq.enable = true;
+  services.dnsmasq.settings = {
+	  "dhcp-range" = ["192.168.1.150,192.168.1.250"];
+	  "dhcp-option" = [
+	    "3,192.168.1.254"
+	    "6,1.1.1.1,8.8.8.8,8.8.4.4"
+	  ];
+	  "interface" = "enp4s0f4u1";
+	};
 }

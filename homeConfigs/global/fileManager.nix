@@ -4,6 +4,8 @@
     enable = true;
 	settings.mgr.sort_dir_first=false;
   };
+
+  home.sessionVariables.BROWSER = "yazi";
   programs.bash.bashrcExtra = ''
     function y() {
       local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
