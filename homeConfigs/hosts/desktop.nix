@@ -5,8 +5,8 @@
   wayland.windowManager.hyprland.settings = {
     monitor = [
 	  "DP-1, 1280x1024@75.03Hz, -3200x0, auto"
-      "HDMI-A-1, 1920x1080@60, -1920x0, auto"
-	  "HDMI-A-3, 1920x1080@74.97Hz, 0x0, auto"
+      "HDMI-A-1, 1920x1080@60Hz, -1920x0, auto"
+	  "HDMI-A-3, 1920x1080@60Hz, 0x0, auto"
 	  "DP-3, 1920x1080@60.00Hz, 1920x0, auto"
 	  "DP-4, 1280x1024@75.03Hz, 3840x0, auto"
     ];
