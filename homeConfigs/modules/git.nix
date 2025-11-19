@@ -11,9 +11,9 @@
     programs.git = {
       enable = true;
 	  lfs.enable = true;
-      userEmail = "tomoron@student.42angouleme.fr";
-      userName = "tomoron";
-      extraConfig = {
+      settings = {
+        user.email = "tomoron@student.42angouleme.fr";
+        user.name = "tomoron";
       	init.defaultBranch="master";
       	pull.rebase = true;
       	push.autoSetupRemote = true;
@@ -21,10 +21,10 @@
 		help.autocorrect = 1;
 		user.signingkey = "251B4BD73683A8DF13D760A868BFAFE31DF313AD";
 		commit.gpgsign = true;
-      };
-      aliases = {
-        fuck = "!f() { git reset --hard \"@{upstream}\" && git restore . && git clean -f .; };f";
-        back = "reset HEAD~";
+        aliase = {
+          fuck = "!f() { git reset --hard \"@{upstream}\" && git restore . && git clean -f .; };f";
+          back = "reset HEAD~";
+        };
       };
     };
   };
