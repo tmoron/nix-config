@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 23:47:16 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/06 00:56:38 by tomoron          ###   ########.fr        #
+#    Updated: 2025/11/17 14:32:13 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@
       services.displayManager.ly.enable = true;
     services.displayManager.ly.settings = 
     {
-      animation = "doom";
+      animation = "gameoflife";
       min_refresh_delta = 50;
       bigclock = "en";
       sleep_cmd = "systemctl sleep";
