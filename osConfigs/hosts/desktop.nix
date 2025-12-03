@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:04 by tomoron           #+#    #+#              #
-#    Updated: 2025/11/17 11:46:11 by tomoron          ###   ########.fr        #
+#    Updated: 2025/12/01 19:49:12 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,4 +43,5 @@
 #  };
 
   services.openssh.enable = true;
+  programs.droidcam.enable = true;
 }
