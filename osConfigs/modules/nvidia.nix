@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 23:47:19 by tomoron           #+#    #+#              #
-#    Updated: 2025/10/26 21:12:18 by tomoron          ###   ########.fr        #
+#    Updated: 2025/12/23 18:42:01 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@
     prime = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "enable nvidia prime offload (saves battery)";
+      description = "enable nvidia prime offload (saves battery). prime ?";
     };
   };
   

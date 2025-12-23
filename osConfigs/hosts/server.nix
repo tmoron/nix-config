@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:09 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/06 01:26:26 by tomoron          ###   ########.fr        #
+#    Updated: 2025/12/16 20:00:04 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,32 @@ in
     config.boot.kernelPackages.gasket #driver for google coral edge tpu
   ];
 
+
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
   services.openssh.ports = [ 1880 ];
 
+  sops.secrets."cloudflared/token" = {};
+  systemd.services.cloudflared = {
+	after = [
+      "network.target"
+      "network-online.target"
+    ];
+	wants = [
+      "network.target"
+      "network-online.target"
+    ];
+	wantedBy = [ "multi-user.target" ];
+	serviceConfig = {
+	  ExecStart = ''${pkgs.bash}/bin/bash -c '${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --token "$(cat ${config.sops.secrets."cloudflared/token".path})"' '';
+	  Restart = "on-failure";
+	};
+  };
+
   boot.extraModprobeConfig = ''
     options amdgpu virtual_display=1
-  ''; #create dummy display to be able to start x11
+# create dummy display to be able to start x11
+  ''; 
 
   boot.supportedFilesystems = [ "zfs" ];
 
@@ -67,6 +86,10 @@ in
 
   services.fail2ban.enable = true;
   services.fail2ban.bantime = "5h";
+
+  mods.nvidia.enable = true;
+  mods.nvidia.beta = true;
+  mods.nvidia.containerToolkit = true;
 
   mods.docker = {
     enable = true;

@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/24 02:10:00 by tomoron          ###   ########.fr        #
+#    Updated: 2025/12/16 19:01:21 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,12 @@
       osConfig = {flakeName, extraModules ? []}: nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; flakeName = flakeName; };
         modules = nixpkgs.lib.concatLists [
-		  [./osConfigs/os.nix ./osConfigs/hosts/${flakeName}.nix catppuccin.nixosModules.catppuccin]
+		  [
+		    ./osConfigs/os.nix
+			./osConfigs/hosts/${flakeName}.nix
+			catppuccin.nixosModules.catppuccin
+			inputs.sops-nix.nixosModules.sops
+		  ]
 		  extraModules
 		];
       };
