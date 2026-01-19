@@ -168,7 +168,11 @@
         layout = "dwindle";
       };
 
-	  layerrule = "noanim, selection";
+	  layerrule = {
+		name = "no_anim_for_selection";
+        no_anim = "on";
+        "match:namespace" = "selection";
+	  };
   
   	  cursor.no_warps = true;
   
