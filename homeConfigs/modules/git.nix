@@ -21,7 +21,7 @@
 		help.autocorrect = 1;
 		user.signingkey = "251B4BD73683A8DF13D760A868BFAFE31DF313AD";
 		commit.gpgsign = true;
-        aliase = {
+        alias = {
           fuck = "!f() { git reset --hard \"@{upstream}\" && git restore . && git clean -f .; };f";
           back = "reset HEAD~";
         };
