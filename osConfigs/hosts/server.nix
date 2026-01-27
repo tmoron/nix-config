@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:09 by tomoron           #+#    #+#              #
-#    Updated: 2025/12/16 20:00:04 by tomoron          ###   ########.fr        #
+#    Updated: 2026/01/27 18:56:23 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ let
     8083 137 138 139 445 548 3702 5357 #prob some samba shit
     24454 #minecraft voice chat
     25565 # minecraft server
+	9091 # transmission web interface
   ];
   portRanges = [
     {from = 47950; to = 49000;} #moonlight (wolf)
