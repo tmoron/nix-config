@@ -44,6 +44,7 @@
     blender
 	wireshark
 	localsend
+	impala
   ];
 
 }

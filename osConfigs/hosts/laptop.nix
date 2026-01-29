@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/01/13 16:32:20 by tomoron          ###   ########.fr        #
+#    Updated: 2026/01/29 13:16:59 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,10 @@
   networking.firewall.enable = false;
 
   networking.hostName = "patate-douce";
-  networking.wireless.enable = true;
+#  networking.wireless.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
+  networking.wireless.iwd.enable = true;
+  networking.wireless.allowAuxiliaryImperativeNetworks = true;
   networking.networkmanager.enable = false;
 
   specialisation.vfio_ready.configuration = {
@@ -57,8 +60,6 @@
             "/dev/random", "/dev/urandom",
             "/dev/ptmx", "/dev/kvm",
             "/dev/rtc","/dev/hpet",
-            "/dev/input/by-id/[some_mouse_device]-event-mouse",
-            "/dev/input/by-id/[some_keyboard_device]-event-kbd"
         ]
     '';
     services.udev.extraRules = ''
@@ -86,8 +87,6 @@
 
 
   mods.touchpad.enable = true;
-
-#  programs.gamescope.capSysNice = true;
 
   mods.powerSave = {
     enable = true;
@@ -130,7 +129,7 @@
   mods.nvidia.prime = true;
 
 
-  services.usbmuxd.enable = true; #hangs when shutting down
+  services.usbmuxd.enable = true; #sometimes hangs when shutting down
 
 #  boot.plymouth = {
 #    enable = true;
@@ -142,14 +141,4 @@
 
   services.flatpak.enable = true;
 
-
-  services.dnsmasq.enable = true;
-  services.dnsmasq.settings = {
-	  "dhcp-range" = ["192.168.1.150,192.168.1.250"];
-	  "dhcp-option" = [
-	    "3,192.168.1.254"
-	    "6,1.1.1.1,8.8.8.8,8.8.4.4"
-	  ];
-	  "interface" = "enp4s0f4u1";
-	};
 }

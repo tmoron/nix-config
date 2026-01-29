@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 20:37:07 by tomoron           #+#    #+#              #
-#    Updated: 2025/12/31 01:13:53 by tomoron          ###   ########.fr        #
+#    Updated: 2026/01/19 12:02:07 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,7 @@
       libvorbis
       SDL
       SDL2_image
-      glew110
+      glew_1_10
       libidn
       tbb
       
