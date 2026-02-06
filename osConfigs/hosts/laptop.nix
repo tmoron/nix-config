@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/01/29 13:16:59 by tomoron          ###   ########.fr        #
+#    Updated: 2026/02/03 14:40:35 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,6 @@
   networking.networkmanager.enable = false;
 
   specialisation.vfio_ready.configuration = {
-    boot.kernel.sysctl."vm.nr_hugepages" = 5120;
     boot.extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
     boot.kernelModules = [ "kvmfr" ];
     boot.extraModprobeConfig = ''
@@ -141,4 +140,6 @@
 
   services.flatpak.enable = true;
 
+
+  services.k3s.enable = true;
 }

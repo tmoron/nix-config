@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
-#    Updated: 2025/11/22 22:07:00 by tomoron          ###   ########.fr        #
+#    Updated: 2026/02/06 23:43:40 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@
     unison
     brightnessctl  
     playerctl
-    python3
     vlc
     nix-index
     yubikey-manager
