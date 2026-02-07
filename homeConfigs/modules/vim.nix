@@ -49,6 +49,12 @@
       }))
       vim.lsp.enable('pylsp')
 
+	  vim.diagnostic.config({
+        virtual_lines = {
+          current_line = true
+        }
+      })
+
     '';
 
     programs.neovim.extraConfig = ''
