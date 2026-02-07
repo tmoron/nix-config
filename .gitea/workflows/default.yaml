@@ -3,7 +3,7 @@ run-name: iso building
 on:
   push:
     branches:
-      - 'master'
+      - 'iso'
 
 jobs:
   test:
