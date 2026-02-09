@@ -45,7 +45,15 @@
       vim.lsp.enable('glsl_analyzer')
 
       vim.lsp.config('pylsp', coq.lsp_ensure_capabilities({
-        cmd = {"pylsp", "-vvv", "--log-file", "/tmp/lsp.log"}
+        settings = {
+          pylsp = {
+            plugins = {
+              pycodestyle = {
+                ignore = {'E501'},
+              }
+            }
+          }
+        }
       }))
       vim.lsp.enable('pylsp')
 
