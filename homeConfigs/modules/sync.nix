@@ -46,7 +46,7 @@ in
     text = (lib.strings.concatStrings [''
 		auto=true
 		root=${config.mods.sync.homeFolder}
-		root=ssh://tom@free.tmoron.fr:1880/${config.mods.sync.destFolder}
+		root=ssh://tom@d.tmoron.fr:1880/${config.mods.sync.destFolder}
 	  ''
 	  (lib.strings.concatMapStrings (x: "\npath=" + x) (( if config.mods.sync.defaultSynced then defPathLst else [] ) ++ config.mods.sync.syncedAdditions ))
       (if !(isNull config.mods.sync.customHostName) then "\nclientHostName=${config.mods.sync.customHostName}" else "")
