@@ -90,7 +90,7 @@
 
 
       homeConfigurations = {
-	    vbox = homeConfig { flakeName = "vbox";};
+	    default = homeConfig { flakeName = "default";};
 	    ft = homeConfig { flakeName = "ft"; username = "tomoron"; homeDir = "/home/tomoron"; sops = false;};
 	    laptop = homeConfig { flakeName = "laptop"; };
 	    desktop = homeConfig { flakeName = "desktop"; };
