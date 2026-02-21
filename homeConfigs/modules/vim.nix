@@ -32,7 +32,7 @@
 #      vim.lsp.config('pylsp', {})
 #    '';
 
-    programs.neovim.extraLuaConfig = ''
+    programs.neovim.initLua= ''
       local coq = require "coq"
 
       vim.lsp.config('clangd', coq.lsp_ensure_capabilities({}))
