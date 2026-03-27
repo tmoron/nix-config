@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/03/13 15:09:11 by tomoron          ###   ########.fr        #
+#    Updated: 2026/03/27 11:49:20 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,7 +105,7 @@
 
   services.asusd = {
     enable = true;
-    enableUserService = true;
+#    enableUserService = true;
   };
 
   services.supergfxd.enable = true;

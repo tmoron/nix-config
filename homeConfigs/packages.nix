@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
-#    Updated: 2026/02/06 23:43:40 by tomoron          ###   ########.fr        #
+#    Updated: 2026/03/27 12:00:06 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@
     htop
     gnumake
     git
-    neofetch
+    fastfetch 
     clang
     ninja
     gdb

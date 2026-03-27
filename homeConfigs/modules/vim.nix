@@ -32,7 +32,7 @@
 #      vim.lsp.config('pylsp', {})
 #    '';
 
-    programs.neovim.extraLuaConfig = ''
+    programs.neovim.initLua= ''
 
       vim.lsp.enable('clangd')
 
