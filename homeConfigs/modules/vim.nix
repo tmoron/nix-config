@@ -32,29 +32,14 @@
 #      vim.lsp.config('pylsp', {})
 #    '';
 
-    programs.neovim.initLua= ''
-      local coq = require "coq"
+    programs.neovim.extraLuaConfig = ''
 
-      vim.lsp.config('clangd', coq.lsp_ensure_capabilities({}))
       vim.lsp.enable('clangd')
 
-      vim.lsp.config('nixd', coq.lsp_ensure_capabilities({}))
       vim.lsp.enable('nixd')
 
-      vim.lsp.config('glsl_analyzer', coq.lsp_ensure_capabilities({}))
       vim.lsp.enable('glsl_analyzer')
 
-      vim.lsp.config('pylsp', coq.lsp_ensure_capabilities({
-        settings = {
-          pylsp = {
-            plugins = {
-              pycodestyle = {
-                ignore = {'E501'},
-              }
-            }
-          }
-        }
-      }))
       vim.lsp.enable('pylsp')
 
 	  vim.diagnostic.config({
@@ -70,7 +55,6 @@
       set ai
       autocmd BufWinLeave *.* mkview
       autocmd BufWinEnter *.* silent! loadview
-	  autocmd VimEnter * COQnow --shut-up
       set tabstop=4
       set scrolloff=10
       set smartindent 
@@ -106,9 +90,16 @@
       Plug 'lambdalisue/fern-renderer-nerdfont.vim'
       Plug 'lambdalisue/fern-git-status.vim'
       Plug 'lambdalisue/fern.vim'
-      Plug 'ms-jpq/coq_nvim', { 'branch': 'coq' }
-      Plug 'ms-jpq/coq.artifacts', { 'branch': 'artifacts' }
-      Plug 'ms-jpq/coq.thirdparty', { 'branch': '3p' }
+	  Plug 'hrsh7th/nvim-cmp'
+	  Plug 'ThePrimeagen/99'
+	  Plug 'hrsh7th/cmp-nvim-lsp'
+      Plug 'hrsh7th/cmp-buffer'
+      Plug 'hrsh7th/cmp-path'
+      Plug 'hrsh7th/cmp-cmdline'
+      Plug 'hrsh7th/nvim-cmp'
+      
+      Plug 'hrsh7th/cmp-vsnip'
+      Plug 'hrsh7th/vim-vsnip'
       call plug#end()
       
       colorscheme catppuccin-mocha

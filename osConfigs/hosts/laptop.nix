@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/02/03 14:40:35 by tomoron          ###   ########.fr        #
+#    Updated: 2026/03/13 15:09:11 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -141,5 +141,5 @@
   services.flatpak.enable = true;
 
 
-  services.k3s.enable = true;
+#  services.k3s.enable = true;
 }
