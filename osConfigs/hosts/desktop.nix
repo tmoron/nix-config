@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:04 by tomoron           #+#    #+#              #
-#    Updated: 2025/12/23 18:41:48 by tomoron          ###   ########.fr        #
+#    Updated: 2026/03/30 13:46:43 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,4 +44,8 @@
 
   services.openssh.enable = true;
   programs.droidcam.enable = true;
+
+  boot.kernelPackages = pkgs.linuxPackages;
+  boot.supportedFilesystems = [ "zfs" ];
+  networking.hostId = "98e475dd";
 }

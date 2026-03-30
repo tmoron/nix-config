@@ -13,6 +13,9 @@ update:
 
 os:
 	sudo nixos-rebuild $(MODE) $(FLAGS) --flake $(FLAKE)#$(HOST)
+
+hoem : home
+
 home :
 	home-manager switch $(FLAGS) --flake $(FLAKE)#$(HOST)
 
