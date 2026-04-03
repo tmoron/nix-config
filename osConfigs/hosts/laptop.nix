@@ -6,16 +6,16 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/03/27 11:49:20 by tomoron          ###   ########.fr        #
+#    Updated: 2026/04/03 12:22:28 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 { lib, config, pkgs, ... }:
 
 {
-  boot.initrd.luks.yubikeySupport = true;
   services.udev.packages = [ pkgs.yubikey-personalization ];
   boot.initrd.kernelModules = [ "vfat" "nls_cp437" "nls_iso8859-1" "usbhid" ];
+  boot.initrd.luks.yubikeySupport = true;
   boot.initrd.luks.devices.cryptroot = {
       device = "/dev/disk/by-uuid/a4593b01-069d-4a5d-a550-74a762b89b3f";
       allowDiscards = true;
@@ -35,7 +35,6 @@
   programs.droidcam.enable = true;
 
   mods.displayManager.enable = true;
-  mods.virtualHost.enable = true;
   mods.yubikey.pam.enable = true;
   networking.firewall.enable = false;
 
@@ -47,6 +46,8 @@
   networking.networkmanager.enable = false;
 
   specialisation.vfio_ready.configuration = {
+
+    mods.virtualHost.enable = true;
     boot.extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
     boot.kernelModules = [ "kvmfr" ];
     boot.extraModprobeConfig = ''
@@ -66,6 +67,7 @@
     '';
     environment.systemPackages = with pkgs; [ looking-glass-client ];
   };
+
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="df11", TAG+="uaccess"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", TAG+="uaccess"
@@ -91,12 +93,11 @@
     enable = true;
     powahCommandAdditions = [
       "supergfxctl -m Hybrid"
-      "if asusctl profile -p | grep Balanced ; then asusctl profile -P Performance; fi"
-      "if asusctl profile -p | grep Quiet ; then asusctl profile -P Balanced; fi"
+      "if [ $# -gt 0 ] && [[ \"$1\" == \"moar\" ]] ; then asusctl profile set Performance; fi"
     ];
     tagueuleCommandAdditions = [
       "echo \"can't safely turn off the GPU\""
-      "asusctl profile -P Quiet"
+      "asusctl profile set Quiet"
     ];
 	cpuMaxFreq = 4465261;
 

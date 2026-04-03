@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 23:37:58 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/06 00:56:38 by tomoron          ###   ########.fr        #
+#    Updated: 2026/04/03 11:46:09 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,27 @@
     systemd-boot.memtest86.enable = true;
     efi.canTouchEfiVariables = true;
     timeout = 1;
+  };
+
+  boot.consoleLogLevel = 3;
+  boot.initrd.verbose = false;
+  boot.kernelParams = [
+    "quiet"
+    "udev.log_level=3"
+    "systemd.show_status=auto"
+  ];
+
+  catppuccin.plymouth.enable = false;
+
+  boot.plymouth = {
+	  enable = true;
+	  theme = "nixos-bgrt";
+	  themePackages = with pkgs; [ #(adi1090x-plymouth-themes.override { 
+#		  selected_themes = [ "black_hud" "circle_hud" "square_hud" "spinner_alt" ];
+#	    })
+#	    catppuccin-plymouth
+		nixos-bgrt-plymouth
+	  ];
   };
 
   services.journald.extraConfig = ''

@@ -14,6 +14,12 @@ update:
 os:
 	sudo nixos-rebuild $(MODE) $(FLAGS) --flake $(FLAKE)#$(HOST)
 
+vm:
+	sudo nixos-rebuild build-vm $(FLAGS) --flake $(FLAKE)#$(HOST)
+	./result/bin/*
+	rm ./result
+	rm ./*.qcow2
+
 hoem : home
 
 home :
