@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/01/27 18:56:23 by tomoron          ###   ########.fr        #
+#    Updated: 2026/04/09 13:21:07 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,15 @@ in
   ];
 
 
+
+
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
   services.openssh.ports = [ 1880 ];
 
   sops.secrets."cloudflared/token" = {};
+  sops.secrets."zfs/p_user" = {};
+  sops.secrets."zfs/p_token" = {};
   systemd.services.cloudflared = {
 	after = [
       "network.target"
@@ -60,6 +64,24 @@ in
   ''; 
 
   boot.supportedFilesystems = [ "zfs" ];
+
+  services.zfs = {
+	  autoScrub.enable = true;
+	  zed.settings = {
+		ZED_NOTIFY_VERBOSE=1;
+		ZED_PUSHOVER_TOKEN="$(cat ${config.sops.secrets."zfs/p_token".path})";
+		ZED_PUSHOVER_USER="$(cat ${config.sops.secrets."zfs/p_user".path})";
+	  };
+  };
+
+  services.sanoid.enable = true;
+  services.sanoid.datasets."raid_vol" = {
+	  daily = 31;
+	  hourly = 24;
+	  monthly = 12;
+	  autosnap = true;
+	  autoprune = true;
+  };
 
   environment.systemPackages = with pkgs; [
     zfs
