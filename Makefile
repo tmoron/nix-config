@@ -1,9 +1,14 @@
 HOST ?= $(file < /etc/nixosFlakeName)
 THREADS ?= $(shell nproc)
 FLAKE ?= .
-MODE ?= boot
+MODE ?= switch
+
 
 FLAGS = --impure --cores $(THREADS) -j $(THREADS) 
+
+ifdef OFFLINE
+	FLAGS += --option binary-caches ''
+endif
 
 all: os home
 

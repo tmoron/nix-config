@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/04/03 12:22:28 by tomoron          ###   ########.fr        #
+#    Updated: 2026/04/10 20:07:49 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,8 @@
 
   programs.noisetorch.enable = true;
 
+  services.postgresql.enable = true;
+
   hardware.bluetooth.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -131,16 +133,28 @@
 
   services.usbmuxd.enable = true; #sometimes hangs when shutting down
 
-#  boot.plymouth = {
-#    enable = true;
-#    theme = "ycontre-glow";
-#    themePackages = [
-#        inputs.plymouth-theme-ycontre-glow.defaultPackage.x86_64-linux
-#    ];
-#  };
 
-  services.flatpak.enable = true;
+  services.avahi.enable = true;
+  services.pipewire = {
+    raopOpenFirewall = true;
+  
+    extraConfig.pipewire = {
+      "10-airplay"."context.modules" = [
+        { name = "libpipewire-module-raop-discover"; }
+      ];
+    };
+  };
 
-
-#  services.k3s.enable = true;
+  services.pipewire.wireplumber.extraConfig."10-bluez" = {
+    "monitor.bluez.properties" = {
+      "bluez5.enable-sbc-xq" = true;
+      "bluez5.enable-msbc" = true;
+      "bluez5.enable-hw-volume" = true;
+    };
+  };
+  hardware.bluetooth.settings = {
+    General = {
+      Enable = "Source,Sink,Media,Socket";
+    };
+  };
 }

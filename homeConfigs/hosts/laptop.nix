@@ -47,4 +47,5 @@
 	impala
   ];
 
+  services.mpris-proxy.enable = true;
 }
