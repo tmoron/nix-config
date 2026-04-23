@@ -1,5 +1,9 @@
 name: update the nix flake lock automatically every week
 run-name: update
+
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: "0 4 * * 1"
@@ -17,3 +21,11 @@ jobs:
 
       - name: run the update
         run: nix flake update
+
+      - name: Commit and push
+        run: |
+          git config user.name "Update action"
+          git config user.email "update-action@no-one.com"
+          git add .
+          git commit -m "Auto update"
+          git push
