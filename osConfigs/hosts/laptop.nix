@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/04/10 20:07:49 by tomoron          ###   ########.fr        #
+#    Updated: 2026/04/18 19:04:59 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,8 +86,11 @@
 
   environment.systemPackages = with pkgs; [
     acpi # can be user (global)
+	openvr
   ];
 
+  programs.alvr.enable = true;
+  
 
   mods.touchpad.enable = true;
 
