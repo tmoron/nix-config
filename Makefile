@@ -4,7 +4,8 @@ FLAKE ?= .
 MODE ?= switch
 
 
-FLAGS = --impure --cores $(THREADS) -j $(THREADS) 
+EXTRAFLAGS ?= 
+FLAGS = --impure --cores $(THREADS) -j $(THREADS) $(EXTRAFLAGS)
 
 ifdef OFFLINE
 	FLAGS += --option binary-caches ''

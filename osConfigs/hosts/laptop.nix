@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/04/18 19:04:59 by tomoron          ###   ########.fr        #
+#    Updated: 2026/04/25 21:44:25 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 {
   services.udev.packages = [ pkgs.yubikey-personalization ];
   boot.initrd.kernelModules = [ "vfat" "nls_cp437" "nls_iso8859-1" "usbhid" ];
+  boot.initrd.systemd.enable = false;
   boot.initrd.luks.yubikeySupport = true;
   boot.initrd.luks.devices.cryptroot = {
       device = "/dev/disk/by-uuid/a4593b01-069d-4a5d-a550-74a762b89b3f";
@@ -33,6 +34,7 @@
 
   boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ]; #speeds up startup
   programs.droidcam.enable = true;
+
 
   mods.displayManager.enable = true;
   mods.yubikey.pam.enable = true;
