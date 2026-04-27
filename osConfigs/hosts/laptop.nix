@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/04/25 21:44:25 by tomoron          ###   ########.fr        #
+#    Updated: 2026/04/27 12:53:46 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@
 	openvr
   ];
 
-  programs.alvr.enable = true;
+#  programs.alvr.enable = true;
   
 
   mods.touchpad.enable = true;
@@ -162,4 +162,5 @@
       Enable = "Source,Sink,Media,Socket";
     };
   };
+
 }
