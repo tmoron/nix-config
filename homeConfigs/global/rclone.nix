@@ -5,7 +5,7 @@
   programs.rclone.remotes.nextcloud = {
     config = {
 	  type = "webdav";
-	  url = "https://nc.tmoron.fr/remote.php/dav/files/tom";
+	  url = "https://dnc.tmoron.fr/remote.php/dav/files/tom";
 	  vendor = "nextcloud";
 	  user = "tom";
     };
