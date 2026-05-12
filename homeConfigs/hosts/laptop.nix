@@ -12,7 +12,7 @@
 
     "custom/fans" = {
       exec-if  = "test \"$(cat /sys/class/hwmon/hwmon6/fan1_input)\" -gt 0 -o \"$(cat /sys/class/hwmon/hwmon6/fan2_input)\" -gt 0";
-      exec  = "echo \" \" \"$(cat /sys/class/hwmon/hwmon6/fan1_input).$(cat /sys/class/hwmon/hwmon6/fan2_input) |\"";
+      exec  = "echo \" \" \"$(($(cat /sys/class/hwmon/hwmon6/fan1_input) / 100)).$(($(cat /sys/class/hwmon/hwmon6/fan2_input) / 100)) |\"";
       interval  = 1;
       interval-if  = 1;
     };

@@ -18,7 +18,6 @@
     home.packages = with pkgs; [
       clang-tools
       nixd
-	  rust-analyzer
       nodejs_24
       glsl_analyzer
       (pkgs.python3.withPackages (ps: with ps; [

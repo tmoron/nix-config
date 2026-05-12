@@ -5,7 +5,7 @@ MODE ?= switch
 
 
 EXTRAFLAGS ?= 
-FLAGS = --impure --cores $(THREADS) -j $(THREADS) $(EXTRAFLAGS)
+FLAGS = --impure -j 1 -L $(EXTRAFLAGS)
 
 ifdef OFFLINE
 	FLAGS += --option binary-caches ''
