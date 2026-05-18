@@ -143,7 +143,7 @@
             local basename = vim.fs.basename(cwd)
 			_99.setup({
                 provider = _99.Providers.OpenCodeProvider,
-				model = "gemma4:26b",
+				model = "ollama/gemma4:26b",
 				logger = {
 					level = _99.DEBUG,
 					path = "/home/tom/99logs/" .. basename .. ".99.debug",
