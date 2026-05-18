@@ -9,6 +9,7 @@
 
   config = lib.mkIf config.mods.firefox.enable {
   	catppuccin.firefox.enable = true;
+	programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
     programs.firefox = {
       enable = lib.mkDefault true;
       profiles.default = {

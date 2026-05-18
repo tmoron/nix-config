@@ -13,6 +13,7 @@
 	programs.hyprshot.enable = true;
 
     wayland.windowManager.hyprland.enable = true;
+	wayland.windowManager.hyprland.configType = "hyprlang";
     wayland.windowManager.hyprland.settings = {
       "$mainMod" = "SUPER";
       bind = [
@@ -118,7 +119,6 @@
       };
   
       dwindle = {
-        pseudotile = true;
 		force_split = 2;
       };
   

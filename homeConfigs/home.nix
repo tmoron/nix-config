@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2026/05/11 13:55:58 by tomoron          ###   ########.fr        #
+#    Updated: 2026/05/18 13:22:43 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ configSops ? true,
   home.username = lib.mkIf (!isOs) "${username}";
   home.homeDirectory = lib.mkIf (!isOs) "${homeDir}";
 
-  home.stateVersion = "26.05";
+  home.stateVersion = "25.11";
 
   sops = lib.mkIf configSops{
     defaultSopsFile = ../secrets/secrets.yaml;
