@@ -24,12 +24,12 @@
       nodejs_24
       glsl_analyzer
 	  opencode
-#      (pkgs.python3.withPackages (ps: with ps; [
-#        python-lsp-server
-#        pylsp-mypy
-#        python-lsp-ruff
-#        pycodestyle
-#      ])) #BORKED
+      (pkgs.python3.withPackages (ps: with ps; [
+        python-lsp-server
+        pylsp-mypy
+        python-lsp-ruff
+        pycodestyle
+      ]))
     ];
 
 #    programs.neovim.extraLuaConfig = ''
