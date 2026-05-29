@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 20:37:07 by tomoron           #+#    #+#              #
-#    Updated: 2026/02/21 13:54:43 by tomoron          ###   ########.fr        #
+#    Updated: 2026/05/28 23:20:01 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,11 @@
       util-linux
       xz
       systemd
+
+	  fribidi
+	  harfbuzz
+	  libgpg-error
+	  gmp
       
       libxcomposite
       libxtst

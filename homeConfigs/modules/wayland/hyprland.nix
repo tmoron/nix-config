@@ -11,6 +11,8 @@
     wayland.windowManager.hyprland.systemd.variables = [ "--all" ];
 
 	programs.hyprshot.enable = true;
+	catppuccin.hyprland.enable = false;
+
 
     wayland.windowManager.hyprland.enable = true;
 	wayland.windowManager.hyprland.configType = "hyprlang";

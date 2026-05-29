@@ -9,7 +9,7 @@
 
   config = lib.mkIf config.mods.game.enable { 
     home.packages = with pkgs;[
-	  # lutris #BORKED
+	  lutris
 	  mangohud
 	  moonlight-qt
 	  prismlauncher
