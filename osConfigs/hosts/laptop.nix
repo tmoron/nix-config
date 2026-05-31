@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/04/27 12:53:46 by tomoron          ###   ########.fr        #
+#    Updated: 2026/05/31 15:18:34 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -162,5 +162,13 @@
       Enable = "Source,Sink,Media,Socket";
     };
   };
+
+  programs.corectrl.enable = true;
+
+  networking.extraHosts = ''
+	127.0.0.1 mc.tmoron.fr
+	127.0.0.1 hello.mc.tmoron.fr
+	127.0.0.1 potato.mc.tmoron.fr
+  '';
 
 }

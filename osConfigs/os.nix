@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:36 by tomoron           #+#    #+#              #
-#    Updated: 2025/09/06 00:56:37 by tomoron          ###   ########.fr        #
+#    Updated: 2026/05/31 15:39:42 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,4 +21,6 @@
 
   system.stateVersion = "25.05";
   environment.etc.nixosFlakeName.text = "${flakeName}";
+
+  catppuccin.autoEnable = false;
 }
