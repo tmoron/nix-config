@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/05/12 15:05:44 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/07 03:12:17 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,10 @@ in
     config.boot.kernelPackages.gasket #driver for google coral edge tpu
   ];
 
-
-
+  boot.kernelParams = [
+    "amdgpu.vm_update_mode=3"
+	"amdgpu.gpu_recovery=1"
+  ];
 
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
@@ -66,6 +68,26 @@ in
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.forceImportRoot = false;
   boot.zfs.extraPools = [ "raid_vol" ];
+
+
+  systemd.timers."nextcloud-cron-job" = {
+    wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnBootSec = "5m";
+        OnUnitActiveSec = "5m";
+        Unit = "nextcloud-cron-job.service";
+      };
+  };
+  
+  systemd.services."nextcloud-cron-job" = {
+    script = ''
+	  ${pkgs.docker}/bin/docker exec -u www-data nextcloud php /var/www/html/cron.php
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+    };
+  };
 
   services.zfs = {
 	  autoScrub.enable = true;
