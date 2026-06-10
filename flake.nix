@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2026/05/28 14:26:03 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/10 21:17:12 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,13 +33,18 @@
 	  inputs.nixpkgs.follows = "nixpkgs";
 	};
 
+	dockermcmgr = {
+		url = "git+https://git.tmoron.fr/tom/dockermcmgr";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
+
 	#plymouth-theme-ycontre-glow = {
     #  url = "git+file:///home/tom/desktop/bordel/ycontre-glow";
     #  inputs.nixpkgs.follows = "nixpkgs";
 	#};
   };
 
-  outputs = { nixpkgs, catppuccin, home-manager, nixos-hardware, ... }@inputs:
+  outputs = { nixpkgs, catppuccin, home-manager, nixos-hardware, dockermcmgr, ... }@inputs:
 	let
 	  pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
 

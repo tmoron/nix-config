@@ -6,14 +6,15 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
-#    Updated: 2026/04/25 20:35:24 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/10 21:30:25 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{ pkgs, ...}:
+{ pkgs, inputs, ...}:
 
 {
   home.packages = with pkgs;[
+  	inputs.dockermcmgr.packages.${system}.default
     lrzip
     pigz
     htop
