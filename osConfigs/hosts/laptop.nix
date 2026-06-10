@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/05/31 15:18:34 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/09 17:10:44 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,21 +15,24 @@
 {
   services.udev.packages = [ pkgs.yubikey-personalization ];
   boot.initrd.kernelModules = [ "vfat" "nls_cp437" "nls_iso8859-1" "usbhid" ];
-  boot.initrd.systemd.enable = false;
-  boot.initrd.luks.yubikeySupport = true;
+  boot.initrd.systemd.enable = true;
+  boot.initrd.luks.yubikeySupport = false;
   boot.initrd.luks.devices.cryptroot = {
       device = "/dev/disk/by-uuid/a4593b01-069d-4a5d-a550-74a762b89b3f";
       allowDiscards = true;
     #set up initial : https://wiki.nixos.org/wiki/Yubikey_based_Full_Disk_Encryption_(FDE)_on_NixOS
-    yubikey = {
-        twoFactor = false;
-        keyLength = 64;
-        saltLength = 32;
-        storage = {
-            device = "/dev/disk/by-uuid/BA5C-F216";
-            path = "/default";
-        };
-    };
+    #yubikey = { #bad implementation upstream. unlock with be with fallback password until it's better
+    #    twoFactor = false;
+    #    keyLength = 64;
+    #    saltLength = 32;
+    #    storage = {
+    #        device = "/dev/disk/by-uuid/BA5C-F216";
+    #        path = "/default";
+    #    };
+    #};
+
+
+
   };
 
   boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ]; #speeds up startup
