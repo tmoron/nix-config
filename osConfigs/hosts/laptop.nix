@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/09 17:10:44 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/11 16:35:54 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -167,11 +167,4 @@
   };
 
   programs.corectrl.enable = true;
-
-  networking.extraHosts = ''
-	127.0.0.1 mc.tmoron.fr
-	127.0.0.1 hello.mc.tmoron.fr
-	127.0.0.1 potato.mc.tmoron.fr
-  '';
-
 }

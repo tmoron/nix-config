@@ -6,11 +6,11 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/07 03:12:17 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/11 16:37:35 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   ports = [
@@ -110,6 +110,7 @@ in
   environment.systemPackages = with pkgs; [
     zfs
     screen #can be user (and global)
+	(inputs.dockermcmgr.packages.${pkgs.stdenv.hostPlatform.system}.default)
   ];
 
   networking = {
@@ -141,5 +142,17 @@ in
   mods.docker = {
     enable = true;
     boot = true;
+  };
+
+
+  systemd.services.dockermcmgr-server = {
+    enable = true;
+	wantedBy = ["multi-user.target"];
+	restartIfChanged = true;
+	serviceConfig = {
+	  ExecStart = "${inputs.dockermcmgr.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/dmm serverMode";
+	  User = "tom";
+	  Group= "users";
+	};
   };
 }
