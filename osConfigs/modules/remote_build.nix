@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 23:47:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/13 23:27:26 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/13 23:44:37 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@
 
         system = "x86_64-linux";
 
-        maxJobs = 1;
+        maxJobs = 2;
         speedFactor = 2;
 
         supportedFeatures = ["big-parallel" "kvm" "nixos-test"];
