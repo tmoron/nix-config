@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/13 23:02:10 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/13 23:20:55 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -167,42 +167,5 @@
   };
 
   programs.corectrl.enable = true;
-
-
-  nix.buildMachines = [
-    {
-      hostName = "tmoron.fr";
-      sshUser = "builder";
-      # 'ssh-ng' is faster if both machines are NixOS but falls flat if the
-      # machine Nix will attempt a connection to is not NixOS. In such a case
-      # you must use 'ssh' instead.
-      protocol = "ssh-ng";
-
-      # This can be an absolute path to a private key or it can be managed
-      # with something like Agenix, or SOPS.
-      sshKey = "/root/.ssh/id_ed25519";
-
-      # Systems for which builds will be offloaded.
-      system = "x86_64-linux";
-
-      # Default is 1 but may keep the builder idle in between builds
-      maxJobs = 1;
-      # How fast is the builder compared to your local machine
-      speedFactor = 2;
-
-      supportedFeatures = ["big-parallel" "kvm" "nixos-test"];
-    }
-  ];
-
-  nix.distributedBuilds = true;
-
-
-
-  programs.ssh.extraConfig = ''
-      Host tmoron.fr
-        HostName tmoron.fr
-      Port 1880 
-  '';
-
 
 }

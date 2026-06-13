@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/13 22:52:09 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/13 23:21:39 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,6 +155,8 @@ in
   };
   users.groups.builder = {};
 
+  config.mods.remote-build.enable = false;
+
 
 
   systemd.services.dockermcmgr-server = {
@@ -167,4 +169,5 @@ in
 	  Group= "users";
 	};
   };
+
 }
