@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/13 23:21:39 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/13 23:40:36 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -150,12 +150,13 @@ in
 	  isNormalUser = true;
 	  openssh.authorizedKeys.keys = [
 		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICzRsLTBnow52e63Qp6JqUaLNOCpoIsPpJFOAhJOgF1M root@patate-douce"
+		"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIl6m5mdyfixhVgcDIOHhRQRSyCH4//2XJ/MRmOLD8R4 root@nixos-fixe"
 	  ];
       group = "builder";
   };
   users.groups.builder = {};
 
-  config.mods.remote-build.enable = false;
+  mods.remote-build.enable = false;
 
 
 
