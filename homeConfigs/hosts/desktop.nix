@@ -1,6 +1,8 @@
-{ ... }:
+{ lib, pkgs, config, ... }:
 
 {
+  programs.waybar.settings.mainBar.temperature.thermal-zone = 2;
+
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "DP-2, 1920x1080@60Hz, -1920x0, auto"
@@ -19,6 +21,7 @@
 		"LIBVA_DRIVER_NAME,nvidia"
 		"__GLX_VENDOR_LIBRARY_NAME,nvidia"
 	];
+
     cursor.no_hardware_cursors = true;
 	misc.vrr = 1;
   };

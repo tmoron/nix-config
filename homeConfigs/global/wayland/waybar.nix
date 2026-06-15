@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   programs.waybar.enable = true;
@@ -134,8 +134,8 @@
     };
 
     temperature = {
-      thermal-zone = 0;
-      critical-threshold = 80;
+      thermal-zone = lib.mkDefault 0;
+      critical-threshold = lib.mkDefault 80;
       interval = 5;
       format =" {icon} {temperatureC}°C ";
       format-icons = ["" "" "" "" ""];
