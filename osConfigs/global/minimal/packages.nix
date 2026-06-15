@@ -1,23 +1,20 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    user.nix                                           :+:      :+:    :+:    #
+#    packages.nix                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/05 23:42:18 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/14 18:07:55 by tomoron          ###   ########.fr        #
+#    Created: 2026/06/14 18:03:28 by tomoron           #+#    #+#              #
+#    Updated: 2026/06/14 18:06:25 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{ ... }:
+{ pkgs, ... }:
 
 {
-  users.users.tom = {
-     extraGroups = [
-     "libvirtd" # can use libvirtd
-     "dialout" # can use serial devices
-     "wireshark" # can use wireshask
-     ];
-   };
+  environment.systemPackages = with pkgs; [
+    neovim
+    pciutils
+  ];
 }

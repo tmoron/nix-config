@@ -1,23 +1,30 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    user.nix                                           :+:      :+:    :+:    #
+#    packages.nix                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/05 23:42:18 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/14 18:07:55 by tomoron          ###   ########.fr        #
+#    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
+#    Updated: 2026/06/14 19:11:25 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{ ... }:
+{ pkgs, ...}:
 
 {
-  users.users.tom = {
-     extraGroups = [
-     "libvirtd" # can use libvirtd
-     "dialout" # can use serial devices
-     "wireshark" # can use wireshask
-     ];
-   };
+  home.packages = with pkgs;[
+    lrzip
+    git
+	lm_sensors
+    wget
+	curl
+    man-pages
+    ffmpeg-full
+    nix-index
+	sops
+	screen
+	btop
+	htop
+  ];
 }

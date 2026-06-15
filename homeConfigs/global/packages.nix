@@ -6,36 +6,28 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/11 16:36:57 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/15 01:56:12 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{ pkgs, inputs, ...}:
+{ pkgs, ...}:
 
 {
   home.packages = with pkgs;[
-    lrzip
     pigz
-    htop
     gnumake
-    git
     fastfetch 
     clang
     ninja
     gdb
     valgrind
-    wget
     cmake
-    man-pages
     stress
-    ffmpeg-full
-    ripgrep
+
     activate-linux
-    unison
     brightnessctl  
     playerctl
     vlc
-    nix-index
     yubikey-manager
     bibata-cursors
     libcaca
@@ -43,9 +35,13 @@
     nerd-fonts.iosevka
 	compiledb
 	yubikey-personalization
-	sops
 	libreoffice
 	doxygen
 	qimgv
+	acpi
+
+    discord 
+    google-chrome
+	localsend
   ];
 }

@@ -27,13 +27,7 @@
       ", XF86Launch1, exec, hyprlock"
       ", XF86Launch4, exec, pkill activate-linux"
 	];
-	bindl = [
-#     ",switch:off:Lid Switch,exec,hyprctl keyword monitor \"eDP-1, 1920x1080@120, 0x0, 1\""
-#     ",switch:on:Lid Switch,exec,hyprctl keyword monitor \"eDP-1, disable\""
-
-	];
     monitor= [
-#      "eDP-1, modeline 173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync, 0x0, 1"
 	  "eDP-1, 1920x1080@120, 0x0, 1"
       "HDMI-A-1, 1920x1080@60, auto, auto"
     ];
@@ -43,8 +37,6 @@
   home.packages = with pkgs; [
     blender
 	wireshark
-	localsend
-	impala
   ];
 
   services.mpris-proxy.enable = true;

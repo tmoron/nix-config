@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/13 23:40:36 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/15 02:04:54 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,6 @@ let
   ];
 in
 {
-  boot.kernelPackages = pkgs.linuxPackages;
   boot.extraModulePackages = [
     config.boot.kernelPackages.gasket #driver for google coral edge tpu
   ];
@@ -65,7 +64,7 @@ in
 # create dummy display to be able to start x11
   ''; 
 
-  boot.supportedFilesystems = [ "zfs" ];
+  mods.zfs.enable = true;
   boot.zfs.forceImportRoot = false;
   boot.zfs.extraPools = [ "raid_vol" ];
 
@@ -107,12 +106,6 @@ in
 	  autoprune = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    zfs
-    screen #can be user (and global)
-	(inputs.dockermcmgr.packages.${pkgs.stdenv.hostPlatform.system}.default)
-  ];
-
   networking = {
     hostName = "server";
 
@@ -124,7 +117,7 @@ in
     defaultGateway.address = "192.168.1.254";
     defaultGateway.interface = "eth0";
     nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1"];
-      hostId = "68290da7";
+    hostId = "68290da7";
 
     firewall.allowedTCPPorts = ports;
     firewall.allowedUDPPorts = ports;
@@ -144,6 +137,18 @@ in
     boot = true;
   };
 
+  systemd.services.dockermcmgr-server = {
+    enable = true;
+	wantedBy = ["multi-user.target"];
+	restartIfChanged = true;
+	serviceConfig = {
+	  ExecStart = "${inputs.dockermcmgr.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/dmm serverMode";
+	  User = "tom";
+	  Group= "users";
+	};
+  };
+
+
   nix.settings.trusted-users = [ "root" "builder" "tom" ];
 
   users.users.builder = {
@@ -157,18 +162,4 @@ in
   users.groups.builder = {};
 
   mods.remote-build.enable = false;
-
-
-
-  systemd.services.dockermcmgr-server = {
-    enable = true;
-	wantedBy = ["multi-user.target"];
-	restartIfChanged = true;
-	serviceConfig = {
-	  ExecStart = "${inputs.dockermcmgr.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/dmm serverMode";
-	  User = "tom";
-	  Group= "users";
-	};
-  };
-
 }

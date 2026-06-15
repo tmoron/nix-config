@@ -2,7 +2,8 @@
 {
   catppuccin = {
   	enable = true;
-	autoEnable = true;
+	autoEnable = false;
+
 	flavor = "mocha";
 
 	dunst.enable = true;
@@ -29,7 +30,7 @@
   };
 
   home.file = {
-    ".config/wallpaper.png".source = lib.mkDefault ../utils/wallpaper.png;
-    ".config/lock_screen.jpg".source = lib.mkDefault ../utils/lock_screen.jpg;
+    ".config/wallpaper.png".source = lib.mkDefault ../assets/wallpaper.png;
+    ".config/lock_screen.jpg".source = lib.mkDefault ../assets/lock_screen.jpg;
   };
 }

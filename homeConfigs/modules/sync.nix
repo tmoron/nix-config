@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 let
   defPathLst = ["desktop" "42_desktop" "Downloads"];
@@ -41,15 +41,18 @@ in
 		description = "hostname used by unison";
 	};
   };
-
-  config.home.file.".unison/default.prf" =  lib.mkIf config.mods.sync.enable {
-    text = (lib.strings.concatStrings [''
-		auto=true
-		root=${config.mods.sync.homeFolder}
-		root=ssh://tom@d.tmoron.fr:1880/${config.mods.sync.destFolder}
-	  ''
-	  (lib.strings.concatMapStrings (x: "\npath=" + x) (( if config.mods.sync.defaultSynced then defPathLst else [] ) ++ config.mods.sync.syncedAdditions ))
-      (if !(isNull config.mods.sync.customHostName) then "\nclientHostName=${config.mods.sync.customHostName}" else "")
-	  ]);
+  config = lib.mkIf config.mods.sync.enable {
+	
+    home.packages = with pkgs;[ unison ];
+    home.file.".unison/default.prf" = {
+      text = (lib.strings.concatStrings [''
+      	auto=true
+      	root=${config.mods.sync.homeFolder}
+      	root=ssh://tom@d.tmoron.fr:1880/${config.mods.sync.destFolder}
+        ''
+        (lib.strings.concatMapStrings (x: "\npath=" + x) (( if config.mods.sync.defaultSynced then defPathLst else [] ) ++ config.mods.sync.syncedAdditions ))
+        (if !(isNull config.mods.sync.customHostName) then "\nclientHostName=${config.mods.sync.customHostName}" else "")
+        ]);
+    };
   };
 }

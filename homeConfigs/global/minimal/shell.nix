@@ -1,4 +1,5 @@
 { homeDir, ... }:
+
 {
   home.shell.enableBashIntegration = true;
   home.shellAliases = {
@@ -6,7 +7,6 @@
     grep = "grep --color=auto";
     vim = "nvim";
     vi = "nvim";
-    hl = "Hyprland";
     clr = "clear";
 	noidle = "systemctl --user stop hypridle";
   };
@@ -24,4 +24,17 @@
 	historyIgnore = [ "ls" "cd" "exit" ];
 	shellOptions = [ "cdspell" "autocd"];
   };
+
+  programs.bash.bashrcExtra = ''
+    cd() {
+      builtin cd "$@"
+      echo -n "$PWD" > ~/.last_directory
+    }
+  
+    
+    if [ -f ~/.last_directory ] && [ -n "$PS1" ];then
+      echo "going to $(cat ~/.last_directory)"
+      builtin cd "$(cat ~/.last_directory)"
+    fi
+  '';
 }

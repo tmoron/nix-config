@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/10 21:17:12 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/15 02:17:44 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,12 +44,12 @@
 	#};
   };
 
-  outputs = { nixpkgs, catppuccin, home-manager, nixos-hardware, dockermcmgr, ... }@inputs:
+  outputs = { nixpkgs, catppuccin, home-manager, nixos-hardware, ... }@inputs:
 	let
 	  pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
 
-      osConfig = {flakeName, extraModules ? []}: nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; flakeName = flakeName; };
+      osConfig = {flakeName, minimal ? false, extraModules ? []}: nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; flakeName = flakeName; minimal = minimal; };
         modules = nixpkgs.lib.concatLists [
 		  [
 		    ./osConfigs/os.nix
@@ -61,9 +61,9 @@
 		];
       };
 
-	  homeConfig = {flakeName, sops ? true, extraModules ? [], username ? "tom", homeDir ? "/home/tom"}: home-manager.lib.homeManagerConfiguration {
+	  homeConfig = {flakeName, sops ? true, extraModules ? [], username ? "tom", homeDir ? "/home/tom", minimal ? false}: home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-	    extraSpecialArgs = { inherit inputs; username = username; homeDir = homeDir; isOs = false; configSops = sops; };
+	    extraSpecialArgs = { inherit inputs; username = username; homeDir = homeDir; isOs = false; configSops = sops; minimal = minimal; };
         modules = nixpkgs.lib.concatLists [
 		  [
 		    ./homeConfigs/home.nix
@@ -76,9 +76,8 @@
 	  };
 
 	in {
-
       nixosConfigurations = {
-	    server = osConfig {flakeName = "server";};
+	    server = osConfig {flakeName = "server"; minimal = true;};
 	    vbox = osConfig {flakeName = "vbox";};
 		laptop = osConfig {flakeName = "laptop"; extraModules = [ nixos-hardware.nixosModules.asus-zephyrus-ga401 ];};
 		desktop = osConfig {flakeName = "desktop";};
@@ -99,7 +98,7 @@
 	    ft = homeConfig { flakeName = "ft"; username = "tomoron"; homeDir = "/home/tomoron"; sops = false;};
 	    laptop = homeConfig { flakeName = "laptop"; };
 	    desktop = homeConfig { flakeName = "desktop"; };
-	    server = homeConfig { flakeName = "server"; };
+	    server = homeConfig { flakeName = "server"; minimal = true; };
 	  };
 
     };

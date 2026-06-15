@@ -1,11 +1,6 @@
 { ... }:
 
 {
-  mods.game.enable = false;
-  mods.hyprland.enable = false;
-  mods.x11.enable = true;
-  programs.firefox.enable = false;
-
   services.picom = {
     backend = "xrender";
     settings = {

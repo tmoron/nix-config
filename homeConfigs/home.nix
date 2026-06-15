@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2026/05/18 13:22:43 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/15 01:53:27 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,15 +16,14 @@ username ? "tom",
 homeDir ? "/home/tom",
 isOs ? false,
 configSops ? true,
+minimal,
 ... 
 }:
 
 {
-  imports = lib.concatLists [
-    [ ./packages.nix ]
-    (lib.fileset.toList ./modules)
-    (lib.fileset.toList ./global)
-  ];
+  imports = (lib.fileset.toList ./modules)
+  ++ (lib.lists.optionals minimal (lib.fileset.toList ./global/minimal))
+  ++ (lib.lists.optionals (!minimal) (lib.fileset.toList ./global));
 
   home.username = lib.mkIf (!isOs) "${username}";
   home.homeDirectory = lib.mkIf (!isOs) "${homeDir}";

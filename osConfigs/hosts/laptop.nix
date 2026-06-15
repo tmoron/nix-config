@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:56:57 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/13 23:20:55 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/15 02:11:29 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,22 +35,23 @@
 
   };
 
-  boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ]; #speeds up startup
-  programs.droidcam.enable = true;
+  boot.blacklistedKernelModules = [ "nvidia" "nvidia_drm" "nvidia_uvm" ]; #speeds up startup, loaded automatically when gpu is started
 
 
-  mods.displayManager.enable = true;
-  mods.yubikey.pam.enable = true;
+
   networking.firewall.enable = false;
 
   networking.hostName = "patate-douce";
-#  networking.wireless.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
   networking.wireless.iwd.enable = true;
   networking.wireless.allowAuxiliaryImperativeNetworks = true;
   networking.networkmanager.enable = false;
+  networking.dhcpcd.enable = false;
+  systemd.network.enable = true;
+  networking.useNetworkd = true;
 
   specialisation.vfio_ready.configuration = {
+	#vfio ready configuration sets up kvmfr0 kernel module, disables xbox controller on host os, enables libvirtd and installs looking-glass
 
     mods.virtualHost.enable = true;
     boot.extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
@@ -73,29 +74,12 @@
     environment.systemPackages = with pkgs; [ looking-glass-client ];
   };
 
-  services.udev.extraRules = ''
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="df11", TAG+="uaccess"
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", TAG+="uaccess"
-  '';
-   
 
-  networking.dhcpcd.enable = false;
-  systemd.network.enable = true;
-  networking.useNetworkd = true;
-
-  programs.noisetorch.enable = true;
-
-  services.postgresql.enable = true;
-
-  hardware.bluetooth.enable = true;
 
   environment.systemPackages = with pkgs; [
-    acpi # can be user (global)
+	impala
 	openvr
   ];
-
-#  programs.alvr.enable = true;
-  
 
   mods.touchpad.enable = true;
 
@@ -113,10 +97,8 @@
 
   };
 
-
   services.asusd = {
     enable = true;
-#    enableUserService = true;
   };
 
   services.supergfxd.enable = true;
@@ -133,14 +115,13 @@
   programs.wireshark.enable = true;
   programs.wireshark.usbmon.enable = true;
 
+  mods.yubikey.pam.enable = true;
   mods.docker.enable = true;
-  mods.gayming.enable = true;
   mods.nvidia.enable = true;
   mods.nvidia.prime = true;
 
 
-  services.usbmuxd.enable = true; #sometimes hangs when shutting down
-
+  services.usbmuxd.enable = true; #iphone usb service sometimes hangs when shutting down
 
   services.avahi.enable = true;
   services.pipewire = {
@@ -160,6 +141,8 @@
       "bluez5.enable-hw-volume" = true;
     };
   };
+
+  hardware.bluetooth.enable = true;
   hardware.bluetooth.settings = {
     General = {
       Enable = "Source,Sink,Media,Socket";
@@ -167,5 +150,4 @@
   };
 
   programs.corectrl.enable = true;
-
 }

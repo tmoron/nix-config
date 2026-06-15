@@ -1,7 +1,6 @@
 { ... }:
 
 {
-  mods.x11.enable = true;
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "DP-2, 1920x1080@60Hz, -1920x0, auto"
@@ -23,6 +22,4 @@
     cursor.no_hardware_cursors = true;
 	misc.vrr = 1;
   };
-
-  mods.hyprland.autoSuspend = false;
 }
