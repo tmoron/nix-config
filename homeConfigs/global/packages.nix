@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/15 01:56:12 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/15 12:35:56 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@
 {
   home.packages = with pkgs;[
     pigz
-    gnumake
     fastfetch 
     clang
     ninja

@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/15 02:04:54 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/15 12:34:42 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,11 @@ in
       User = "root";
     };
   };
+
+  environment.systemPackages = [
+    inputs.dockermcmgr.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
+	
 
   services.zfs = {
 	  autoScrub.enable = true;

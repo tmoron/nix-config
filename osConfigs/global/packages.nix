@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:21 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/15 01:57:44 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/15 12:36:24 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    home-manager
     cryptsetup
     usbutils
     ntfs3g
