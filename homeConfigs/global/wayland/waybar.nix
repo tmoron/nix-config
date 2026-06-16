@@ -189,8 +189,8 @@
       format-low ="";
 	  format = "󰋊 {percentage_used}%";
 	  states.low = 0;
-  	  states.warning = 20;
-  	  states.high= 30;
+  	  states.warning = 70;
+  	  states.high= 90;
     };
 
 	"custom/separator" = {
