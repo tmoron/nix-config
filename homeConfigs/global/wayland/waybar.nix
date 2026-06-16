@@ -2,44 +2,7 @@
 
 {
   programs.waybar.enable = true;
-  programs.waybar.style = ''
-    * {
-      font-family: "Iosevka Nerd Font";
-      font-size: 14px;
-	  background-color: transparent;
-    }
-
-	.modules-right {
-      border: 1px solid #444444;
-      background-color: #1e1e2e;
-      padding-left: 10px;
-      padding-right: 10px;
-      padding-top: 3px;
-      padding-bottom: 3px;
-      border-radius: 10px;
-    }
-    
-    .modules-right .module {
-      margin-left: 4px;
-      margin-right: 4px;
-      background-color: rgba(127, 132, 156, 0.3);
-	  padding: 1px 6px;
-      border-radius: 5px;
-      color: #cdd6f4;
-
-	  transition: background-color 200ms ease;
-    }
-
-    #window {
-      font-weight: bold;
-    }
-
-    #custom-separator {
-      background-color: transparent;
-	  margin: 0px;
-	  padding: 0px
-    }
-
+  /*
     #workspaces button {
       padding: 0 5px;
       background: transparent;
@@ -56,13 +19,80 @@
     	color : #88ff88;
     	background-color : rgba(220,255, 220, 0.3)
     }
-
-    #network {
-      background-color: transparent;
-	}
-
-	#clock { 
+	*/
+  programs.waybar.style = ''
+    * {
+      font-family: "Iosevka Nerd Font";
+      font-size: 14px;
 	  background-color: transparent;
+    }
+
+	.modules-right, #window {
+      border: 1px solid #444444;
+      background-color: #1e1e2e;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      border-radius: 10px;
+    }
+
+    
+    .modules-right .module {
+      margin-left: 4px;
+      margin-right: 4px;
+      background-color: rgba(127, 132, 156, 0.3);
+	  padding: 1px 6px;
+      border-radius: 5px;
+      color: #cdd6f4;
+
+	  transition: background-color 200ms ease;
+    }
+
+	#workspaces {
+      border: 1px solid #444444;
+      background-color: #1e1e2e;
+      padding-left: 3px;
+      padding-right: 3px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      border-radius: 10px;
+    }
+
+    #workspaces button {
+      background-color: transparent;
+      padding: 0px 3px;
+      margin: 0px 5px;
+      min-height: 0px;
+    }
+    
+    #workspaces button.active {
+      background-color: rgba(127, 132, 156, 0.6);
+    }
+    
+    @keyframes red_blink {
+      from { background-color: rgba(127, 132, 156, 0.6); }
+      to   { background-color: rgba(193,89,118, 0.5); }
+    }
+    
+    #workspaces button.urgent { 
+      animation: red_blink 500ms infinite alternate; 
+      color: #ffffff;
+    }
+
+	window#waybar.empty #window {
+      background-color: transparent;
+	  border: none;
+    }
+
+    #custom-separator {
+      background-color: transparent;
+	  margin: 0px;
+	  padding: 0px
+    }
+
+    #network, #clock {
+      background-color: transparent;
 	}
     
     #network.disconnected {
@@ -89,7 +119,7 @@
     margin-right = 5;
     modules-left = ["hyprland/workspaces" "custom/music"];
     modules-center = ["hyprland/window"];
-    modules-right = ["disk" "pulseaudio" "cpu" "temperature" "memory" "battery" "network" "custom/separator" "clock"];
+    modules-right = ["disk" "pulseaudio" "cpu" "te⚠ Disconnectedmperature" "memory" "battery" "network" "custom/separator" "clock"];
 
 	"hyprland/window" = {
 		max-length = 50;	
@@ -112,7 +142,7 @@
 	  format-low = "";
   	  states = {
 		  low = 0;
-		  working = 20;
+		  working = 30;
 		  high = 80;
 	  };
   	  interval = 5;
@@ -148,7 +178,7 @@
     network = {
       format-wifi = "{icon} {essid}";
       format-ethernet = "󰈁 {ifname}";
-      format-disconnected = "⚠ Disconnected";
+      format-disconnected = "󰅛 ";
       format-icons = ["󰤟 " "󰤢 " "󰤥 " "󰤨 "];
 	  max-length = 20;
     };
