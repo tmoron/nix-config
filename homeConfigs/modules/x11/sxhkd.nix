@@ -6,11 +6,11 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/10 00:32:47 by tomoron           #+#    #+#              #
-#    Updated: 2025/02/10 01:17:29 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/16 23:09:20 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{ lib, config, ... }:
+{pkgs, lib, config, ... }:
 
 {
   config = lib.mkIf config.mods.x11.enable {
@@ -67,9 +67,9 @@
       "alt + F7" = "brightnessctl s 10-";
       "alt + F8" = "brightnessctl s 10+";
 
-      "super + shift + o" = "playerctl play-pause";
-      "super + shift + p" = "playerctl previous";
-      "super + shift + n" = "playerctl next";
+      "super + shift + o" = "${lib.getExe pkgs.playerctl} play-pause";
+      "super + shift + p" = "${lib.getExe pkgs.playerctl} previous";
+      "super + shift + n" = "${lib.getExe pkgs.playerctl} next";
       "super + shift + alt + b" = "polybar-msg cmd hide";
       "super + shift + b" = "polybar-msg cmd show";
     };
