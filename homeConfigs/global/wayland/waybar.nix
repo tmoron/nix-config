@@ -2,21 +2,11 @@
 
 {
   programs.waybar.enable = true;
-  /*
-
-	.modules-right {
-      background-color: #1e1e2e;
-      padding-left: 10px;
-      padding-right: 10px;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      border-radius: 10px;
-    }
-  */
   programs.waybar.style = ''
     * {
       font-family: "Iosevka Nerd Font";
       font-size: 14px;
+	  background-color: transparent;
     }
 
 	.modules-right {
