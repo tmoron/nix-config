@@ -1,25 +1,55 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.waybar.enable = true;
+  /*
+
+	.modules-right {
+      background-color: #1e1e2e;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-radius: 10px;
+    }
+  */
   programs.waybar.style = ''
     * {
-      border: none;
-      border-radius: 0;
       font-family: "Iosevka Nerd Font";
-      font-size: 15px;
-      min-height: 0;
+      font-size: 14px;
+    }
+
+	.modules-right {
+      border: 1px solid #444444;
+      background-color: #1e1e2e;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      border-radius: 10px;
     }
     
-    window#waybar {
-      background: transparent;
-      color: white;
+    .modules-right .module {
+      margin-left: 4px;
+      margin-right: 4px;
+      background-color: rgba(127, 132, 156, 0.3);
+	  padding: 1px 6px;
+      border-radius: 5px;
+      color: #cdd6f4;
+
+	  transition: background-color 200ms ease;
     }
-    
+
     #window {
       font-weight: bold;
     }
-    
+
+    #custom-separator {
+      background-color: transparent;
+	  margin: 0px;
+	  padding: 0px
+    }
+
     #workspaces button {
       padding: 0 5px;
       background: transparent;
@@ -36,30 +66,29 @@
     	color : #88ff88;
     	background-color : rgba(220,255, 220, 0.3)
     }
-    
-    #mode {
-      background: #64727D;
-      border-bottom: 3px solid white;
-    }
+
+    #network {
+      background-color: transparent;
+	}
+
+	#clock { 
+	  background-color: transparent;
+	}
     
     #network.disconnected {
       color: #f53c3c;
       font-weight:bold;
     }
-    
-    #temperature.critical {
-      color: #ff2222; 
-    }
 
-    #battery.critical {
-      color: #ff2222; 
-    }
-    #cpu.high {
-      color: #ff2222; 
-    }
-    #disk.high {
-      color: #ff2222; 
-    }
+	.module.warning {
+      background-color: rgba(249, 226, 175, 0.4);
+	  color: #ffffff;
+	}
+
+    .module.high, .module.critical {
+	  background-color: rgba(193,89,118, 0.5);
+	  color: #ffffff;
+	}
   '';
 
   programs.waybar.settings.mainBar = {
@@ -70,8 +99,12 @@
     margin-right = 5;
     modules-left = ["hyprland/workspaces" "custom/music"];
     modules-center = ["hyprland/window"];
-    modules-right = ["disk" "pulseaudio" "network" "custom/pipe" "cpu" "custom/pipe" "temperature" "custom/pipe" "memory" "battery" "clock"];
-  
+    modules-right = ["disk" "pulseaudio" "cpu" "temperature" "memory" "battery" "network" "custom/separator" "clock"];
+
+	"hyprland/window" = {
+		max-length = 50;	
+	};
+
     "hyprland/workspaces" = {
       disable-scroll = true;
       all-outputs = false;
@@ -80,46 +113,59 @@
   
     clock = {
       interval  = 1;
-      format-alt = " {:%Y-%m-%d}";
-      format  = " {:%H:%M:%S}";
+      format-alt = "{:%Y-%m-%d}";
+      format  = "{:%H:%M:%S}";
     };
   
     cpu = {
-      format = "   {usage}% ";
-  	states.high = 80;
-  	interval = 5;
+      format = "  {usage}%";
+	  format-low = "";
+  	  states = {
+		  low = 0;
+		  working = 20;
+		  high = 80;
+	  };
+  	  interval = 5;
     };
   
     memory = {
-      format = "   {}% |";
+      format = "  {}%";
+	  format-low = "";
       interval = 5;
+	  states = {
+		low = 0;
+		show = 50;
+		elevated = 80;
+		critical = 95;
+	  };
     };
   
     battery = {
       bat = "BAT0";
-  	full-at = 79;
+  	  full-at = 79;
       states = {
         good = 20;
         critical = 15;
       };
       format-time = " {H}:{m}";
-      format-discharging = " {icon} {capacity}%{time} |";
-  	format-charging = "  {capacity}%{time} |";
-  	format-plugged = "";
+      format-discharging = "{icon} {capacity}%{time}";
+  	  format-charging = " {capacity}%{time}";
+  	  format-plugged = "";
       format-icons = [" " " " " " " " " "];
       interval = 10;
     };
 
     network = {
-      format-wifi = " {icon} {essid} ";
-      format-ethernet = "   {ifname}: {ipaddr}/{cidr} ";
-      format-disconnected = " ⚠ Disconnected ";
-      format-icons =["󰤟 " "󰤢 " "󰤥 " "󰤨 "];
+      format-wifi = "{icon} {essid}";
+      format-ethernet = "󰈁 {ifname}";
+      format-disconnected = "⚠ Disconnected";
+      format-icons = ["󰤟 " "󰤢 " "󰤥 " "󰤨 "];
+	  max-length = 20;
     };
 
     pulseaudio = {
-      format = " {icon}{volume}% |";
-      format-bluetooth = "  {icon} {volume}% |";
+      format = "{icon}{volume}%";
+      format-bluetooth = " {icon} {volume}%";
       format-muted = "";
       format-icons = {
         headphones = " ";
@@ -130,31 +176,43 @@
         car = " ";
         default = [" " " " "  "];
       };
-      on-click = "pavucontrol";
+      on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+	  states = {
+		low = 79;
+		warning = 99;
+		high = 100000;
+	  };
     };
 
     temperature = {
       thermal-zone = lib.mkDefault 0;
-      critical-threshold = lib.mkDefault 80;
+      critical-threshold = lib.mkDefault 85;
+	  warning-threshold = lib.mkDefault 60;
       interval = 5;
-      format =" {icon} {temperatureC}°C ";
+	  format = "";
+      format-warning ="{icon} {temperatureC}°C";
+      format-critical ="{icon} {temperatureC}°C";
       format-icons = ["" "" "" "" ""];
     };
 
     disk = {
-      format =" 󰋊 {percentage_used}% |";
-  	states.high = "5";
+      format-low ="";
+	  format = "󰋊 {percentage_used}%";
+	  states.low = 0;
+  	  states.warning = 20;
+  	  states.high= 30;
     };
 
-    "custom/pipe" = {
-      format = "|";
-    };
+	"custom/separator" = {
+	  format = "|";
+	};
   
     "custom/music" = {
       exec-if  = "playerctl metadata 2>&1 >/dev/null";
       exec  = "playerctl metadata --format '  {{ artist }} - {{title}}'";
       interval  = 1;
       interval-if  = 5;
+	  max-length = 50;
     };
 
   };

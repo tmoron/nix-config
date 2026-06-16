@@ -5,7 +5,7 @@
     modules-right = lib.mkBefore ["custom/fans" "custom/dgpu"];
     "custom/dgpu" = {
       exec-if  = "test \"$(supergfxctl -g)\" = \"Hybrid\" || test \"$(supergfxctl -g)\" = \"Vfio\"";
-      exec  = "echo \"   on |\"";
+      exec  = "echo \" 󰾲  on |\"";
       interval-if  = 10;
       interval = 100;
     };
