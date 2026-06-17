@@ -42,7 +42,6 @@ in
 	};
   };
   config = lib.mkIf config.mods.sync.enable {
-	
     home.packages = with pkgs;[ unison ];
     home.file.".unison/default.prf" = {
       text = (lib.strings.concatStrings [''

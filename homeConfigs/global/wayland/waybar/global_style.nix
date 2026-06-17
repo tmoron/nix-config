@@ -5,6 +5,7 @@
       font-family: "Iosevka Nerd Font";
       font-size: 14px;
 	  background-color: transparent;
+      color: #cdd6f4;
     }
 
 	.modules-right, #window {
@@ -23,7 +24,6 @@
       background-color: rgba(127, 132, 156, 0.3);
 	  padding: 1px 6px;
       border-radius: 5px;
-      color: #cdd6f4;
 
 	  transition: background-color 200ms ease;
     }

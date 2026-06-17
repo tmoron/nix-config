@@ -14,9 +14,9 @@
   };
 
   gtk = {
-	gtk4.theme = config.gtk.theme;
     enable = true;
-    theme = { package = pkgs.flat-remix-gtk; name = "Flat-Remix-GTK-Grey-Darkest"; };
+    theme = { package = pkgs.magnetic-catppuccin-gtk; name = "Catppuccin-GTK-Dark"; };
+	gtk4.theme = config.gtk.theme;
     font = { name = "Sans"; size = 11; };
   };
 
