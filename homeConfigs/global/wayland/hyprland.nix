@@ -1,4 +1,4 @@
-{ ... }:
+{lib, pkgs, ... }:
 
 {
   wayland.windowManager.hyprland.systemd.variables = [ "--all" ];
@@ -21,8 +21,8 @@
       "SUPER_ALT, Q, exit,"
       "$mainMod, S, togglefloating,"
       "$mainMod, I, pin,"
-      "$mainMod, D, exec, rofi -show drun -show-icons"
-      "$mainMod SHIFT, D, exec, rofi -show run -show-icons"
+      "$mainMod, D, exec, ${lib.getExe pkgs.rofi} -show drun -show-icons"
+      "$mainMod SHIFT, D, exec, ${lib.getExe pkgs.rofi} -show run -show-icons"
       "$mainMod, M, fullscreen, 1"
       "$mainMod, F, fullscreen, 0"
 
@@ -84,13 +84,13 @@
     ];
 
     bindl = [ #repeat
-      " , XF86AudioNext, exec, playerctl next"
-      " , XF86AudioPrev, exec, playerctl previous"
-      " , XF86AudioPause, exec, playerctl play-pause"
-      " , XF86AudioPlay, exec, playerctl play-pause"
-      "$mainMod, n, exec, playerctl next"
-      "$mainMod, p, exec, playerctl previous"
-  	"$mainMod, o, exec, playerctl play-pause"
+      " , XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} next"
+      " , XF86AudioPrev, exec, ${lib.getExe pkgs.playerctl} previous"
+      " , XF86AudioPause, exec, ${lib.getExe pkgs.playerctl} play-pause"
+      " , XF86AudioPlay, exec, ${lib.getExe pkgs.playerctl} play-pause"
+      "$mainMod, n, exec, ${lib.getExe pkgs.playerctl} next"
+      "$mainMod, p, exec, ${lib.getExe pkgs.playerctl} previous"
+  	"$mainMod, o, exec, ${lib.getExe pkgs.playerctl} play-pause"
     ];
 
     windowrule = [
@@ -168,8 +168,8 @@
     ];
 
 	  exec-once = [
-        "swaybg -i ~/.config/wallpaper.png&"
-        "(sleep 2;activate-linux)&"
+        "${lib.getExe pkgs.swaybg} -i ~/.config/wallpaper.png&"
+        "(sleep 2;${lib.getExe pkgs.activate-linux})&"
         "waybar&"
         "alacritty&"
 	    ];
