@@ -19,7 +19,7 @@ in
 
 	destFolder = lib.mkOption {
 		type = lib.types.str;
-		default = "/raid/pc_sync";
+		default = "/raid/crit/pc_sync";
 		description = "where on the server";
 	};
 
