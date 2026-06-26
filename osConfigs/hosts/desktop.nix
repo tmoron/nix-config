@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:04 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/24 18:42:19 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/26 14:05:26 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,9 @@
   networking.hostId = "98e475dd";
 
   mods.zfs.enable = true;
+  boot.zfs.forceImportRoot = false;
+  boot.zfs.extraPools = [ "stor" ];
+
 
   mods.docker = {
     enable = true;
