@@ -28,11 +28,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1781713404,
-        "narHash": "sha256-sWYN0mtke4pMa/v19CXTYIhmZ8zIeYfcmzkSvtgBrhI=",
+        "lastModified": 1782248098,
+        "narHash": "sha256-qIvObIIVv+AGH2cKeqfbAfzAe02xR3gGWa26aQhqW5Q=",
         "ref": "refs/heads/master",
-        "rev": "64b2f04f8f1d3f826a5fe2c456dab41f5a13b3dc",
-        "revCount": 41,
+        "rev": "c4f3c129f108bb0b8b845b09ada7cda2ce0428c9",
+        "revCount": 42,
         "type": "git",
         "url": "https://git.tmoron.fr/tom/dockermcmgr"
       },

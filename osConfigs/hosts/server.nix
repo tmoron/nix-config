@@ -6,11 +6,11 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/15 12:34:42 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/24 20:34:47 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{ config, pkgs, inputs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 let
   ports = [
@@ -110,6 +110,31 @@ in
 	  autosnap = true;
 	  autoprune = true;
   };
+  services.sanoid.datasets."raid_vol/crit" = {
+	  daily = 31;
+	  hourly = 24;
+	  monthly = 12;
+	  autosnap = true;
+	  autoprune = true;
+  };
+
+  users.users.backup.isNormalUser = true;
+
+  services.syncoid.enable = true;
+  services.syncoid.user = "backup";
+  services.syncoid.group = "users";
+
+  services.syncoid.service.serviceConfig = {
+	BindReadOnlyPaths = [ "/home/backup/.ssh" ];
+    ProtectHome = lib.mkForce false;
+  };
+
+  services.syncoid.sshKey = "/home/backup/.ssh/id_ed25519";
+  services.syncoid.commands."raid_vol-critical" = {
+    source = "raid_vol/crit";
+	target = "sync@192.168.1.41:stor";
+  };
+
 
   networking = {
     hostName = "server";
@@ -117,8 +142,7 @@ in
     interfaces.eth0.ipv4.addresses = [ {
       address = "192.168.1.24";
       prefixLength = 24;
-      }
-    ];
+    } ];
     defaultGateway.address = "192.168.1.254";
     defaultGateway.interface = "eth0";
     nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1"];
