@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
 
 let
-  defPathLst = ["desktop" "42_desktop" "Downloads"];
+  defPathLst = [ "desktop" "42_desktop" ];
 in
 {
   options.mods.sync = {

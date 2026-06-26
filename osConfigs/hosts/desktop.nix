@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:04 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/15 02:03:18 by tomoron          ###   ########.fr        #
+#    Updated: 2026/06/24 18:42:19 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,5 +34,13 @@
   mods.docker = {
     enable = true;
     boot = false;
+  };
+
+  users.users.sync = {
+	isNormalUser = true;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIkVmIAJZewJVC6i1f39P7D36OPsdKqMNejALhBo92Td backup@server"
+	  "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIPy6ObpsitxHkRZzGbYdBpsBbR1YygtZOeClN2C/thu4AAAABHNzaDo= ssh:"
+    ];
   };
 }
