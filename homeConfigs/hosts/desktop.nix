@@ -25,4 +25,5 @@
     cursor.no_hardware_cursors = true;
 	misc.vrr = 1;
   };
+  services.hypridle.enable = lib.mkForce false;
 }
