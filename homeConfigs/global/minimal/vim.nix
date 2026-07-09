@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/14 19:22:40 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/14 19:32:07 by tomoron          ###   ########.fr        #
+#    Updated: 2026/07/07 20:00:29 by tom              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,32 +31,34 @@
     local cmp = require'cmp'
 
     cmp.setup({
-    snippet = {
-      expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-  	  end,
-    },
+      experimental = { ghost_text = true },
+      snippet = {
+        expand = function(args)
+          vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+  	    end,
+      },
 
-    window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
-    },
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
 
-    mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
+      mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      }),
 
-    sources = cmp.config.sources({
+      sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'vsnip' },
       }, {
         { name = 'buffer' },
       })
     })
+
 
     cmp.setup.cmdline({ '/', '?' }, {
       mapping = cmp.mapping.preset.cmdline(),
@@ -125,6 +127,8 @@
     vim.keymap.set("n", "<leader>9m", function()
     		require("99.extensions.telescope").select_model()
     end)
+
+	require "lsp_signature".setup(cfg)
   '';
 
   programs.neovim.extraConfig = ''
@@ -174,6 +178,7 @@
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
+	Plug 'ray-x/lsp_signature.nvim'
 
     Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
@@ -182,6 +187,7 @@
     colorscheme catppuccin-mocha
 
     set signcolumn=auto
+	set exrc
 
     nnoremap <leader>ff <cmd>Telescope find_files<cr>
     nnoremap <leader>fg <cmd>Telescope live_grep<cr>
