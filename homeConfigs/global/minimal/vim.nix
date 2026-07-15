@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/14 19:22:40 by tomoron           #+#    #+#              #
-#    Updated: 2026/07/07 20:00:29 by tom              ###   ########.fr        #
+#    Updated: 2026/07/09 14:59:29 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,13 +133,8 @@
 
   programs.neovim.extraConfig = ''
     set number
-    set ai
     autocmd BufWinLeave *.* mkview
     autocmd BufWinEnter *.* silent! loadview
-    set tabstop=4
-    set scrolloff=10
-    set smartindent 
-    set shiftwidth=4
     map <silent> <C-N> :bnext<CR>
     map <silent> <C-P> :bprevious<CR>
     nmap <silent> <c-k> :wincmd k<CR>
@@ -150,6 +145,14 @@
     set path +=**
     set wildmenu
     set wildignore+=**/node_modules/**
+
+    set scrolloff=10
+
+    set ai
+    set smartindent 
+    set tabstop=4
+    set shiftwidth=4
+	filetype plugin indent on
 
     let mapleader=";"
 
@@ -201,6 +204,13 @@
   '';
 
   home.file = {
+	  #set nix indent
+	  ".config/nvim/after/ftplugin/nix.lua".text= ''
+	  	vim.bo.shiftwidth = 2
+	  	vim.bo.tabstop = 2
+	  	vim.bo.expandtab = true
+	  '';
+
     #install plug.vim
     ".local/share/nvim/site/autoload/plug.vim".source = "${fetchGit {
       url = "https://github.com/junegunn/vim-plug";
@@ -214,6 +224,5 @@
       rev = "e6e6b191871545e0d43f1aad817070bc806b8fa7";
       ref = "master";
     }}/plugin/stdheader.vim";
-
   };
 }
