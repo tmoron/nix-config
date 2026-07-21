@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 23:47:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/13 23:44:37 by tomoron          ###   ########.fr        #
+#    Updated: 2026/07/21 19:16:13 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@
 
         sshKey = "/root/.ssh/id_ed25519";
 
-        system = "x86_64-linux";
+        systems = ["x86_64-linux" "i686-linux"];
 
         maxJobs = 2;
         speedFactor = 2;
