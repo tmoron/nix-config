@@ -23,7 +23,7 @@
       }
       {
         time = "00:30";
-        temperature = 2000;
+        temperature = 2500;
       }
 
     ];

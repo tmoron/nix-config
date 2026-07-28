@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:04 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/26 14:05:26 by tomoron          ###   ########.fr        #
+#    Updated: 2026/07/23 14:49:31 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,8 @@
   mods.zfs.enable = true;
   boot.zfs.forceImportRoot = false;
   boot.zfs.extraPools = [ "stor" ];
+
+  services.usbmuxd.enable = true; #iphone usb service sometimes hangs when shutting down
 
 
   mods.docker = {
