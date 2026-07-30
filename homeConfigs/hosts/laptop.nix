@@ -19,24 +19,32 @@
   };
 
   wayland.windowManager.hyprland.settings = {
-	workspace = [
-      "1, monitor:eDP-1"
-	  "2, monitor:HDMI-A-1, default:true"
+	  workspace_rule = [
+        { workspace = "1"; monitor = "eDP-1"; }
+	      { workspace = "2"; monitor = "HDMI-A-1"; default = true; }
     ];
+
     bind = [
-      ", XF86Launch1, exec, hyprlock"
-      ", XF86Launch4, exec, pkill activate-linux"
-	];
+      { _args = [
+        "XF86Launch1"
+        (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"hyprlock\")")
+        ];}
+      { _args = [
+        "XF86Launch4"
+        (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"pkill activate-linux\")")
+        ];}
+	  ];
     monitor= [
-	  "eDP-1, 1920x1080@120, 0x0, 1"
-      "HDMI-A-1, 1920x1080@60, auto, auto"
+      { output = "DP-2"; mode = "1920x1080@60Hz"; position = "-1920x0"; scale="auto"; }
+	    { output = "eDP-1"; mode = "1920x1080@120"; position = "0x0"; scale = "1"; }
+      { output = "HDMI-A-1"; mode = "1920x1080@60"; position = "auto"; scale = "auto"; }
     ];
-	env = [ "AQ_DRM_DEVICES,/dev/dri/card1"];
+	  env = [ { _args = ["AQ_DRM_DEVICES" "/dev/dri/card1"]; } ];
   };
 
   home.packages = with pkgs; [
     blender
-	wireshark
+	  wireshark
   ];
 
   services.mpris-proxy.enable = true;

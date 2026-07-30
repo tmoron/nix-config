@@ -1,16 +1,8 @@
 {lib, pkgs, ... }:
 
 {
-  wayland.windowManager.hyprland.systemd.variables = [ "--all" ];
-
-  programs.hyprshot.enable = true;
-  catppuccin.hyprland.enable = false;
-
-  home.shellAliases.hl = "Hyprland";
-
-  wayland.windowManager.hyprland.enable = true;
-  wayland.windowManager.hyprland.configType = "hyprlang";
-  wayland.windowManager.hyprland.settings = {
+  /*
+  settings = {
     "$mainMod" = "SUPER";
     bind = [
 	  " , Print, exec, hyprshot -m region -o ~/screenshots -f $(date +%Y-%m-%d_%H-%M-%S).png"
@@ -174,4 +166,5 @@
         "alacritty&"
 	    ];
   };
+  */
 }

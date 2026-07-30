@@ -15,7 +15,7 @@
 
   gtk = {
     enable = true;
-    theme = { package = pkgs.magnetic-catppuccin-gtk; name = "Catppuccin-GTK-Dark"; };
+    theme = { package = pkgs.yaru-remix-theme; name = "Yaru-remix-dark"; };
 	gtk4.theme = config.gtk.theme;
     font = { name = "Sans"; size = 11; };
   };
