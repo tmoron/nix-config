@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 {
-  wayland.windowManager.hyprland.settings.binds = [
+  wayland.windowManager.hyprland.settings.bind = [
       { _args = [
         "XF86AudioRaiseVolume"
         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+\")")

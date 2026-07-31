@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  wayland.windowManager.hyprland.settings.binds = [
+  wayland.windowManager.hyprland.settings.bind = [
     # Move focus
     { _args = [
       (lib.generators.mkLuaInline "mod .. \" + H\"")

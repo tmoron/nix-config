@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 {
-  wayland.windowManager.hyprland.settings.binds = [
+  wayland.windowManager.hyprland.settings.bind = [
     { _args = [
       "XF86MonBrightnessUp"
       (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${lib.getExe pkgs.brightnessctl} s 10%+\")")
@@ -15,13 +15,13 @@
 
     { _args = [
       "XF86KbdBrightnessUp"
-      (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${lib.getExe pkgs.asusctl} -n\")")
+      (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.asusctl}/bin/asusctl -n\")")
       {locked = true; repeating = true; }
       ];}
 
     { _args = [
       "XF86KbdBrightnessDown"
-      (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${lib.getExe pkgs.asusctl} -p\")")
+      (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.asusctl}/bin/asusctl -p\")")
       {locked = true; repeating = true; }
       ];}
 

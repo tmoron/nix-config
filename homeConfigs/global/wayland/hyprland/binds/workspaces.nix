@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  wayland.windowManager.hyprland.settings.binds = [
+  wayland.windowManager.hyprland.settings.bind = [
     # Switch workspaces with mainMod + [0-9]
     { _args = [
       (lib.generators.mkLuaInline "mod .. \" + 1\"")

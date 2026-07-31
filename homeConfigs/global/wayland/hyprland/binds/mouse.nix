@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  wayland.windowManager.hyprland.settings.binds = [
+  wayland.windowManager.hyprland.settings.bind = [
       #mouse binds
       { _args = [
         (lib.generators.mkLuaInline "mod .. \" + mouse:272\"")
