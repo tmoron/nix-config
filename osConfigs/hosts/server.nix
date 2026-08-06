@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/24 20:34:47 by tomoron          ###   ########.fr        #
+#    Updated: 2026/07/21 19:02:44 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -179,6 +179,8 @@ in
 
 
   nix.settings.trusted-users = [ "root" "builder" "tom" ];
+
+  boot.binfmt.emulatedSystems = [ "i686-linux" ];
 
   users.users.builder = {
 	  isNormalUser = true;
