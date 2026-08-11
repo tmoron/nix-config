@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 20:37:07 by tomoron           #+#    #+#              #
-#    Updated: 2026/08/10 17:25:58 by tomoron          ###   ########.fr        #
+#    Updated: 2026/08/11 15:33:10 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,9 +112,6 @@
       SDL_mixer
       SDL2_ttf
       SDL2_mixer
-      libappindicator-gtk2
-      libdbusmenu-gtk2
-      libindicator-gtk2
       libcaca
       libcanberra
       libgcrypt
