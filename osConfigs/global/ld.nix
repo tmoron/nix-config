@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 20:37:07 by tomoron           #+#    #+#              #
-#    Updated: 2026/05/28 23:20:01 by tomoron          ###   ########.fr        #
+#    Updated: 2026/08/10 17:25:58 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,6 @@
       libxi
       libsm
       libice
-      gnome2.GConf
       nspr
       nss
       cups
