@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 23:47:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/07/21 19:16:13 by tomoron          ###   ########.fr        #
+#    Updated: 2026/08/16 00:30:40 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,5 @@
       }
     ];
     nix.distributedBuilds = true;
-    programs.ssh.extraConfig = ''
-        Host tmoron.fr
-          HostName tmoron.fr
-        Port 1880 
-    '';
   };
 }
