@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 01:43:46 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/15 02:06:30 by tomoron          ###   ########.fr        #
+#    Updated: 2026/08/12 19:26:37 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,4 +32,5 @@
   programs.droidcam.enable = true;
 
   catppuccin.enable = true;
+  services.pcscd.enable = true;
 }
