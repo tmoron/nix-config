@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:04 by tomoron           #+#    #+#              #
-#    Updated: 2026/08/16 00:22:21 by tomoron          ###   ########.fr        #
+#    Updated: 2026/08/16 00:52:08 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,11 +35,7 @@
 
   networking.firewall.enable = false;
 
-  services.usbmuxd.enable = true; #iphone usb service sometimes hangs when shutting down
-
-  programs.gnupg.agent.enable = true;
-  programs.gnupg.agent.enableSSHSupport = true;
-
+  services.usbmuxd.enable = true; #iphone usb service, hangs sometimes when shutting down
 
   mods.docker = {
     enable = true;
