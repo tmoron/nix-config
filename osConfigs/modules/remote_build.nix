@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 23:47:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/08/16 00:30:40 by tomoron          ###   ########.fr        #
+#    Updated: 2026/08/16 15:50:29 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,7 @@
   config = lib.mkIf config.mods.remote-build.enable {
     nix.buildMachines = [
       {
-        hostName = "tmoron.fr";
-        sshUser = "builder";
+        hostName = "tmoron-builder";
         protocol = "ssh-ng";
 
         sshKey = "/root/.ssh/id_ed25519";
