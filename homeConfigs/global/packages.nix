@@ -6,11 +6,11 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/16 23:07:00 by tomoron          ###   ########.fr        #
+#    Updated: 2026/08/16 16:23:52 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{ pkgs, ...}:
+{ inputs, pkgs, ...}:
 
 {
   home.packages = with pkgs;[
@@ -41,5 +41,7 @@
     discord 
     google-chrome
 	localsend
+
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

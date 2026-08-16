@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:24 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/15 02:17:44 by tomoron          ###   ########.fr        #
+#    Updated: 2026/08/16 16:22:46 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,12 @@
 		url = "git+https://git.tmoron.fr/tom/dockermcmgr";
 		inputs.nixpkgs.follows = "nixpkgs";
 	};
+
+  zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+  };
+
 
 	#plymouth-theme-ycontre-glow = {
     #  url = "git+file:///home/tom/desktop/bordel/ycontre-glow";
