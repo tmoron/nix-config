@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/07/21 19:02:44 by tomoron          ###   ########.fr        #
+#    Updated: 2026/08/16 00:14:24 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,6 +131,7 @@ in
 
   services.syncoid.sshKey = "/home/backup/.ssh/id_ed25519";
   services.syncoid.commands."raid_vol-critical" = {
+    extraArgs = [ "--delete-target-snapshots" ];
     source = "raid_vol/crit";
 	target = "sync@192.168.1.41:stor";
   };

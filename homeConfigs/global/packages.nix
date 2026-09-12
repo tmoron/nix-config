@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
-#    Updated: 2026/08/16 16:23:52 by tomoron          ###   ########.fr        #
+#    Updated: 2026/09/12 22:26:37 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,17 +31,17 @@
     libcaca
     nasm
     nerd-fonts.iosevka
-	compiledb
-	yubikey-personalization
-	libreoffice
-	doxygen
-	qimgv
-	acpi
+	  compiledb
+	  yubikey-personalization
+	  libreoffice
+	  doxygen
+	  qimgv
+	  acpi
 
     discord 
     google-chrome
-	localsend
 
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+  	localsend
   ];
 }
