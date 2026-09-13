@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/14 17:49:47 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/14 17:50:06 by tomoron          ###   ########.fr        #
+#    Updated: 2026/09/13 13:01:22 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@
 
   boot.tmp.cleanOnBoot = true;
 
-  services.journald.extraConfig = ''
-    SystemMaxUse=100M
-    SystemMaxFileSize=50M
-  '';
+  services.journald.settings.Journal = {
+    SystemMaxUse = "100M";
+    SystemMaxFileSize = "50M";
+  };
 }

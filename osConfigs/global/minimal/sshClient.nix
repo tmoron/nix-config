@@ -3,6 +3,7 @@
         Host srv
         HostName tmoron.fr
           RemoteForward /run/user/1000/gnupg/S.gpg-agent /run/user/1000/gnupg/S.gpg-agent
+          StreamLocalBindUnlink yes
           Port 1880 
           
         Host tmoron-builder
