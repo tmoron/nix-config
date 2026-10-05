@@ -28,11 +28,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1786554356,
-        "narHash": "sha256-NQSiYpewpAAR6O9kFKiEZ846iKglZt4bUWV14D83hnA=",
+        "lastModified": 1790959076,
+        "narHash": "sha256-34pJ9DN5niVBSutY3Tzg9X5s74ZFhUpiqjoD6TNEzVY=",
         "ref": "refs/heads/master",
-        "rev": "9660d8cfee9665a4b2c51f982631c8686ce6bea8",
-        "revCount": 44,
+        "rev": "e82443282445a6088dc004effc772de5be78f508",
+        "revCount": 50,
         "type": "git",
         "url": "https://git.tmoron.fr/tom/dockermcmgr"
       },
@@ -49,11 +49,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1790497510,
-        "narHash": "sha256-0T3eZTD8zw3cEZflN066yGST6CNtO7qm9mMkMN0asRc=",
+        "lastModified": 1791086769,
+        "narHash": "sha256-C34/GzVinIrfLGdpzHMB2NGggutjaA+AZx6fj804JS8=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "f91d27101fb8ef07a714f63dd5e7eecb3d84e9cd",
+        "rev": "e56771291e0b5649f8c5c4a092f475053bd4561b",
         "type": "gitlab"
       },
       "original": {
@@ -86,11 +86,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790365885,
-        "narHash": "sha256-iQ0ebhiVo64NktTnwft9hNxlFu4j5cvljVxyJaEVIP4=",
+        "lastModified": 1791163078,
+        "narHash": "sha256-DiuwfdoZtEqVRsWuAhXcHa+cfvkr0t/xWW8ugkcxNyI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7b4c5ec4bedaf1e062bbc1bcaeddbc6bd242aa1b",
+        "rev": "f53f3267f5d009dd8f99443505e609389d7ff267",
         "type": "github"
       },
       "original": {
@@ -105,11 +105,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1790321948,
-        "narHash": "sha256-mZGHLGi217oLIwzDM4PNRZeCNa6g2WBXURyXbNMFs7Y=",
+        "lastModified": 1791128201,
+        "narHash": "sha256-rlsYY/Dg/LhbIj51Aa6TLvRpZeb3KZgUTd7llQ5XcJE=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "30d48a0ec6035f8140d0125af274f0de95f1e9b5",
+        "rev": "31cc5f4d9b9ba601071e8b8504601b9b176e2756",
         "type": "github"
       },
       "original": {
@@ -163,11 +163,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1790566247,
-        "narHash": "sha256-rvQLbIhS0dc1MM4TpJIfrKnvZueyM0Mfmb6d8/R8YQE=",
+        "lastModified": 1791172279,
+        "narHash": "sha256-e4LI/43Y2Sf7mxdmioJdzeqLZwwb3IfvSws7w1dMfl4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "55d33a38f82193676603b4b58572b8718d6623b7",
+        "rev": "1f38506dee2a73c8b87ed5e78afc2b0109af3fe6",
         "type": "github"
       },
       "original": {
@@ -196,11 +196,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790498116,
-        "narHash": "sha256-rs9meAYxW3zzrh43yaW7htrqCD+X9+pupDPHN86fumI=",
+        "lastModified": 1791103873,
+        "narHash": "sha256-nFxM+pKoZ8LJAEnUXARyCaOAloWgaW9kZQOSjWzKcTE=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "5efb5a6f4f5ab192817d28557dd4d650fa14d866",
+        "rev": "dcd241ba97088c22569d1573286e1b9daad340c0",
         "type": "github"
       },
       "original": {
@@ -249,11 +249,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790240349,
-        "narHash": "sha256-uMC3vdi/AdbRLsKCJle4VAIV9e3HEJhe4CZzvA0FXNw=",
+        "lastModified": 1791109428,
+        "narHash": "sha256-9Wlecihq1JF26Le4xw1q75pQ4z0Pw88rRmUjeHzQXjY=",
         "owner": "youwen5",
         "repo": "zen-browser-flake",
-        "rev": "6979f283e596eead5459a6f181dbb735a10c8588",
+        "rev": "4bbcd79d8104040a2e510f81199210070900ebcd",
         "type": "github"
       },
       "original": {
