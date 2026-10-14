@@ -30,7 +30,7 @@ minimal,
 
   home.stateVersion = "25.11";
 
-  sops = lib.mkIf configSops{
+  sops = lib.mkIf configSops {
     defaultSopsFile = ../secrets/secrets.yaml;
     age.keyFile = "${homeDir}/.config/sops/age/keys.txt";
   };

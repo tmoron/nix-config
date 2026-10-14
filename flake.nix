@@ -14,7 +14,7 @@
   description = "Nixos and home-manager config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/release-26.05";
 	catppuccin.url = "github:catppuccin/nix";
 
 	sops-nix = {

@@ -7,16 +7,14 @@
     rofi
   ];
 
-  mods.game.enable = false;
-  mods.hyprland.enable = false;
   mods.x11.enable = true;
-  programs.firefox.enable = false;
+  programs.firefox.enable = lib.mkForce false;
 
   mods.polybar.fspath = "/home/tomoron";
 
   mods.sync.homeFolder = "/home/tomoron/sync";
   mods.sync.defaultSynced = false;
-  mods.sync.syncedAdditions = [ "42_desktop" "Downloads" ];
+  mods.sync.syncedAdditions = [ "42_desktop" ];
   mods.sync.customHostName = "pc42";
 
   programs.bash.profileExtra = 

@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/10 00:21:11 by tomoron           #+#    #+#              #
-#    Updated: 2025/06/18 15:49:03 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/14 10:23:32 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 {lib, config, ... }:
@@ -30,9 +30,8 @@
       pgrep picom > /dev/null || picom &
       pgrep dunst >/dev/null || dunst &
       numlockx on &
-	  polybar &
+	    polybar &
       setxkbmap fr us&
-      nitrogen --restore &
       pgrep activate-linux >/dev/null  || (sleep 2;activate-linux -d)&
 	''; # this is messy but i don't care, x11 is just a fallback now
     

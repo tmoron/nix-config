@@ -1,21 +1,23 @@
-{ config, homeDir, ... }:
+{ config, lib, homeDir, configSops, ... }:
 {
-  programs.rclone.enable = true;
-  sops.secrets."nextcloud_fuse/password" = {};
-  programs.rclone.remotes.nextcloud = {
-    config = {
-	  type = "webdav";
-	  url = "https://dnc.tmoron.fr/remote.php/dav/files/tom";
-	  vendor = "nextcloud";
-	  user = "tom";
+  config = lib.mkIf configSops {
+    programs.rclone.enable = true;
+    sops.secrets."nextcloud_fuse/password" = {};
+    programs.rclone.remotes.nextcloud = {
+      config = {
+            type = "webdav";
+            url = "https://dnc.tmoron.fr/remote.php/dav/files/tom";
+            vendor = "nextcloud";
+            user = "tom";
+      };
+          secrets.pass = config.sops.secrets."nextcloud_fuse/password".path;
+          mounts = {
+            "/" = {
+              enable = true;
+          	mountPoint = "${homeDir}/nextcloud";
+          	options.vfs-cache-mode = "writes";
+            };
+          };
     };
-	secrets.pass = config.sops.secrets."nextcloud_fuse/password".path;
-	mounts = {
-	  "/" = {
-	    enable = true;
-		mountPoint = "${homeDir}/nextcloud";
-		options.vfs-cache-mode = "writes";
-	  };
-	};
   };
 }
