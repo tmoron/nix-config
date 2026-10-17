@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:04 by tomoron           #+#    #+#              #
-#    Updated: 2026/08/16 00:52:08 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/17 14:28:17 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,9 @@
     enable = true;
     boot = false;
   };
+
+  programs.wireshark.enable = true;
+  programs.wireshark.usbmon.enable = true;
 
   users.users.sync = {
 	isNormalUser = true;
