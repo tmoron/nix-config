@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 22:01:56 by tomoron           #+#    #+#              #
-#    Updated: 2026/09/12 22:26:37 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/17 21:28:13 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@
     discord 
     google-chrome
 
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+#    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default #broken
   	localsend
   ];
 }
