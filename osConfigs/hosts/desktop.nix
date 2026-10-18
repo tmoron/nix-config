@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:04 by tomoron           #+#    #+#              #
-#    Updated: 2026/10/17 14:28:17 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/18 21:23:58 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,8 @@
   boot.zfs.extraPools = [ "stor" ];
 
   networking.firewall.enable = false;
+
+  mods.virtualHost.enable = true;
 
   services.usbmuxd.enable = true; #iphone usb service, hangs sometimes when shutting down
 

@@ -30,4 +30,5 @@
     };
   };
   services.hypridle.enable = lib.mkForce false;
+  home.packages = with pkgs;[ wireshark ];
 }

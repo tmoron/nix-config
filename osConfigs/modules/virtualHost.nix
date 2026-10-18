@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 23:47:19 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/15 02:01:25 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/18 21:29:38 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,13 @@
     virtualisation.libvirtd.qemu.runAsRoot = true;
     virtualisation.libvirtd.qemu.vhostUserPackages = [ pkgs.virtiofsd ];
     virtualisation.spiceUSBRedirection.enable = true;
+
+
+    virtualisation.virtualbox.host = {
+      enable = true;
+      enableKvm = true;
+      addNetworkInterface = false;
+    };
 
     environment.systemPackages = with pkgs; [ spice-gtk ];
   };
