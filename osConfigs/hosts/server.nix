@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:09 by tomoron           #+#    #+#              #
-#    Updated: 2026/08/16 00:14:24 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/17 15:57:12 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ let
     8083 137 138 139 445 548 3702 5357 #prob some samba shit
     24454 #minecraft voice chat
     25565 # minecraft server
+    25566 # test minecraft server
 	9091 # transmission web interface
   ];
   portRanges = [
@@ -88,6 +89,25 @@ in
     };
   };
 
+  systemd.timers."dockermcmgr_backup_sync" = {
+    wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnBootSec = "1h";
+        OnUnitActiveSec = "1h";
+        Unit = "dockermcmgr_backup_sync.service";
+      };
+  };
+  
+  systemd.services."dockermcmgr_backup_sync" = {
+    script = ''
+      ${lib.getExe pkgs.rsync} -rt --inplace /home/tom/mc_servers /raid/crit/backups/mc_servers_sync
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "tom";
+    };
+  };
+
   environment.systemPackages = [
     inputs.dockermcmgr.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
@@ -104,16 +124,16 @@ in
 
   services.sanoid.enable = true;
   services.sanoid.datasets."raid_vol" = {
-	  daily = 31;
+	  daily = 14;
 	  hourly = 24;
-	  monthly = 12;
+	  monthly = 2;
 	  autosnap = true;
 	  autoprune = true;
   };
   services.sanoid.datasets."raid_vol/crit" = {
-	  daily = 31;
+	  daily = 14;
 	  hourly = 24;
-	  monthly = 12;
+	  monthly = 2;
 	  autosnap = true;
 	  autoprune = true;
   };
@@ -133,7 +153,7 @@ in
   services.syncoid.commands."raid_vol-critical" = {
     extraArgs = [ "--delete-target-snapshots" ];
     source = "raid_vol/crit";
-	target = "sync@192.168.1.41:stor";
+	  target = "sync@192.168.1.41:stor";
   };
 
 
@@ -169,13 +189,21 @@ in
 
   systemd.services.dockermcmgr-server = {
     enable = true;
-	wantedBy = ["multi-user.target"];
-	restartIfChanged = true;
-	serviceConfig = {
-	  ExecStart = "${inputs.dockermcmgr.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/dmm serverMode";
-	  User = "tom";
-	  Group= "users";
-	};
+	  wantedBy = ["multi-user.target"];
+	  restartIfChanged = true;
+
+    environment = {
+      DMM_LRZIP_PATH="${lib.getExe pkgs.lrzip}";
+      DMM_TAR_PATH="${lib.getExe pkgs.gnutar}";
+      DMM_SHELL_PATH="${lib.getExe pkgs.bash}";
+    };
+
+	  serviceConfig = {
+	    ExecStart = "${inputs.dockermcmgr.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/dmm serverMode";
+	    User = "tom";
+	    Group= "users";
+	  };
+
   };
 
 

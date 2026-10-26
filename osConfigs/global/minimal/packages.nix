@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/14 18:03:28 by tomoron           #+#    #+#              #
-#    Updated: 2026/08/16 00:40:05 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/02 17:12:28 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,5 +18,6 @@
     pciutils
     gnumake
     home-manager
+    lrzip
   ];
 }
