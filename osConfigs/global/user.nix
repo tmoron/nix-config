@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 23:42:18 by tomoron           #+#    #+#              #
-#    Updated: 2026/07/07 17:49:04 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/18 21:48:22 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@
      "dialout" # can use serial devices
      "wireshark" # can use wireshask
 	 "plugdev" #some esp things
+   "vboxusers" #virtualbox usb redirect
      ];
    };
    users.groups.plugdev = {};
