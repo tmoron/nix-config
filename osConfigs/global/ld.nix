@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 20:37:07 by tomoron           #+#    #+#              #
-#    Updated: 2026/08/11 15:33:10 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/26 11:36:48 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,6 @@
       freeglut
       libjpeg
       libpng
-      libpng12
       libsamplerate
       libmikmod
       libtheora
