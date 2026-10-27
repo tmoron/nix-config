@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 01:43:46 by tomoron           #+#    #+#              #
-#    Updated: 2026/10/17 21:10:11 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/27 23:26:17 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,4 +32,7 @@
 #  programs.droidcam.enable = true; //breaks eval
 
   catppuccin.enable = true;
+
+  services.avahi.enable = true;
+  services.printing.enable = true;
 }
