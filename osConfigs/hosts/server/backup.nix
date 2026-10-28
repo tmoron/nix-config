@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/27 20:19:31 by tomoron           #+#    #+#              #
-#    Updated: 2026/10/27 20:28:31 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/28 17:50:32 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@
   services.syncoid.commands."raid_vol-critical" = {
     extraArgs = [ "--delete-target-snapshots" ];
     source = "raid_vol/crit";
-	  target = "sync@192.168.1.41:stor";
+	  target = "sync@192.168.1.41:stor/crit";
   };
 
   users.users.backup.isNormalUser = true;
