@@ -6,15 +6,20 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/27 20:50:45 by tomoron           #+#    #+#              #
-#    Updated: 2026/10/27 21:03:47 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/28 12:27:15 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{ ... }:
+{ pkgs, ... }:
 {
   mods.zfs.enable = true;
   boot.zfs.forceImportRoot = false;
   boot.zfs.extraPools = [ "stor" ];
+
+  environment.systemPackages = with pkgs; [
+    lzop
+    mbuffer
+  ];
 
   users.users.sync = {
     isNormalUser = true;
