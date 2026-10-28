@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/27 21:08:46 by tomoron           #+#    #+#              #
-#    Updated: 2026/10/27 21:52:06 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/28 13:30:02 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,10 @@
 
     wireless.iwd.enable = true;
     wireless.allowAuxiliaryImperativeNetworks = true;
+
+    firewall.enable = false;
+    useNetworkd = true;
   };
 
   systemd.network.enable = true;
-  networking.useNetworkd = true;
-
-  firewall.enable = false;
 }
