@@ -33,7 +33,7 @@
 
     { _args = [
       (lib.generators.mkLuaInline "mod .. \" + D\"")
-      (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${lib.getExe pkgs.rofi} -show drun -show-icons\")")
+      (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"rofi-wrapper\")")
       ];}
     { _args = [
       (lib.generators.mkLuaInline "mod .. \" + SHIFT + D\"")

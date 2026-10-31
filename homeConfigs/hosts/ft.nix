@@ -4,7 +4,6 @@
   home.packages = with pkgs;[	
 	dmenu
 	brightnessctl
-    rofi
   ];
 
   mods.x11.enable = true;

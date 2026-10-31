@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/06 00:57:04 by tomoron           #+#    #+#              #
-#    Updated: 2026/10/27 21:07:58 by tomoron          ###   ########.fr        #
+#    Updated: 2026/10/28 20:28:04 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,4 +37,6 @@
     boot = false;
   };
   mods.virtualHost.enable = true;
+
+  networking.extraHosts = "127.0.0.1 e42.mc.tmoron.fr";
 }

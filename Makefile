@@ -33,6 +33,9 @@ home :
 home_build :
 	home-manager build $(FLAGS) --flake $(FLAKE)#$(HOST)
 
+news :
+	home-manager news --flake $(FLAKE)#$(HOST)
+
 iso :
 	nix build ".#nixosConfigurations.iso.config.system.build.isoImage" $(FLAGS)
 	cp result/iso/*.iso nixos.iso
