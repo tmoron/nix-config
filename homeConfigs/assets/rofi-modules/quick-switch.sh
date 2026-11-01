@@ -4,11 +4,9 @@ echo -e "\0prompt\x1f>"
 echo -e "\0use-hot-keys\x1ftrue"
 
 if [[ -z $@ ]]; then
-	echo "
-		d
-		f
-		h
-	" | tail -n +2 | head -n -1 | sed "s/^[[:space:]]*//"
+	echo d
+	echo f
+	if [[ -v ENABLE_HA ]];then echo h; fi
 	exit
 fi
 
@@ -21,6 +19,10 @@ case "$first_letter" in
 		echo -e "\0switch-mode\x1ffirefox"
 		;;
 	"h")
+		if [[ -z ENABLE_HA ]]; then
+			echo "homeassistant is disabled"
+			exit 1
+		fi
 		echo -e "\0switch-mode\x1fhomeassistant"
 		;;
 	*)

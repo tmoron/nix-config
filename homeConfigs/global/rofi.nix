@@ -6,11 +6,11 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/31 17:40:24 by tomoron           #+#    #+#              #
-#    Updated: 2026/10/31 23:16:46 by tomoron          ###   ########.fr        #
+#    Updated: 2026/11/01 17:18:00 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-{ pkgs, ... }:
+{ config, pkgs, configSops, ... }:
 let
   updatedRofi = pkgs.rofi-unwrapped.overrideAttrs (oldAttrs: {
     src = pkgs.fetchFromGitHub {
@@ -29,13 +29,24 @@ in
 
     package = updatedRofi;
   };
-
+  sops.secrets."homeassistant/token" = {};
   home.packages = [
     ( pkgs.writeShellApplication {
       name = "rofi-wrapper";
+      runtimeInputs = with pkgs; [ jq curl ];
 
-      text = ''
-        rofi -modes "drun,quick:${../assets/rofi-modules/quick-switch.sh},firefox:${../assets/rofi-modules/firefox.sh}" -show-icons -show quick -auto-select
+      text = (if configSops then ''
+        export ENABLE_HA=true
+        export HA_TOKEN_FILE=${config.sops.secrets."homeassistant/token".path}
+      '' else "") + ''
+        modes="drun"
+        modes+=",quick:${../assets/rofi-modules/quick-switch.sh}"
+        modes+=",firefox:${../assets/rofi-modules/firefox.sh}"
+        if [[ -v ENABLE_HA ]]; then
+          modes+=",homeassistant:${../assets/rofi-modules/homeassistant.sh}"
+        fi
+
+        rofi -modes "$modes" -show-icons -show quick -auto-select
       '';
     })
   ];

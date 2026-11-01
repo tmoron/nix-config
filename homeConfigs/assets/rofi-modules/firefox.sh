@@ -1,18 +1,13 @@
 echo "params : $@" 1>&2
-echo -e "\0prompt\x1fsearch query >"
+echo -e "\0prompt\x1f>"
 echo -e "\0use-hot-keys\x1ftrue"
 
 if [[ -z $1 ]]; then
-	echo "home"
-	echo "git"
-	echo "gh"
-	echo "nix"
 	exit
 fi
 
 
-
-case $1 in
+case ${$1%% *} in
 	"home")
 		firefox "https://ha.tmoron.fr"
 		;;
