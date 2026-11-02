@@ -6,8 +6,10 @@ if [[ -z $1 ]]; then
 	exit
 fi
 
+args="$*"
+first_word="${args%% *}"
 
-case ${$1%% *} in
+case $first_word in
 	"home")
 		firefox "https://ha.tmoron.fr"
 		;;

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs;[
-    lutris
+    #lutris #broken
     mangohud
     moonlight-qt
     prismlauncher
