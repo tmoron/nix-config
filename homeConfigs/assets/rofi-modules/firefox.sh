@@ -10,7 +10,7 @@ args="$*"
 first_word="${args%% *}"
 
 case $first_word in
-	"home")
+	"ha")
 		firefox "https://ha.tmoron.fr"
 		;;
 	"git")
@@ -18,6 +18,9 @@ case $first_word in
 		;;
 	"gh")
 		firefox "https://github.com"
+		;;
+	"y")
+		firefox "https://youtube.com"
 		;;
 	"nix")
 		shift
