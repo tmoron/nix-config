@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/31 17:40:24 by tomoron           #+#    #+#              #
-#    Updated: 2026/11/01 17:18:00 by tomoron          ###   ########.fr        #
+#    Updated: 2026/11/03 18:38:51 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ in
   home.packages = [
     ( pkgs.writeShellApplication {
       name = "rofi-wrapper";
-      runtimeInputs = with pkgs; [ jq curl ];
+      runtimeInputs = with pkgs; [ jq curl libnotify ];
 
       text = (if configSops then ''
         export ENABLE_HA=true

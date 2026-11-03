@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 18:15:38 by tomoron           #+#    #+#              #
-#    Updated: 2026/06/15 01:53:27 by tomoron          ###   ########.fr        #
+#    Updated: 2026/11/03 18:35:37 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,5 +36,6 @@ minimal,
   };
 
   services.dunst.enable = true;
+  services.dunst.settings.global.follow = "keyboard";
   programs.home-manager.enable = true;
 }

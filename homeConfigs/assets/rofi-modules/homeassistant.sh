@@ -11,4 +11,14 @@ prompt="$initial_prompt $*"
 
 token=$(cat "$HA_TOKEN_FILE")
 
-curl -X POST -H "Authorization: Bearer $token" -H "Content-Type: application/json" -d "{\"text\":\"$prompt\",\"agent_id\":\"conversation.ollama_conv_with_think\"}" https://ha.tmoron.fr/api/conversation/process | jq -r ".response.speech.plain.speech"
+
+{
+	response="$(curl -X POST -H "Authorization: Bearer $token" -H "Content-Type: application/json" \
+		-d "{\"text\":\"$prompt\",\"agent_id\":\"conversation.ollama_conv_with_think\"}" \
+		https://ha.tmoron.fr/api/conversation/process \
+		| jq -r ".response.speech.plain.speech")"
+	
+
+	notify-send "homeassistant" "$response"
+
+} >/dev/null 2>&1 &
