@@ -23,12 +23,11 @@ case $first_word in
 		firefox "https://youtube.com"
 		;;
 	"nix")
-		shift
-		query=$(echo "$*" | sed 's/ /+/g')
+		query=$(echo "${args#* }" | sed 's/ /+/g')
 		firefox "https://search.nixos.org/packages?channel=unstable&query=$query"
 		;;
 	*)
-		query=$(echo "$*" | sed 's/ /+/g')
+		query=$(echo "$args" | sed 's/ /+/g')
 		firefox "https://noai.duckduckgo.com/?q=$query"
 		;;
 esac
