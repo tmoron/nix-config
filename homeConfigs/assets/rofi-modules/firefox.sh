@@ -25,6 +25,9 @@ case $first_word in
 	"d")
 		firefox "https://discord.com/login"
 		;;
+	"jf")
+		firefox "https://jf.tmoron.fr"
+		;;
 	"nix")
 		query=$(echo "${args#* }" | sed 's/ /+/g')
 		firefox "https://search.nixos.org/packages?channel=unstable&query=$query"

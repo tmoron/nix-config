@@ -6,7 +6,7 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/09 01:43:46 by tomoron           #+#    #+#              #
-#    Updated: 2026/10/27 23:26:17 by tomoron          ###   ########.fr        #
+#    Updated: 2026/11/08 12:24:23 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@
   programs.solaar.enable = true;
 
   programs.noisetorch.enable = true;
-#  programs.droidcam.enable = true; //breaks eval
+  programs.droidcam.enable = true;
 
   catppuccin.enable = true;
 
