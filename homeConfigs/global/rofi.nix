@@ -6,28 +6,15 @@
 #    By: tomoron <tomoron@student.42angouleme.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/31 17:40:24 by tomoron           #+#    #+#              #
-#    Updated: 2026/11/03 18:38:51 by tomoron          ###   ########.fr        #
+#    Updated: 2026/11/17 19:39:11 by tomoron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 { config, pkgs, configSops, ... }:
-let
-  updatedRofi = pkgs.rofi-unwrapped.overrideAttrs (oldAttrs: {
-    src = pkgs.fetchFromGitHub {
-      owner = "davatorium";
-      repo = "rofi";
-      fetchSubmodules = true;
-      rev = "8cf8134ec66febdcbb37ebd4bcd95ee7cc001238";
-      hash = "sha256-bilI49AZCegemypZ22mBVVWntSouLytla250mAqeJSg=";
-    };
-  });
-in
 {
   programs.rofi = {
     enable = true;
     theme = "rounded-nord-dark";
-
-    package = updatedRofi;
   };
   sops.secrets."homeassistant/token" = {};
   home.packages = [
