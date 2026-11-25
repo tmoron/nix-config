@@ -5,17 +5,17 @@
 
   wayland.windowManager.hyprland.settings = {
     monitor = [
-      { output = "DP-2"; mode = "1920x1080@60Hz"; position = "0x-1080"; scale="auto"; }
-	    { output = "HDMI-A-3"; mode = "1920x1080@60Hz"; position = "0x0"; scale = "auto"; }
-	    { output = "DP-3"; mode = "1920x1080@60.00Hz"; position = "1920x0"; scale =  "auto"; }
-	    { output = "HDMI-A-1"; mode = "1920x1080@60.00Hz"; position = "-1920x0"; scale = "auto"; }
+      { output = "DP-4"; mode = "1920x1080@60Hz"; position = "0x-1080"; scale="auto"; }
+	    { output = "HDMI-A-1"; mode = "1920x1080@60Hz"; position = "0x0"; scale = "auto"; }
+	    { output = "DP-1"; mode = "1920x1080@60.00Hz"; position = "1920x0"; scale =  "auto"; }
+	    { output = "HDMI-A-2"; mode = "1920x1080@60.00Hz"; position = "-1920x0"; scale = "auto"; }
     ];
 
 	  workspace_rule = [
-      { workspace = "2"; monitor = "DP-2";}
-	    { workspace = "1"; monitor = "HDMI-A-3"; default = true; }
-	    { workspace = "4"; monitor = "DP-3"; }
-	    { workspace = "3"; monitor = "HDMI-A-1"; }
+      { workspace = "2"; monitor = "DP-4";}
+	    { workspace = "1"; monitor = "HDMI-A-1"; default = true; }
+	    { workspace = "4"; monitor = "DP-1"; }
+	    { workspace = "3"; monitor = "HDMI-A-2"; }
 	  ];
 
 	  env = [
